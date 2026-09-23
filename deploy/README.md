@@ -98,3 +98,5 @@ sudo ewm-deploy
 That command creates a backup, fast-forwards the repository, installs pinned dependencies, applies migrations, rebuilds static assets, restarts the service, and refuses to report success until the health endpoint responds. Inspect backup scheduling with `systemctl list-timers ewm-backup.timer`.
 
 Content imports are intentionally not part of ewm-deploy. The full legal source can be restored explicitly with populate_support_pages --overwrite after a backup; routine releases preserve admin edits and collected messages/subscribers.
+
+To verify the latest backup without touching production data, run `sudo bash deploy/verify-backup.sh` from the checkout. It checks archive hashes, reads the media archive, restores PostgreSQL into a uniquely named disposable database, verifies table counts and removes only that temporary database. This restore test passed on the live Droplet.

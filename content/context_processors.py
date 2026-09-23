@@ -26,6 +26,7 @@ def site_context(request):
         "site_settings": site_settings,
         "social_links": social_links,
         "site_url": settings.SITE_URL,
+        "site_indexing_enabled": settings.SITE_INDEXING_ENABLED,
         "primary_menu": primary,
         "footer_menu": footer,
         "language_code": language_code,

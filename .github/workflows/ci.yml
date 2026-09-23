@@ -28,3 +28,5 @@ jobs:
       - run: python manage.py makemigrations --check --dry-run
       - run: python manage.py check
       - run: python manage.py test content
+      - run: for ewm_script in deploy/*.sh; do bash -n "$ewm_script" || exit; done
+      - run: pip install pip-audit && pip-audit -r requirements.txt

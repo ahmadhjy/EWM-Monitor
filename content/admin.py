@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import admin
 from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
@@ -80,7 +81,11 @@ ARABIC_SEO_FIELDSET = (
 
 
 def admin_environment(request):
-    return ["Local preview", "info"]
+    if settings.DEBUG:
+        return ["Local preview", "info"]
+    if not settings.SITE_INDEXING_ENABLED:
+        return ["IP preview · no indexing", "warning"]
+    return ["Production", "success"]
 
 
 @admin.register(Article)

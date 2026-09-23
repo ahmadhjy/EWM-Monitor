@@ -133,6 +133,33 @@ class PublicSiteTests(TestCase):
         self.assertTrue(article.excerpt_ar.endswith("…"))
         self.assertLessEqual(len(article.seo_description), 160)
 
+    @override_settings(SITE_INDEXING_ENABLED=False)
+    def test_ip_preview_is_consistently_noindex(self):
+        response = self.client.get("/")
+        self.assertEqual(response["X-Robots-Tag"], "noindex, nofollow")
+        self.assertContains(response, '<meta name="robots" content="noindex,nofollow')
+        self.assertContains(self.client.get("/robots.txt"), "Disallow: /")
+
+    def test_inline_links_follow_available_language_editions(self):
+        from django.utils import translation
+        from .templatetags.content_extras import localized_content
+        html = '<a href="https://elliottwavemonitor.com/english-education-guide/">Guide</a>'
+        with translation.override("en"):
+            self.assertIn('href="/en/english-education-guide/"', localized_content(html))
+        with translation.override("ar"):
+            result = localized_content(html)
+            self.assertIn('href="/en/english-education-guide/"', result)
+            self.assertIn('hreflang="en"', result)
+
+    def test_feeds_and_sitemap_do_not_advertise_missing_translations(self):
+        from xml.etree import ElementTree
+        self.assertNotContains(self.client.get("/feed/"), self.english_only_article.title)
+        self.assertContains(self.client.get("/en/feed/"), self.english_only_article.title)
+        tree = ElementTree.fromstring(self.client.get("/sitemap.xml").content)
+        locations = [node.text for node in tree.iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
+        self.assertEqual(len(locations), len(set(locations)))
+        self.assertFalse(any(url.endswith("/english-education-guide/") and "/en/" not in url for url in locations))
+
 
 class AdminMediaPickerTests(TestCase):
     @classmethod

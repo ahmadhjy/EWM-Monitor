@@ -41,7 +41,8 @@ class PageSitemap(Sitemap):
     x_default = True
 
     def items(self):
-        return Page.objects.filter(status="published", show_in_sitemap=True)
+        # Contact is already emitted by StaticSitemap through its form route.
+        return Page.objects.filter(status="published", show_in_sitemap=True).exclude(slug="contact-us")
 
     def lastmod(self, obj):
         return obj.updated_at

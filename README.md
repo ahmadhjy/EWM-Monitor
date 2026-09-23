@@ -67,12 +67,15 @@ Global brand copy, social links, contact email, analytics ID, verification token
 ## Verification completed
 
 - Django system check: clean.
-- Automated tests: 21 passed, including language isolation, English admin, translation fields, subscriber deduplication, CSRF, spam rejection, protected media access, and complete bilingual legal content.
+- Automated tests: 24 passed, including language isolation, English admin, translation fields, subscriber deduplication, CSRF, spam rejection, protected media access, complete bilingual legal content, localized feeds and staging indexing protection.
 - Public routes, admin login, sitemap, RSS, robots, AI discovery, and health endpoint: verified locally.
 - Browser console errors: none on desktop or mobile previews.
-- Earlier local Lighthouse audits achieved 99–100 Performance and 100 Accessibility / Best Practices / SEO. Re-run audits after deployment; scores vary with environment and content.
+- Final local Lighthouse audits achieved 99–100 Performance and 100 Accessibility / Best Practices / SEO across both language editions and mobile/desktop profiles.
+- Live-IP Lighthouse results ranged from 92–100 Performance (mobile 99–100), with 100 Accessibility / Best Practices. The staging SEO score is intentionally reduced by robots/noindex protection.
+- Production firewall, private database binding, secret-file permissions, CSRF rejection, HTTPS renewal and an isolated PostgreSQL backup restore: verified.
+- The live admin media browser, English layout, Arabic editing fields, subscriber deduplication and contact persistence were tested. Only uniquely identified QA submissions were removed afterwards.
 
-The release browser pass covered 138 page/viewport combinations and 155 images with no failures after legacy education links were made language-aware. The owner supplied the original legal text; both complete English pages and their Arabic translations are restored. See [legal source review](docs/LEGAL-SOURCE-REVIEW.md) for source inconsistencies that need owner review before domain launch.
+The live release browser pass covered 276 page/viewport combinations at 320, 390, 768 and 1440 pixels and 155 images, with no failed page, layout, script, internal-link or image checks. The owner supplied the original legal text; both complete English pages and their Arabic translations are restored. See [legal source review](docs/LEGAL-SOURCE-REVIEW.md) for source inconsistencies that need owner review before domain launch.
 
 Local Lighthouse is a controlled lab result, not a permanent guarantee. Production scores still depend on Droplet load, network location, analytics/advertising tags, DNS/CDN configuration, and future editorial image choices. The included Nginx caching and image workflow are designed to preserve these results.
 

@@ -8,7 +8,7 @@
   <meta name="color-scheme" content="light">
   <title>{% if seo_object %}{{ seo_object.localized_seo_title }} | {{ site_settings.display_site_name }}{% elif page_title %}{{ page_title }} | {{ site_settings.display_site_name }}{% else %}{{ site_settings.display_site_name }}{% endif %}</title>
   <meta name="description" content="{% if seo_object %}{{ seo_object.localized_seo_description }}{% elif page_description %}{{ page_description }}{% else %}{{ site_settings.display_tagline }}{% endif %}">
-  <meta name="robots" content="{% if seo_object.robots %}{{ seo_object.robots }}{% else %}index,follow{% endif %},max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="robots" content="{% if not site_indexing_enabled %}noindex,nofollow{% elif seo_object.robots %}{{ seo_object.robots }}{% else %}index,follow{% endif %},max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="{{ canonical_url }}">
   {% if alternate_ar_url %}<link rel="alternate" hreflang="ar" href="{{ alternate_ar_url }}">{% endif %}
   <link rel="alternate" hreflang="en" href="{{ alternate_en_url }}">
@@ -38,7 +38,7 @@
     "publisher": {"@id": "{{ site_url }}/#organization"},
     "potentialAction": {
       "@type": "SearchAction",
-      "target": {"@type": "EntryPoint", "urlTemplate": "{{ site_url }}/search/?q={search_term_string}"},
+      "target": {"@type": "EntryPoint", "urlTemplate": "{{ site_url }}{% url 'search' %}?q={search_term_string}"},
       "query-input": "required name=search_term_string"
     }
   }
