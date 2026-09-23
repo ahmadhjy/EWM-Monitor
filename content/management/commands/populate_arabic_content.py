@@ -33,6 +33,10 @@ class Command(BaseCommand):
             counts["settings"] = 1
 
             for slug, values in payload.get("pages", {}).items():
+                # Prefer the full owner-supplied legal translation over the old seed draft.
+                legal_source = settings.BASE_DIR / "data" / "pages" / f"{slug}.ar.html"
+                if source.resolve() == (settings.BASE_DIR / "data" / "arabic_content.json").resolve() and legal_source.exists():
+                    values["body_ar"] = legal_source.read_text(encoding="utf-8").strip()
                 updated = Page.objects.filter(slug=slug).update(**values)
                 if not updated:
                     self.stderr.write(self.style.WARNING(f"Page not found: {slug}"))

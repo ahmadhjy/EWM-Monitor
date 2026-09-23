@@ -2,6 +2,19 @@
 
 This project is designed for a small Ubuntu Droplet with Nginx, Gunicorn, Python 3.12+, PostgreSQL, and Certbot. The repository also includes a tested update command, daily PostgreSQL/media backups, and GitHub checks for every change.
 
+## Current public-IP preview
+
+- Preview: https://165.227.156.218/ (Arabic), https://165.227.156.218/en/ (English).
+- Admin: https://165.227.156.218/admin/ (always English/LTR).
+- The IP has a trusted Let's Encrypt short-lived certificate. Certbot is installed at /opt/certbot/bin/certbot; certbot-renew.timer checks twice daily. Its renewal dry run passed.
+- Nginx uses nginx-ip.conf plus nginx-proxy.conf. HTTP redirects to HTTPS. The production environment has DEBUG=False, PostgreSQL, secure cookies and SITE_INDEXING_ENABLED=False.
+- IP staging is deliberately noindex with robots disallow. Do not enable indexing, change the domain, or replace canonical URLs until the owner approves the domain launch.
+- The production admin password is generated separately, stored outside Git in /root/ewm-admin-access.txt, and supplied privately to the owner. Rotate it on handover.
+- Contact messages and subscriber addresses are stored in the admin. CONTACT_EMAIL_NOTIFICATIONS=False; SMTP and outbound campaigns are not configured.
+- Daily server-local backups retain 14 days. Arrange an off-server backup destination before relying on them for disaster recovery.
+
+The steps below also document a fresh rebuild. Do not re-import the public fixture during routine updates because editors may have changed content.
+
 ## 1. Prepare the server
 
 Install Python, PostgreSQL, Nginx, Git, Certbot, and the Nginx Certbot integration. Create a dedicated unprivileged `ewm` service user and place the project at `/var/www/ewm`.
@@ -56,10 +69,10 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now ewm-backup.timer
 ```
 
-Obtain the SSL certificate only after the DNS A/AAAA records point to the Droplet:
+For the later domain launch, obtain the domain certificate only after the owner approves DNS cutover and its A/AAAA records resolve correctly. Keep the IP certificate and staging configuration until then. Configure the domain certificate using the installed Certbot, update SITE_URL/ALLOWED_HOSTS/CSRF_TRUSTED_ORIGINS, preserve HTTPS and rate limits, and only then enable indexing and remove the staging X-Robots-Tag.
 
 ```bash
-sudo certbot --nginx -d elliottwavemonitor.com -d www.elliottwavemonitor.com
+sudo /opt/certbot/bin/certbot certonly --webroot -w /var/www/acme -d elliottwavemonitor.com -d www.elliottwavemonitor.com
 ```
 
 ## 5. Pre-DNS launch checklist
@@ -83,3 +96,5 @@ sudo ewm-deploy
 ```
 
 That command creates a backup, fast-forwards the repository, installs pinned dependencies, applies migrations, rebuilds static assets, restarts the service, and refuses to report success until the health endpoint responds. Inspect backup scheduling with `systemctl list-timers ewm-backup.timer`.
+
+Content imports are intentionally not part of ewm-deploy. The full legal source can be restored explicitly with populate_support_pages --overwrite after a backup; routine releases preserve admin edits and collected messages/subscribers.

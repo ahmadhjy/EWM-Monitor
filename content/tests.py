@@ -249,3 +249,35 @@ class PublicFormSecurityTests(TestCase):
         response = self.client.get("/admin/content/mediaasset/picker/")
         self.assertEqual(response.status_code, 302)
         self.assertIn("/admin/login/", response.url)
+
+
+class LegalPageImportTests(TestCase):
+    def test_complete_bilingual_legal_pages_and_original_wording(self):
+        from django.core.management import call_command
+        from bs4 import BeautifulSoup
+        call_command("populate_support_pages")
+        privacy = Page.objects.get(slug="privacy-policy")
+        terms = Page.objects.get(slug="terms-conditions")
+        self.assertIn("March 15, 2022", privacy.body)
+        self.assertIn("15 مارس 2022", privacy.body_ar)
+        self.assertIn("providers will be liable in any way", terms.body)
+        self.assertIn("سيتحملون المسؤولية", terms.body_ar)
+        for item in (privacy, terms):
+            english = BeautifulSoup(item.body, "html.parser")
+            arabic = BeautifulSoup(item.body_ar, "html.parser")
+            self.assertGreater(len(english.get_text().split()), 1500)
+            self.assertGreater(len(arabic.get_text().split()), 1400)
+            for tag in ("h2", "h3", "h4", "p", "li"):
+                self.assertEqual(len(english.find_all(tag)), len(arabic.find_all(tag)))
+            self.assertEqual(self.client.get(f"/{item.slug}/").status_code, 200)
+            self.assertEqual(self.client.get(f"/en/{item.slug}/").status_code, 200)
+
+    def test_import_does_not_overwrite_editor_changes_without_explicit_option(self):
+        from django.core.management import call_command
+        page = Page.objects.create(slug="privacy-policy", title="Privacy", body="<p>Editor changes.</p>")
+        call_command("populate_support_pages")
+        page.refresh_from_db()
+        self.assertEqual(page.body, "<p>Editor changes.</p>")
+        call_command("populate_support_pages", overwrite=True)
+        page.refresh_from_db()
+        self.assertIn("March 15, 2022", page.body)

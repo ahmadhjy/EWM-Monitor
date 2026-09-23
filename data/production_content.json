@@ -1274,29 +1274,29 @@
     "eyebrow_ar": "تواصل مباشر",
     "excerpt": "",
     "excerpt_ar": "للاستفسارات والملاحظات التحريرية وفرص الشراكة، تواصل مع فريق Elliott Wave Monitor.",
-    "body": "",
+    "body": "<h2>Get in touch with the EWM Team</h2><p>For editorial questions, feedback and business enquiries, use the form below or email <a href=\"mailto:elliottwavemonitor@gmail.com\">elliottwavemonitor@gmail.com</a>.</p>",
     "body_ar": "<p>نرحّب بأسئلتك وملاحظاتك حول المحتوى والتحليلات وتجربة استخدام الموقع. استخدم النموذج الآمن وسيراجع فريقنا رسالتك ويرد عبر البريد الإلكتروني في أقرب وقت ممكن.</p><p>لا يقدّم فريقنا توصيات تداول شخصية أو إدارة حسابات استثمارية عبر نموذج التواصل.</p>",
     "featured_image": "",
     "status": "published",
     "show_in_sitemap": true,
     "legacy_id": 497,
-    "updated_at": "2026-09-21T10:31:37.642Z"
+    "updated_at": "2026-09-23T11:46:07.600Z"
   }
 },
 {
   "model": "content.page",
   "pk": 2,
   "fields": {
-    "meta_title": "Privacy Policy - Elliott Wave Monitor",
-    "meta_description": "Privacy Policy",
+    "meta_title": "Privacy Policy",
+    "meta_description": "Read Elliott Wave Monitor's Privacy Policy covering personal data, cookies, retention, security and your privacy.",
     "focus_keyword": "",
     "canonical_url": "",
     "robots": "noindex,follow",
     "social_title": "Privacy Policy",
     "social_description": "Privacy Policy",
     "social_image": "",
-    "meta_title_ar": "سياسة الخصوصية | Elliott Wave Monitor",
-    "meta_description_ar": "تعرف إلى كيفية جمع Elliott Wave Monitor للبيانات واستخدامها وحمايتها، وإلى حقوقك وخياراتك المتعلقة بالخصوصية.",
+    "meta_title_ar": "سياسة الخصوصية",
+    "meta_description_ar": "اطلع على سياسة خصوصية Elliott Wave Monitor المتعلقة بالبيانات الشخصية وملفات تعريف الارتباط والاحتفاظ بالمعلومات وأمنها.",
     "focus_keyword_ar": "",
     "social_title_ar": "سياسة الخصوصية",
     "social_description_ar": "معلومات واضحة حول البيانات والخصوصية والأمان في Elliott Wave Monitor.",
@@ -1305,244 +1305,48 @@
     "slug": "privacy-policy",
     "eyebrow": "",
     "eyebrow_ar": "الخصوصية والبيانات",
-    "excerpt": "",
-    "excerpt_ar": "توضح هذه السياسة البيانات التي نجمعها، وسبب استخدامها، والخيارات المتاحة لك.",
-    "body": "",
-    "body_ar": "<h2>نطاق هذه السياسة</h2><p>تشرح سياسة الخصوصية هذه كيفية تعامل Elliott Wave Monitor مع المعلومات عند زيارتك للموقع أو الاشتراك في التحديثات أو إرسال رسالة عبر نموذج التواصل.</p><h2>المعلومات التي قد نجمعها</h2><p>قد نجمع المعلومات التي تقدمها طوعاً، مثل الاسم والبريد الإلكتروني وموضوع الرسالة ومحتواها. وقد تُسجَّل معلومات تقنية محدودة، مثل نوع المتصفح والصفحات المطلوبة وعنوان بروتوكول الإنترنت، لأغراض الأمان وقياس الأداء.</p><h2>كيف نستخدم المعلومات</h2><ul><li>الرد على الرسائل والاستفسارات.</li><li>إرسال التحديثات التي طلبت الاشتراك بها.</li><li>حماية الموقع ومنع إساءة الاستخدام.</li><li>تحسين المحتوى والأداء وتجربة المستخدم.</li></ul><h2>ملفات تعريف الارتباط والتحليلات</h2><p>قد يستخدم الموقع ملفات تعريف ارتباط ضرورية لتشغيل الجلسات ولوحة الإدارة. وإذا تم تفعيل أدوات تحليل الزيارات، فسنستخدمها لقياس الاستخدام بصورة مجمعة وفق الإعدادات والمتطلبات القانونية المعمول بها.</p><h2>مشاركة البيانات</h2><p>لا نبيع معلوماتك الشخصية. قد نعالج البيانات عبر مزودي خدمات موثوقين يساعدون في الاستضافة أو البريد أو الحماية، بالقدر اللازم لتقديم الخدمة فقط، أو عندما يفرض القانون ذلك.</p><h2>الاحتفاظ والأمان</h2><p>نحتفظ بالمعلومات للمدة اللازمة لتحقيق الغرض الذي جُمعت من أجله والوفاء بالالتزامات القانونية. نطبق ضوابط تقنية وتنظيمية معقولة، لكن لا توجد وسيلة نقل أو تخزين إلكتروني تضمن أماناً مطلقاً.</p><h2>حقوقك</h2><p>يمكنك طلب الوصول إلى بياناتك أو تصحيحها أو حذفها، كما يمكنك إلغاء الاشتراك في الرسائل في أي وقت. قد نحتاج إلى التحقق من هويتك قبل تنفيذ بعض الطلبات.</p><h2>التحديثات والتواصل</h2><p>قد نحدّث هذه السياسة عند تغير الخدمات أو المتطلبات القانونية. للاستفسار عن الخصوصية، استخدم صفحة الاتصال بالموقع.</p>",
+    "excerpt": "Read Elliott Wave Monitor's Privacy Policy covering personal data, cookies, retention, security and your privacy.",
+    "excerpt_ar": "اطلع على سياسة خصوصية Elliott Wave Monitor المتعلقة بالبيانات الشخصية وملفات تعريف الارتباط والاحتفاظ بالمعلومات وأمنها.",
+    "body": "<h2>Who we are</h2>\n<p>Our website address is: <a href=\"https://elliottwavemonitor.com\">https://elliottwavemonitor.com</a>.</p>\n<p>Last updated: March 15, 2022</p>\n<p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>\n<p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.</p>\n<h2>Interpretation and Definitions</h2>\n<h3>Interpretation</h3>\n<p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>\n<h3>Definitions</h3>\n<p>For the purposes of this Privacy Policy:</p>\n<ul>\n<li><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</li>\n<li><strong>Cookies</strong> are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of Your browsing history on that website among its many uses.</li>\n<li><strong>Device</strong> means any device that can access the Service such as a computer, a cellphone or a digital tablet.</li>\n<li><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</li>\n<li><strong>Service</strong> refers to the Website.</li>\n<li><strong>Service Provider</strong> means any natural or legal person who processes the data on behalf of the Company. It refers to third-party companies or individuals employed by the Company to facilitate the Service, to provide the Service on behalf of the Company, to perform services related to the Service or to assist the Company in analyzing how the Service is used.</li>\n<li><strong>Third-party Social Media Service</strong> refers to any website or any social network website through which a User can log in or create an account to use the Service.</li>\n<li><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).</li>\n<li><strong>Website</strong> refers to Elliott Wave Monitor, accessible from <a href=\"https://elliottwavemonitor.com/\">https://elliottwavemonitor.com/</a></li>\n<li><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</li>\n</ul>\n<h2>Collecting and Using Your Personal Data</h2>\n<h3>Types of Data Collected</h3>\n<h4>Personal Data</h4>\n<p>While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:</p>\n<h4>Usage Data</h4>\n<p>Usage Data is collected automatically when using the Service.</p>\n<p>Usage Data may include information such as browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>\n<p>When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data.</p>\n<p>We may also collect information that Your browser sends whenever You visit our Service or when You access the Service by or through a mobile device.</p>\n<h3>Tracking Technologies and Cookies</h3>\n<p>We use Cookies and similar tracking technologies to track the activity on Our Service and store certain information. Tracking technologies used are beacons, tags, and scripts to collect and track information and to improve and analyze Our Service. The technologies We use may include:</p>\n<ul>\n<li><strong>Cookies or Browser Cookies.</strong> A cookie is a small file placed on Your Device. You can instruct Your browser to refuse all Cookies or to indicate when a Cookie is being sent. However, if You do not accept Cookies, You may not be able to use some parts of our Service. Unless you have adjusted Your browser setting so that it will refuse Cookies, our Service may use Cookies.</li>\n<li><strong>Flash Cookies.</strong> Certain features of our Service may use local stored objects (or Flash Cookies) to collect and store information about Your preferences or Your activity on our Service. Flash Cookies are not managed by the same browser settings as those used for Browser Cookies.</li>\n<li><strong>Web Beacons.</strong> Certain sections of our Service and our emails may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit the Company, for example, to count users who have visited those pages or opened an email and for other related website statistics (for example, recording the popularity of a certain section and verifying system and server integrity).</li>\n</ul>\n<p>Cookies can be “Persistent” or “Session” Cookies. Persistent Cookies remain on Your personal computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close Your web browser.</p>\n<p>We use both Session and Persistent Cookies for the purposes set out below:</p>\n<h4>Necessary / Essential Cookies</h4>\n<p>Type: Session Cookies</p>\n<p>Administered by: Us</p>\n<p>Purpose: These Cookies are essential to provide You with services available through the Website and to enable You to use some of its features. They help to authenticate users and prevent fraudulent use of user accounts. Without these Cookies, the services that You have asked for cannot be provided, and We only use these Cookies to provide You with those services.</p>\n<h4>Cookies Policy / Notice Acceptance Cookies</h4>\n<p>Type: Persistent Cookies</p>\n<p>Administered by: Us</p>\n<p>Purpose: These Cookies identify if users have accepted the use of cookies on the Website.</p>\n<h3>Use of Your Personal Data</h3>\n<p>The Company may use Personal Data for the following purposes:</p>\n<ul>\n<li><strong>To provide and maintain our Service,</strong> including to monitor the usage of our Service.</li>\n<li><strong>To contact You:</strong> To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application’s push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation.</li>\n<li><strong>To provide You</strong> with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless You have opted not to receive such information.</li>\n<li><strong>To manage Your requests:</strong> To attend and manage Your requests to Us.</li>\n<li><strong>For business transfers:</strong> We may use Your information to evaluate or conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of Our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in which Personal Data held by Us about our Service users is among the assets transferred.</li>\n</ul>\n<p>We may share Your personal information in the following situations:</p>\n<ul>\n<li><strong>With Service Providers:</strong> We may share Your personal information with Service Providers to monitor and analyze the use of our Service, to contact You.</li>\n<li><strong>For business transfers:</strong> We may share or transfer Your personal information in connection with, or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a portion of Our business to another company.</li>\n<li><strong>With Affiliates:</strong> We may share Your information with Our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us.</li>\n<li><strong>With business partners:</strong> We may share Your information with Our business partners to offer You certain products, services or promotions.</li>\n</ul>\n<h3>Retention of Your Personal Data</h3>\n<p>The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.</p>\n<p>The Company will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of Our Service, or We are legally obligated to retain this data for longer time periods.</p>\n<h3>Transfer of Your Personal Data</h3>\n<p>Your information, including Personal Data, is processed at the Company’s operating offices and in any other places where the parties involved in the processing are located. It means that this information may be transferred to — and maintained on — computers located outside of Your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from Your jurisdiction.</p>\n<p>Your consent to this Privacy Policy followed by Your submission of such information represents Your agreement to that transfer.</p>\n<p>The Company will take all steps reasonably necessary to ensure that Your data is treated securely and in accordance with this Privacy Policy and no transfer of Your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of Your data and other personal information.</p>\n<h3>Disclosure of Your Personal Data</h3>\n<h4>Business Transactions</h4>\n<p>If the Company is involved in a merger, acquisition or asset sale, Your Personal Data may be transferred. We will provide notice before Your Personal Data is transferred and becomes subject to a different Privacy Policy.</p>\n<h4>Law enforcement</h4>\n<p>Under certain circumstances, the Company may be required to disclose Your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency).</p>\n<h4>Other legal requirements</h4>\n<p>The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:</p>\n<ul>\n<li>Comply with a legal obligation</li>\n<li>Protect and defend the rights or property of the Company</li>\n<li>Prevent or investigate possible wrongdoing in connection with the Service</li>\n<li>Protect the personal safety of Users of the Service or the public</li>\n<li>Protect against legal liability</li>\n</ul>\n<h3>Security of Your Personal Data</h3>\n<p>The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security.</p>\n<h2>Children’s Privacy</h2>\n<p>Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us. If We become aware that We have collected Personal Data from anyone under the age of 13 without verification of parental consent, We take steps to remove that information from Our servers.</p>\n<p>If We need to rely on consent as a legal basis for processing Your information and Your country requires consent from a parent, We may require Your parent’s consent before We collect and use that information.</p>\n<h2>Links to Other Websites</h2>\n<p>Our Service may contain links to other websites that are not operated by Us. If You click on a third party link, You will be directed to that third party’s site. We strongly advise You to review the Privacy Policy of every site You visit.</p>\n<p>We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>\n<h2>Changes to this Privacy Policy</h2>\n<p>We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page.</p>\n<p>We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming effective and update the “Last updated” date at the top of this Privacy Policy.</p>\n<p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>",
+    "body_ar": "<h2>من نحن</h2>\n<p>عنوان موقعنا الإلكتروني هو: <a href=\"https://elliottwavemonitor.com\">https://elliottwavemonitor.com</a>.</p>\n<p>آخر تحديث: 15 مارس 2022</p>\n<p>تصف سياسة الخصوصية هذه سياساتنا وإجراءاتنا المتعلقة بجمع معلوماتك واستخدامها والإفصاح عنها عند استخدامك للخدمة، وتوضح لك حقوقك المتعلقة بالخصوصية وكيف يحميك القانون.</p>\n<p>نستخدم بياناتك الشخصية لتقديم الخدمة وتحسينها. وباستخدامك للخدمة، فإنك توافق على جمع المعلومات واستخدامها وفقًا لسياسة الخصوصية هذه.</p>\n<h2>التفسير والتعريفات</h2>\n<h3>التفسير</h3>\n<p>للكلمات التي يبدأ حرفها الأول بحرف كبير في النص الإنجليزي المعاني المحددة وفقًا للشروط التالية. وتحمل التعريفات التالية المعنى نفسه سواء وردت بصيغة المفرد أو الجمع.</p>\n<h3>التعريفات</h3>\n<p>لأغراض سياسة الخصوصية هذه:</p>\n<ul>\n<li><strong>الحساب:</strong> يعني حسابًا فريدًا يُنشأ لك للوصول إلى خدمتنا أو إلى أجزاء منها.</li>\n<li><strong>ملفات تعريف الارتباط:</strong> هي ملفات صغيرة يضعها موقع إلكتروني على حاسوبك أو جهازك المحمول أو أي جهاز آخر، وتتضمن تفاصيل سجل تصفحك على ذلك الموقع، إلى جانب استخداماتها العديدة الأخرى.</li>\n<li><strong>الجهاز:</strong> يعني أي جهاز يمكنه الوصول إلى الخدمة، مثل الحاسوب أو الهاتف المحمول أو الجهاز اللوحي الرقمي.</li>\n<li><strong>البيانات الشخصية:</strong> هي أي معلومات تتعلق بشخص محدد الهوية أو يمكن تحديد هويته.</li>\n<li><strong>الخدمة:</strong> تشير إلى الموقع الإلكتروني.</li>\n<li><strong>مقدم الخدمة:</strong> يعني أي شخص طبيعي أو اعتباري يعالج البيانات نيابةً عن الشركة. ويشير إلى شركات أو أفراد من أطراف ثالثة تستعين بهم الشركة لتيسير الخدمة أو تقديمها نيابةً عنها أو تنفيذ خدمات مرتبطة بها أو مساعدة الشركة في تحليل كيفية استخدام الخدمة.</li>\n<li><strong>خدمة التواصل الاجتماعي التابعة لطرف ثالث:</strong> تشير إلى أي موقع إلكتروني أو موقع شبكة اجتماعية يمكن للمستخدم من خلاله تسجيل الدخول أو إنشاء حساب لاستخدام الخدمة.</li>\n<li><strong>بيانات الاستخدام:</strong> تشير إلى البيانات التي تُجمع تلقائيًا، سواء كانت ناتجة عن استخدام الخدمة أو عن البنية التحتية للخدمة نفسها، مثل مدة زيارة الصفحة.</li>\n<li><strong>الموقع الإلكتروني:</strong> يشير إلى Elliott Wave Monitor، والمتاح عبر <a href=\"https://elliottwavemonitor.com/\">https://elliottwavemonitor.com/</a></li>\n<li><strong>أنت:</strong> تعني الشخص الذي يصل إلى الخدمة أو يستخدمها، أو الشركة أو الكيان القانوني الآخر الذي يصل ذلك الشخص إلى الخدمة أو يستخدمها نيابةً عنه، بحسب الحالة.</li>\n</ul>\n<h2>جمع بياناتك الشخصية واستخدامها</h2>\n<h3>أنواع البيانات التي تُجمع</h3>\n<h4>البيانات الشخصية</h4>\n<p>أثناء استخدام خدمتنا، قد نطلب منك تزويدنا ببعض معلومات التعريف الشخصية التي يمكن استخدامها للتواصل معك أو تحديد هويتك. وقد تشمل معلومات التعريف الشخصية، على سبيل المثال لا الحصر:</p>\n<h4>بيانات الاستخدام</h4>\n<p>تُجمع بيانات الاستخدام تلقائيًا عند استخدام الخدمة.</p>\n<p>قد تشمل بيانات الاستخدام معلومات مثل نوع المتصفح وإصداره، وصفحات خدمتنا التي تزورها، ووقت زيارتك وتاريخها، والوقت الذي تقضيه في تلك الصفحات، ومعرّفات الأجهزة الفريدة، وغيرها من البيانات التشخيصية.</p>\n<p>عندما تصل إلى الخدمة بواسطة جهاز محمول أو من خلاله، قد نجمع بعض المعلومات تلقائيًا، بما في ذلك، على سبيل المثال لا الحصر، نوع الجهاز المحمول الذي تستخدمه، ونوع متصفح الإنترنت على هاتفك المحمول، ومعرّفات الأجهزة الفريدة، وغيرها من البيانات التشخيصية.</p>\n<p>قد نجمع أيضًا المعلومات التي يرسلها متصفحك كلما زرت خدمتنا أو وصلت إليها بواسطة جهاز محمول أو من خلاله.</p>\n<h3>تقنيات التتبع وملفات تعريف الارتباط</h3>\n<p>نستخدم ملفات تعريف الارتباط وتقنيات تتبع مشابهة لتتبع النشاط على خدمتنا وتخزين بعض المعلومات. وتشمل تقنيات التتبع المستخدمة إشارات الويب والوسوم والبرامج النصية لجمع المعلومات وتتبعها وتحسين خدمتنا وتحليلها. وقد تشمل التقنيات التي نستخدمها ما يلي:</p>\n<ul>\n<li><strong>ملفات تعريف الارتباط أو ملفات تعريف ارتباط المتصفح:</strong> ملف تعريف الارتباط هو ملف صغير يُوضع على جهازك. ويمكنك توجيه متصفحك إلى رفض جميع ملفات تعريف الارتباط أو إلى تنبيهك عند إرسال أحدها. ومع ذلك، إذا لم تقبل ملفات تعريف الارتباط، فقد لا تتمكن من استخدام بعض أجزاء خدمتنا. وما لم تضبط إعدادات متصفحك لرفض ملفات تعريف الارتباط، فقد تستخدمها خدمتنا.</li>\n<li><strong>ملفات تعريف ارتباط فلاش:</strong> قد تستخدم بعض ميزات خدمتنا كائنات مخزنة محليًا، أو ملفات تعريف ارتباط فلاش، لجمع المعلومات المتعلقة بتفضيلاتك أو نشاطك على خدمتنا وتخزينها. ولا تُدار ملفات تعريف ارتباط فلاش بواسطة إعدادات المتصفح نفسها المستخدمة لإدارة ملفات تعريف ارتباط المتصفح.</li>\n<li><strong>إشارات الويب:</strong> قد تحتوي بعض أقسام خدمتنا ورسائل البريد الإلكتروني الخاصة بنا على ملفات إلكترونية صغيرة تُعرف باسم إشارات الويب، وتُسمى أيضًا صور GIF الشفافة أو وسوم البكسل أو صور GIF ذات البكسل الواحد، وتتيح للشركة، على سبيل المثال، إحصاء المستخدمين الذين زاروا تلك الصفحات أو فتحوا رسالة بريد إلكتروني، وكذلك جمع إحصاءات أخرى ذات صلة بالموقع، مثل تسجيل مدى شعبية قسم معين والتحقق من سلامة النظام والخادم.</li>\n</ul>\n<p>قد تكون ملفات تعريف الارتباط «دائمة» أو خاصة «بالجلسة». تبقى الملفات الدائمة على حاسوبك الشخصي أو جهازك المحمول عند انقطاع اتصالك بالإنترنت، بينما تُحذف ملفات الجلسة بمجرد إغلاق متصفح الويب.</p>\n<p>نستخدم ملفات تعريف ارتباط الجلسة والملفات الدائمة للأغراض الموضحة أدناه:</p>\n<h4>ملفات تعريف الارتباط الضرورية / الأساسية</h4>\n<p>النوع: ملفات تعريف ارتباط الجلسة</p>\n<p>الجهة المسؤولة عن إدارتها: نحن</p>\n<p>الغرض: تُعد هذه الملفات ضرورية لتزويدك بالخدمات المتاحة عبر الموقع الإلكتروني ولتمكينك من استخدام بعض ميزاته. وهي تساعد في التحقق من هوية المستخدمين ومنع الاستخدام الاحتيالي لحساباتهم. ومن دون هذه الملفات، لا يمكن تقديم الخدمات التي طلبتها، ونحن لا نستخدم هذه الملفات إلا لتقديم تلك الخدمات لك.</p>\n<h4>ملفات قبول سياسة ملفات تعريف الارتباط / إشعارها</h4>\n<p>النوع: ملفات تعريف ارتباط دائمة</p>\n<p>الجهة المسؤولة عن إدارتها: نحن</p>\n<p>الغرض: تحدد هذه الملفات ما إذا كان المستخدمون قد وافقوا على استخدام ملفات تعريف الارتباط على الموقع الإلكتروني.</p>\n<h3>استخدام بياناتك الشخصية</h3>\n<p>قد تستخدم الشركة البيانات الشخصية للأغراض التالية:</p>\n<ul>\n<li><strong>تقديم خدمتنا وصيانتها:</strong> بما في ذلك مراقبة استخدام خدمتنا.</li>\n<li><strong>التواصل معك:</strong> للتواصل معك عبر البريد الإلكتروني أو المكالمات الهاتفية أو الرسائل النصية القصيرة أو غيرها من أشكال الاتصال الإلكتروني المماثلة، مثل الإشعارات الفورية لتطبيق الهاتف المحمول بشأن التحديثات أو الرسائل الإعلامية المتعلقة بالوظائف أو المنتجات أو الخدمات المتعاقد عليها، بما في ذلك التحديثات الأمنية، عندما يكون ذلك ضروريًا أو معقولًا لتنفيذها.</li>\n<li><strong>تزويدك</strong> بالأخبار والعروض الخاصة والمعلومات العامة عن السلع والخدمات والفعاليات الأخرى التي نقدمها والمشابهة لما سبق لك شراؤه أو الاستفسار عنه، ما لم تختر عدم تلقي هذه المعلومات.</li>\n<li><strong>إدارة طلباتك:</strong> للاهتمام بطلباتك الموجهة إلينا وإدارتها.</li>\n<li><strong>نقل الأعمال:</strong> قد نستخدم معلوماتك لتقييم أو إجراء اندماج أو تخارج أو إعادة هيكلة أو إعادة تنظيم أو حلّ أو أي بيع أو نقل آخر لبعض أصولنا أو كلها، سواء في إطار استمرار النشاط أو في إطار إفلاس أو تصفية أو إجراء مماثل، تكون فيه البيانات الشخصية التي نحتفظ بها عن مستخدمي خدمتنا من بين الأصول المنقولة.</li>\n</ul>\n<p>قد نشارك معلوماتك الشخصية في الحالات التالية:</p>\n<ul>\n<li><strong>مع مقدمي الخدمات:</strong> قد نشارك معلوماتك الشخصية مع مقدمي الخدمات لمراقبة استخدام خدمتنا وتحليله، وللتواصل معك.</li>\n<li><strong>لنقل الأعمال:</strong> قد نشارك معلوماتك الشخصية أو ننقلها فيما يتعلق بأي اندماج أو بيع لأصول الشركة أو تمويل أو استحواذ شركة أخرى على أعمالنا كلها أو جزء منها، أو أثناء المفاوضات بشأن أي من ذلك.</li>\n<li><strong>مع الجهات التابعة:</strong> قد نشارك معلوماتك مع الجهات التابعة لنا، وفي هذه الحالة سنلزمها باحترام سياسة الخصوصية هذه. وتشمل الجهات التابعة شركتنا الأم وأي شركات تابعة أخرى أو شركاء في مشروعات مشتركة أو شركات أخرى نسيطر عليها أو تخضع لسيطرة مشتركة معنا.</li>\n<li><strong>مع شركاء الأعمال:</strong> قد نشارك معلوماتك مع شركاء أعمالنا لنقدم لك منتجات أو خدمات أو عروضًا ترويجية معينة.</li>\n</ul>\n<h3>الاحتفاظ ببياناتك الشخصية</h3>\n<p>لن تحتفظ الشركة ببياناتك الشخصية إلا للمدة اللازمة للأغراض المحددة في سياسة الخصوصية هذه. وسنحتفظ ببياناتك الشخصية ونستخدمها بالقدر اللازم للامتثال لالتزاماتنا القانونية، مثل الحالات التي يُطلب منا فيها الاحتفاظ ببياناتك امتثالًا للقوانين المعمول بها، وتسوية النزاعات، وإنفاذ اتفاقياتنا وسياساتنا القانونية.</p>\n<p>ستحتفظ الشركة أيضًا ببيانات الاستخدام لأغراض التحليل الداخلي. ويُحتفظ ببيانات الاستخدام عمومًا لمدة أقصر، إلا عندما تُستخدم هذه البيانات لتعزيز أمن خدمتنا أو تحسين وظائفها، أو عندما نكون ملزمين قانونًا بالاحتفاظ بها لفترات أطول.</p>\n<h3>نقل بياناتك الشخصية</h3>\n<p>تُعالج معلوماتك، بما في ذلك بياناتك الشخصية، في مكاتب تشغيل الشركة وفي أي أماكن أخرى توجد فيها الأطراف المشاركة في المعالجة. وهذا يعني أن هذه المعلومات قد تُنقل إلى أجهزة حاسوب موجودة خارج ولايتك أو مقاطعتك أو بلدك أو أي نطاق قضائي حكومي آخر، وقد تُحفظ عليها، حيث قد تختلف قوانين حماية البيانات عن قوانين نطاقك القضائي.</p>\n<p>تشكل موافقتك على سياسة الخصوصية هذه، متبوعةً بتقديمك تلك المعلومات، موافقةً منك على ذلك النقل.</p>\n<p>ستتخذ الشركة جميع الخطوات الضرورية بصورة معقولة لضمان التعامل مع بياناتك بأمان ووفقًا لسياسة الخصوصية هذه، ولن تُنقل بياناتك الشخصية إلى أي منظمة أو دولة ما لم توجد ضوابط كافية، بما في ذلك ضمان أمن بياناتك وغيرها من معلوماتك الشخصية.</p>\n<h3>الإفصاح عن بياناتك الشخصية</h3>\n<h4>المعاملات التجارية</h4>\n<p>إذا شاركت الشركة في اندماج أو استحواذ أو بيع للأصول، فقد تُنقل بياناتك الشخصية. وسنقدم إشعارًا قبل نقل بياناتك الشخصية وخضوعها لسياسة خصوصية مختلفة.</p>\n<h4>إنفاذ القانون</h4>\n<p>في ظروف معينة، قد يُطلب من الشركة الإفصاح عن بياناتك الشخصية إذا أوجب القانون ذلك أو استجابةً لطلبات مشروعة من السلطات العامة، مثل محكمة أو جهة حكومية.</p>\n<h4>متطلبات قانونية أخرى</h4>\n<p>قد تفصح الشركة عن بياناتك الشخصية إذا اعتقدت بحسن نية أن هذا الإجراء ضروري من أجل:</p>\n<ul>\n<li>الامتثال لالتزام قانوني</li>\n<li>حماية حقوق الشركة أو ممتلكاتها والدفاع عنها</li>\n<li>منع أي مخالفات محتملة مرتبطة بالخدمة أو التحقيق فيها</li>\n<li>حماية السلامة الشخصية لمستخدمي الخدمة أو الجمهور</li>\n<li>الحماية من المسؤولية القانونية</li>\n</ul>\n<h3>أمن بياناتك الشخصية</h3>\n<p>إن أمن بياناتك الشخصية مهم لنا، لكن تذكر أنه لا توجد وسيلة لنقل البيانات عبر الإنترنت أو لتخزينها إلكترونيًا آمنة بنسبة 100%. ومع أننا نسعى إلى استخدام وسائل مقبولة تجاريًا لحماية بياناتك الشخصية، فإننا لا نستطيع ضمان أمنها المطلق.</p>\n<h2>خصوصية الأطفال</h2>\n<p>خدمتنا غير موجهة إلى أي شخص يقل عمره عن 13 عامًا. ونحن لا نجمع عن علم معلومات تعريف شخصية من أي شخص يقل عمره عن 13 عامًا. إذا كنت أحد الوالدين أو وصيًا، وعلمت أن طفلك قد زودنا ببيانات شخصية، فيُرجى التواصل معنا. وإذا علمنا أننا جمعنا بيانات شخصية من أي شخص يقل عمره عن 13 عامًا دون التحقق من موافقة ولي أمره، فإننا نتخذ خطوات لإزالة تلك المعلومات من خوادمنا.</p>\n<p>إذا احتجنا إلى الاعتماد على الموافقة بوصفها أساسًا قانونيًا لمعالجة معلوماتك، وكان بلدك يشترط موافقة أحد الوالدين، فقد نطلب موافقة ولي أمرك قبل جمع تلك المعلومات واستخدامها.</p>\n<h2>روابط لمواقع إلكترونية أخرى</h2>\n<p>قد تحتوي خدمتنا على روابط لمواقع إلكترونية أخرى لا نديرها. وإذا نقرت على رابط تابع لطرف ثالث، فسيُعاد توجيهك إلى موقع ذلك الطرف. وننصحك بشدة بمراجعة سياسة الخصوصية لكل موقع تزوره.</p>\n<p>ليست لدينا سيطرة على محتوى مواقع أو خدمات الأطراف الثالثة أو سياسات خصوصيتها أو ممارساتها، ولا نتحمل أي مسؤولية عنها.</p>\n<h2>التغييرات على سياسة الخصوصية هذه</h2>\n<p>قد نحدّث سياسة الخصوصية الخاصة بنا من وقت إلى آخر. وسنبلغك بأي تغييرات عن طريق نشر سياسة الخصوصية الجديدة على هذه الصفحة.</p>\n<p>سنُعلمك عبر البريد الإلكتروني و/أو بإشعار بارز على خدمتنا قبل سريان التغيير، وسنحدّث تاريخ «آخر تحديث» في أعلى سياسة الخصوصية هذه.</p>\n<p>ننصحك بمراجعة سياسة الخصوصية هذه دوريًا للاطلاع على أي تغييرات. وتصبح التغييرات على سياسة الخصوصية هذه نافذة عند نشرها على هذه الصفحة.</p>",
     "featured_image": "",
     "status": "published",
     "show_in_sitemap": true,
     "legacy_id": 494,
-    "updated_at": "2026-09-21T10:31:37.644Z"
+    "updated_at": "2026-09-23T11:46:07.589Z"
   }
 },
 {
   "model": "content.page",
   "pk": 3,
   "fields": {
-    "meta_title": "Terms & Conditions - Elliott Wave Monitor",
-    "meta_description": "Terms & Conditions",
+    "meta_title": "Terms and Conditions",
+    "meta_description": "Read the terms governing Elliott Wave Monitor, market information, third-party links, service access and intellectual property.",
     "focus_keyword": "",
     "canonical_url": "",
     "robots": "noindex,follow",
     "social_title": "Terms & Conditions",
     "social_description": "Terms & Conditions",
     "social_image": "",
-    "meta_title_ar": "الشروط والأحكام | Elliott Wave Monitor",
-    "meta_description_ar": "اقرأ شروط استخدام Elliott Wave Monitor وإخلاء المسؤولية ومخاطر التداول وحقوق الملكية المتعلقة بالمحتوى.",
+    "meta_title_ar": "الشروط والأحكام",
+    "meta_description_ar": "اقرأ شروط استخدام Elliott Wave Monitor المتعلقة بمعلومات الأسواق وروابط الأطراف الثالثة والوصول إلى الخدمات والملكية الفكرية.",
     "focus_keyword_ar": "",
     "social_title_ar": "الشروط والأحكام",
     "social_description_ar": "شروط استخدام الموقع ومعلومات مهمة حول المحتوى التعليمي ومخاطر الأسواق.",
-    "title": "Terms & Conditions",
+    "title": "Terms and Conditions",
     "title_ar": "الشروط والأحكام",
     "slug": "terms-conditions",
     "eyebrow": "",
     "eyebrow_ar": "شروط استخدام الموقع",
-    "excerpt": "",
-    "excerpt_ar": "يرجى قراءة شروط استخدام Elliott Wave Monitor وإخلاء المسؤولية المتعلق بالمحتوى المالي.",
-    "body": "",
-    "body_ar": "<h2>قبول الشروط</h2><p>باستخدامك موقع Elliott Wave Monitor فإنك توافق على هذه الشروط والأحكام. إذا كنت لا توافق عليها، يرجى التوقف عن استخدام الموقع.</p><h2>محتوى تعليمي وليس نصيحة مالية</h2><p>جميع التحليلات والتوقعات والرسوم والمقالات مخصصة للتعليم والمعلومات العامة فقط. لا يشكل أي محتوى نصيحة استثمارية أو عرضاً أو طلباً لشراء أو بيع أي أداة مالية.</p><h2>مخاطر التداول</h2><p>ينطوي تداول العملات والسلع والأسهم والعملات الرقمية والمشتقات على مخاطر مرتفعة، وقد لا يكون مناسباً لجميع الأشخاص. الأداء السابق لا يضمن النتائج المستقبلية، وقد تختلف حركة السوق عن أي سيناريو منشور.</p><h2>مسؤوليتك</h2><p>أنت مسؤول عن أبحاثك وقراراتك وإدارة مخاطر حسابك. استعن بمستشار مالي مرخص إذا كنت تحتاج إلى توصية تراعي ظروفك الشخصية.</p><h2>دقة المعلومات وتوافرها</h2><p>نسعى إلى تقديم معلومات واضحة وفي وقت مناسب، لكننا لا نضمن اكتمال المحتوى أو خلوه من الأخطاء أو استمرار توفره. يمكن تعديل التحليلات أو الصفحات أو إيقافها من دون إشعار مسبق.</p><h2>الملكية الفكرية</h2><p>ما لم يُذكر خلاف ذلك، تعود حقوق النصوص والتصميم والعلامة والمحتوى الأصلي إلى Elliott Wave Monitor. لا يجوز إعادة النشر التجاري أو النسخ الواسع من دون إذن كتابي.</p><h2>الروابط والخدمات الخارجية</h2><p>قد يحتوي الموقع على روابط إلى أطراف خارجية. لا نتحكم في محتوى تلك المواقع أو سياساتها ولا نتحمل مسؤولية استخدامها.</p><h2>تحديد المسؤولية</h2><p>إلى الحد الذي يسمح به القانون، لا يتحمل الموقع أو فريقه مسؤولية الخسائر المباشرة أو غير المباشرة الناتجة عن الاعتماد على المحتوى أو تعذر الوصول إلى الخدمة.</p><h2>تعديل الشروط</h2><p>يجوز تحديث هذه الشروط عند الحاجة. يشكل استمرار استخدام الموقع بعد نشر التحديث قبولاً بالشروط المعدلة.</p>",
+    "excerpt": "Read the terms governing Elliott Wave Monitor, market information, third-party links, service access and intellectual property.",
+    "excerpt_ar": "اقرأ شروط استخدام Elliott Wave Monitor المتعلقة بمعلومات الأسواق وروابط الأطراف الثالثة والوصول إلى الخدمات والملكية الفكرية.",
+    "body": "<p>These terms and conditions (the “Terms and Conditions“) regulate access to and the use of the website: www.elliottwavemonitor.com. Your use of our website means that you agree to be subjected to the following terms and conditions. If you don’t agree, don’t use ElliottWaveMonitor.</p>\n<p>Elliott Wave Monitor Website provides users with general news, analysis and information on the financial markets. Information on this website shouldn’t be used as financial advice or recommendation.</p>\n<p><strong>PLEASE READ THE PRIVACY POLICY, RISK DISCLAIMER AND ALL OF THE TERMS AND CONDITIONS. BY CONTINUING TO ACCESS OR USE OUR WEBSITE AND SERVICES. YOU SIGNIFY YOUR ACCEPTANCE OF THESE TERMS AND CONDITIONS.</strong></p>\n<h2>Changes to the terms and conditions</h2>\n<p>By using our website you acknowledge that you have read the terms and conditions. We may change these Terms and Conditions at any time. You will always have access to our Terms and will be able to check it at any time.</p>\n<h2>Responsibility of Visitors</h2>\n<p>Elliott Wave Monitor provides information and general news on financial markets, and not being responsible for the contents that, in contravention to these general conditions, users may send or publish, being the user the only responsible on the veracity and legality of the same. Thus the information on this website is not intended for distribution to, or use by, any person in any country or jurisdiction where such distribution or use would be contrary to local law or regulation, and it’s your sole obligation to ensure that you fully comply with any law applicable to your country of residence with regards to the use of the Services.</p>\n<h2>Products and third party offers</h2>\n<p>Not all products and services referred to on this website are necessarily provided by Elliott Wave Monitor. The identification or use of any third party products, services, special offers or promotions, websites or networks is not an endorsement of such products, services or websites or networks. Our website may allow you to access websites and networks provided by persons other than us via a hypertext or other link. Some of these sites may contain materials that are objectionable, unlawful, or inaccurate. Your obtaining of goods or services from these persons is at your own risk. You agree that ElliottWaveMonitor shall not be held liable for any trading activities or other activities that occur on any website you access through links on ElliottWaveMonitor. We provide these links as a convenience, and do not endorse the content or services offered by these other sites. Any dealings that you have with advertisers found on ElliottWaveMonitor are between you and the advertiser and you acknowledge and agree that we are not liable for any loss or claim you may have against an advertiser. You acknowledge that your access to such other websites or networks via such a link may require us to provide certain information about you to the proprietor of that website or network. Nothing in this website is intended to be nor should it be understood by you as being investment advice from or by us.</p>\n<p>The liability of ElliottWaveMonitor, its officers, directors or employers, to you or any third party in any circumstance is limited to the amount of money transferred to ElliottWaveMonitor in relation to the transaction giving rise to such liability.</p>\n<h2>Disclaimer</h2>\n<p>Due to the number of sources from which the content presented on our Services is obtained, and the inherent hazards of electronic distribution, there may be delays, omissions or inaccuracies in such content and the Services.</p>\n<p><strong>THE SERVICES, AND ANY MATERIAL AND/OR CONTENT APPEARING THEREON (“ CONTENT ”) ARE PROVIDED “AS IS”, WITHOUT ANY WARRANTIES.</strong></p>\n<p>Decisions to buy, sell, hold or trade in securities, commodities and other investments involve risk and are best made based on the advice of qualified financial professionals. Any trading in securities or other investments involves a risk of substantial losses. Before undertaking any trading program, you should consult a qualified financial professional. Under no circumstances shall ElliottWaveMonittor, its employees, officers, directors or affiliates be liable for any loss or damage you or anyone else incurs as a result of any trading or investment activity that you or anyone else engages in based on any information or material you receive through our services.</p>\n<h2>Market Information</h2>\n<p>ElliottWaveMonitor cannot and does not represent or guarantee that any of the information available through our services or on ElliottWaveMonitor is accurate, reliable, current, complete or appropriate for your needs.</p>\n<p>With respect to any market data or other information that we or any third party service provider display on this website, it’s not intended as investment advice. Such data is indicative only and we and any such provider are not responsible or liable if any such data or information is inaccurate or incomplete in any respect.</p>\n<p>Market Information may quickly become unreliable for various reasons including, for example, changes in market conditions or economic circumstances. ElliottWaveMonitor and the third party provider are not obliged to update any information or opinions contained in any Market Information, and we may discontinue offering Market Information at any time without notice. You agree that ElliottWaveMonitor and the third party providers will be liable in any way for the termination, interruption, delay or inaccuracy of any Market Information.</p>\n<p>With regard to any Market Information displayed on the Services, you are prohibited from, and hereby represent and warrant that you shall not: (i) copy, store, sell, license, distribute, transmit or duplicate to any third party or to any person any Market Information or any part thereof in any form or by any means;(ii) use the Market Information for the purpose of creating and/or operating (directly or by any third party) any financial product, index or service, or in any other manner without ElliottWaveMonitor or its applicable third party providers’ permission; (iii) use the trademarks, logos, brand names or any other similar identifying mark, or remove any copyright or proprietary notices incorporated into the Market Information (“Marks”) and you hereby acknowledge that ElliottWaveMonitor or its applicable third party providers are the owners of the intellectual property rights in.</p>\n<h2>Use and Access</h2>\n<p>The user will be responsible for providing and maintaining the means by which you access the Services, which may include, but is not limited to, your personal computer or mobile device, connectivity hardware, and telecommunication lines.</p>\n<p>The user will be responsible for all access and service fees necessary to connect to the Services and assume all charges incurred by use of such connectivity services.</p>\n<p>The user undertakes not to use the Websites to carry out activities contrary to the laws, morality, public order and, in general, to make use in accordance with the conditions established in these Terms of Use.</p>\n<p>ElliottWaveMonitor will not be liable in any way to you in the event of failure of or damage or destruction to your Computer systems, data or records or any part thereof, or for delays, losses, errors or omissions resulting from the failure or mismanagement of any telecommunications or Computer equipment.</p>\n<p>You will not in any way, whether directly or indirectly, expose ElliottWaveMonitor to any computer virus or other similarly harmful or inappropriate material or device.</p>\n<p>ElliottWaveMonitor reserves the right, at any time, to modify, suspend, or discontinue the Services or any part thereof with or without notice. You agree that ElliottWaveMonitor will not be liable to You or to any third party for any modification, suspension, or discontinuance of the Services.</p>\n<h2>Technical Problems</h2>\n<p>You understand that while the Internet and the World Wide Web are generally reliable, technical problems or other conditions may delay or prevent you from accessing the Services.</p>\n<p>ElliottWaveMonitor will not be liable for any technical problems, system failures and malfunctions, communication line failures, quality of the service, speed of access, correct functioning, availability and continuity of operation of the page, equipment or software failures or malfunctions, system access issues, system capacity issues, high Internet traffic demand, security breaches and unauthorized access, and other similar computer problems and defects.</p>\n<p>ElliottWaveMonitor does not represent, warrant or guarantee that you will be able to access or use the Services at times or locations of your choosing, or that the Services will provide uninterrupted and error-free service</p>\n<p>ElliottWaveMonitor will not be responsible for an impossibility to execute orders and requirements due to failures in the operation of informational systems caused by technical faults, which are beyond our control.</p>\n<h2>Intellectual Property</h2>\n<p>All copyright, database rights, text, images, trademarks, graphics, logos, buttons, software files, color combinations, as well as the structure, selection, and other intellectual property rights in the content of this website belongs to us or a third party. Reproduction, distribution, retransmission public communication and transformation are forbidden, except for personal and private use. No information or content on this website may be adapted, uploaded to a third party, linked to, framed, performed in public, or transmitted in any form by any process without our specific written consent. You agree not to delete any copyright notices or other indications of protected intellectual property rights from materials that you print or download from the Services. ElliottWaveMonitor does not guarantee that the contents are accurate or free of error or that the free use of the same by the user does not infringe the rights of third parties. The good or bad use of this page and its contents is under the responsibility of the user.</p>\n<h2>Indemnity</h2>\n<p>You agree to fully indemnify and hold ElliottWaveMonitor, its corporate affiliates and their respective officers, directors and employees immediately upon demand from and against all claims, demands, liabilities, damages, losses, costs and expenses, including legal fees and other charges whatsoever, howsoever caused, that may arise as a result of any breach of these Terms and Conditions by you or violation of any rights of another.</p>\n<p>Without prejudice to any other rights in these Terms and Conditions, if You breach in whole or in part any provision contained herein, we have the right to take any action including (but not limited to) terminating any agreement in place with You, terminating or blocking the Services to You and/or taking legal action against You.</p>\n<h2>Legal Restrictions</h2>\n<p>Without limiting the foregoing, you understand that laws regarding financial contracts vary throughout the world, and it is your sole obligation to ensure that you fully comply with any law, regulation or directive, applicable to your country of residence with regards to the use of the Services.</p>\n<p>The Services does not constitute, and may not be used for the purposes of, an offer or solicitation to anyone in any jurisdiction in which such an offer or solicitation is not authorized, or to any person to whom it is unlawful to make such an offer or solicitation. Access to the Services, and the offering of financial contracts via our Services, may be restricted in certain jurisdictions, and, accordingly, users accessing our Services are required to inform themselves of, and to observe, such restrictions.</p>\n<h2>Notices</h2>\n<p>We may send notices, marketing materials, service-related notices, important information messages and special offers, to the email address provided to us by you. You can unsubscribe from this by clicking on the link provided in the emails.</p>\n<h2>Termination</h2>\n<p>We have the right to terminate your use of this website if we determine in our sole discretion that you have breached the terms and conditions.</p>\n<p>ElliottWaveMonitor may update these rules at any time.</p>",
+    "body_ar": "<p>تنظم هذه الشروط والأحكام («الشروط والأحكام») الوصول إلى الموقع الإلكتروني www.elliottwavemonitor.com واستخدامه. ويعني استخدامك لموقعنا الإلكتروني موافقتك على الخضوع للشروط والأحكام التالية. وإذا لم توافق عليها، فلا تستخدم ElliottWaveMonitor.</p>\n<p>يقدم موقع Elliott Wave Monitor للمستخدمين أخبارًا وتحليلات ومعلومات عامة عن الأسواق المالية. ولا ينبغي استخدام المعلومات الواردة في هذا الموقع بوصفها مشورة مالية أو توصية.</p>\n<p><strong>يُرجى قراءة سياسة الخصوصية وإخلاء المسؤولية عن المخاطر وجميع الشروط والأحكام. إن استمرارك في الوصول إلى موقعنا الإلكتروني وخدماتنا أو استخدامها يدل على قبولك لهذه الشروط والأحكام.</strong></p>\n<h2>التغييرات على الشروط والأحكام</h2>\n<p>باستخدام موقعنا الإلكتروني، فإنك تقر بأنك قرأت الشروط والأحكام. ويجوز لنا تغيير هذه الشروط والأحكام في أي وقت. وستظل شروطنا متاحة لك دائمًا، وسيكون بإمكانك الاطلاع عليها في أي وقت.</p>\n<h2>مسؤولية الزوار</h2>\n<p>يقدم Elliott Wave Monitor معلومات وأخبارًا عامة عن الأسواق المالية، ولا يتحمل مسؤولية المحتوى الذي قد يرسله المستخدمون أو ينشرونه بالمخالفة لهذه الشروط العامة، إذ يتحمل المستخدم وحده مسؤولية صحة ذلك المحتوى ومشروعيته. ولذلك، فإن المعلومات الواردة في هذا الموقع غير مخصصة للتوزيع على أي شخص أو للاستخدام من قبله في أي دولة أو نطاق قضائي يكون فيه ذلك التوزيع أو الاستخدام مخالفًا للقانون أو اللوائح المحلية، وتقع عليك وحدك مسؤولية ضمان الامتثال الكامل لأي قانون ينطبق في بلد إقامتك فيما يتعلق باستخدام الخدمات.</p>\n<h2>المنتجات وعروض الأطراف الثالثة</h2>\n<p>ليست جميع المنتجات والخدمات المشار إليها في هذا الموقع مقدمة بالضرورة من Elliott Wave Monitor. ولا يشكل تحديد أو استخدام منتجات أو خدمات أو عروض خاصة أو ترويجية أو مواقع إلكترونية أو شبكات تابعة لأطراف ثالثة تأييدًا لتلك المنتجات أو الخدمات أو المواقع أو الشبكات. وقد يتيح لك موقعنا الوصول إلى مواقع وشبكات يقدمها أشخاص غيرنا من خلال رابط تشعبي أو رابط آخر. وقد تحتوي بعض هذه المواقع على مواد مسيئة أو غير قانونية أو غير دقيقة. ويكون حصولك على سلع أو خدمات من هؤلاء الأشخاص على مسؤوليتك الخاصة. وتوافق على عدم تحميل ElliottWaveMonitor المسؤولية عن أي أنشطة تداول أو أنشطة أخرى تجري على أي موقع تصل إليه عبر روابط موجودة على ElliottWaveMonitor. ونحن نوفر هذه الروابط لتسهيل الاستخدام، ولا نؤيد المحتوى أو الخدمات التي تقدمها تلك المواقع الأخرى. وأي تعاملات تجريها مع المعلنين الموجودين على ElliottWaveMonitor تكون بينك وبين المعلن، وأنت تقر وتوافق على أننا لا نتحمل مسؤولية أي خسارة أو مطالبة قد تكون لك تجاه أحد المعلنين. وتقر بأن وصولك إلى تلك المواقع أو الشبكات الأخرى عبر مثل هذا الرابط قد يتطلب منا تقديم معلومات معينة عنك إلى مالك ذلك الموقع أو تلك الشبكة. ولا يُقصد بأي شيء في هذا الموقع أن يكون مشورة استثمارية منا أو صادرة عنا، ولا ينبغي لك فهمه على هذا النحو.</p>\n<p>تقتصر مسؤولية ElliottWaveMonitor أو مسؤوليه أو أعضاء مجلس إدارته أو أصحاب العمل فيه تجاهك أو تجاه أي طرف ثالث، في أي ظرف من الظروف، على مبلغ المال الذي حُوّل إلى ElliottWaveMonitor فيما يتعلق بالمعاملة التي نشأت عنها تلك المسؤولية.</p>\n<h2>إخلاء المسؤولية</h2>\n<p>نظرًا إلى تعدد المصادر التي يُستمد منها المحتوى المعروض ضمن خدماتنا، وإلى المخاطر الملازمة للتوزيع الإلكتروني، فقد يحدث تأخير أو حذف أو عدم دقة في ذلك المحتوى وفي الخدمات.</p>\n<p><strong>تُقدَّم الخدمات وأي مواد و/أو محتوى يظهر عليها («المحتوى») «كما هي»، دون أي ضمانات.</strong></p>\n<p>تنطوي قرارات شراء الأوراق المالية والسلع وغيرها من الاستثمارات أو بيعها أو الاحتفاظ بها أو تداولها على مخاطر، ويُفضّل اتخاذها بناءً على مشورة متخصصين ماليين مؤهلين. وأي تداول في الأوراق المالية أو غيرها من الاستثمارات ينطوي على خطر تكبد خسائر كبيرة. وقبل البدء بأي برنامج تداول، ينبغي لك استشارة متخصص مالي مؤهل. ولا يتحمل ElliottWaveMonittor أو موظفوه أو مسؤولوه أو أعضاء مجلس إدارته أو الجهات التابعة له، تحت أي ظرف، المسؤولية عن أي خسارة أو ضرر تتكبده أنت أو أي شخص آخر نتيجة أي نشاط تداول أو استثمار تقوم به أنت أو أي شخص آخر استنادًا إلى أي معلومات أو مواد تتلقاها من خلال خدماتنا.</p>\n<h2>معلومات السوق</h2>\n<p>لا يستطيع ElliottWaveMonitor أن يقر أو يضمن أن أيًا من المعلومات المتاحة من خلال خدماتنا أو على ElliottWaveMonitor دقيقة أو موثوقة أو حديثة أو كاملة أو ملائمة لاحتياجاتك، ولا يقدم مثل هذا الإقرار أو الضمان.</p>\n<p>فيما يتعلق بأي بيانات سوق أو معلومات أخرى نعرضها نحن أو أي مقدم خدمات من طرف ثالث على هذا الموقع، فهي غير مقصودة بوصفها مشورة استثمارية. وهذه البيانات استرشادية فقط، ولا نتحمل نحن ولا أي مقدم من هؤلاء المسؤولية إذا كانت أي من تلك البيانات أو المعلومات غير دقيقة أو غير كاملة من أي ناحية.</p>\n<p>قد تصبح معلومات السوق غير موثوقة بسرعة لأسباب مختلفة، منها على سبيل المثال التغيرات في ظروف السوق أو الأوضاع الاقتصادية. ولا يلتزم ElliottWaveMonitor ولا مقدم الخدمة من الطرف الثالث بتحديث أي معلومات أو آراء واردة في أي من معلومات السوق، ويجوز لنا التوقف عن تقديم معلومات السوق في أي وقت دون إشعار. وتوافق على أن ElliottWaveMonitor ومقدمي الخدمات من الأطراف الثالثة سيتحملون المسؤولية بأي شكل عن إنهاء أي من معلومات السوق أو انقطاعها أو تأخرها أو عدم دقتها.</p>\n<p>فيما يتعلق بأي معلومات سوق تُعرض ضمن الخدمات، يُحظر عليك، وأنت تقر وتضمن بموجب هذا أنك لن تقوم بما يلي: (1) نسخ أي من معلومات السوق أو أي جزء منها أو تخزينه أو بيعه أو ترخيصه أو توزيعه أو إرساله أو استنساخه لأي طرف ثالث أو لأي شخص، بأي شكل أو بأي وسيلة؛ (2) استخدام معلومات السوق لإنشاء و/أو تشغيل أي منتج أو مؤشر أو خدمة مالية، سواء بصورة مباشرة أو بواسطة طرف ثالث، أو بأي طريقة أخرى دون إذن ElliottWaveMonitor أو مقدمي الخدمات من الأطراف الثالثة المعنيين؛ (3) استخدام العلامات التجارية أو الشعارات أو الأسماء التجارية أو أي علامات تعريفية مماثلة، أو إزالة أي إشعارات بحقوق النشر أو الملكية المضمنة في معلومات السوق («العلامات»)، وتقر بموجب هذا بأن ElliottWaveMonitor أو مقدمي الخدمات من الأطراف الثالثة المعنيين هم أصحاب حقوق الملكية الفكرية فيها.</p>\n<h2>الاستخدام والوصول</h2>\n<p>يتحمل المستخدم مسؤولية توفير الوسائل التي يصل بواسطتها إلى الخدمات وصيانتها، وقد تشمل هذه الوسائل، على سبيل المثال لا الحصر، حاسوبك الشخصي أو جهازك المحمول أو أجهزة الاتصال أو خطوط الاتصالات.</p>\n<p>يتحمل المستخدم مسؤولية جميع رسوم الوصول والخدمة اللازمة للاتصال بالخدمات، ويتحمل جميع الرسوم الناشئة عن استخدام خدمات الاتصال هذه.</p>\n<p>يتعهد المستخدم بعدم استخدام المواقع الإلكترونية لتنفيذ أنشطة تتعارض مع القوانين أو الأخلاق أو النظام العام، وبأن يكون استخدامه عمومًا متوافقًا مع الشروط المحددة في شروط الاستخدام هذه.</p>\n<p>لن يتحمل ElliottWaveMonitor أي مسؤولية تجاهك في حال تعطل أنظمة حاسوبك أو بياناتك أو سجلاتك أو أي جزء منها أو تعرضها للضرر أو التلف، أو عن أي تأخير أو خسائر أو أخطاء أو سهو ناتج عن تعطل أي معدات اتصالات أو حاسوب أو سوء إدارتها.</p>\n<p>لن تُعرّض ElliottWaveMonitor بأي طريقة، سواء مباشرة أو غير مباشرة، لأي فيروس حاسوبي أو أي مواد أو أجهزة ضارة أو غير ملائمة على نحو مماثل.</p>\n<p>يحتفظ ElliottWaveMonitor بالحق في تعديل الخدمات أو تعليقها أو إيقافها أو أي جزء منها، في أي وقت، بإشعار أو دون إشعار. وتوافق على أن ElliottWaveMonitor لن يتحمل المسؤولية تجاهك أو تجاه أي طرف ثالث عن أي تعديل للخدمات أو تعليق لها أو إيقافها.</p>\n<h2>المشكلات التقنية</h2>\n<p>تدرك أنه على الرغم من أن الإنترنت والشبكة العالمية موثوقان عمومًا، فإن المشكلات التقنية أو غيرها من الظروف قد تؤخر وصولك إلى الخدمات أو تمنعك منه.</p>\n<p>لن يتحمل ElliottWaveMonitor المسؤولية عن أي مشكلات تقنية أو أعطال أو خلل في الأنظمة أو انقطاع خطوط الاتصال أو جودة الخدمة أو سرعة الوصول أو سلامة عمل الصفحة أو توافرها واستمرارية تشغيلها، أو أعطال أو خلل المعدات أو البرمجيات، أو مشكلات الوصول إلى النظام أو سعته، أو ارتفاع الطلب على حركة الإنترنت، أو الخروقات الأمنية والوصول غير المصرح به، أو غير ذلك من مشكلات وعيوب الحاسوب المماثلة.</p>\n<p>لا يقر ElliottWaveMonitor أو يتعهد أو يضمن أنك ستتمكن من الوصول إلى الخدمات أو استخدامها في الأوقات أو المواقع التي تختارها، أو أن الخدمات ستُقدَّم دون انقطاع أو أخطاء.</p>\n<p>لن يكون ElliottWaveMonitor مسؤولًا عن تعذر تنفيذ الأوامر والطلبات بسبب أعطال في تشغيل نظم المعلومات ناتجة عن عيوب تقنية خارجة عن سيطرتنا.</p>\n<h2>الملكية الفكرية</h2>\n<p>تعود لنا أو لطرف ثالث جميع حقوق النشر وحقوق قواعد البيانات والنصوص والصور والعلامات التجارية والرسومات والشعارات والأزرار وملفات البرمجيات وتنسيقات الألوان، وكذلك البنية والاختيار وسائر حقوق الملكية الفكرية في محتوى هذا الموقع. ويُحظر الاستنساخ والتوزيع وإعادة الإرسال والإتاحة للجمهور والتحويل، إلا للاستخدام الشخصي والخاص. ولا يجوز تكييف أي معلومات أو محتوى على هذا الموقع أو رفعه إلى طرف ثالث أو ربطه أو تضمينه داخل إطار أو عرضه علنًا أو إرساله بأي شكل وبأي طريقة دون موافقتنا الكتابية المحددة. وتوافق على عدم حذف أي إشعارات بحقوق النشر أو غيرها من الدلالات على حقوق الملكية الفكرية المحمية من المواد التي تطبعها أو تنزّلها من الخدمات. ولا يضمن ElliottWaveMonitor دقة المحتويات أو خلوها من الأخطاء أو أن استخدام المستخدم لها بحرية لا ينتهك حقوق أطراف ثالثة. ويتحمل المستخدم مسؤولية الاستخدام الجيد أو السيئ لهذه الصفحة ومحتوياتها.</p>\n<h2>التعويض</h2>\n<p>توافق على تعويض ElliottWaveMonitor والجهات التابعة له ومسؤوليها وأعضاء مجالس إدارتها وموظفيها تعويضًا كاملًا وإبراء ذمتهم، فور الطلب، من جميع المطالبات والطلبات والمسؤوليات والأضرار والخسائر والتكاليف والمصروفات، بما في ذلك الأتعاب القانونية وأي رسوم أخرى أيًا كانت، وأيًا كان سببها، التي قد تنشأ نتيجة أي مخالفة منك لهذه الشروط والأحكام أو انتهاك لأي حقوق تخص الغير.</p>\n<p>دون الإخلال بأي حقوق أخرى واردة في هذه الشروط والأحكام، إذا خالفت كليًا أو جزئيًا أي حكم وارد فيها، فإن لنا الحق في اتخاذ أي إجراء، بما في ذلك على سبيل المثال لا الحصر إنهاء أي اتفاق قائم معك، أو إنهاء الخدمات المقدمة لك أو حجبها عنك، و/أو اتخاذ إجراءات قانونية ضدك.</p>\n<h2>القيود القانونية</h2>\n<p>دون تقييد ما سبق، تدرك أن القوانين المتعلقة بالعقود المالية تختلف في أنحاء العالم، وأن ضمان الامتثال الكامل لأي قانون أو لائحة أو توجيه ينطبق في بلد إقامتك فيما يتعلق باستخدام الخدمات يقع على عاتقك وحدك.</p>\n<p>لا تشكل الخدمات عرضًا أو دعوةً لأي شخص في أي نطاق قضائي لا يكون فيه مثل هذا العرض أو الدعوة مصرحًا به، أو لأي شخص يكون توجيه مثل هذا العرض أو الدعوة إليه غير قانوني، ولا يجوز استخدامها لهذه الأغراض. وقد يخضع الوصول إلى الخدمات وعرض العقود المالية من خلال خدماتنا لقيود في بعض النطاقات القضائية، وبناءً على ذلك يُطلب من المستخدمين الذين يصلون إلى خدماتنا التعرف على تلك القيود والالتزام بها.</p>\n<h2>الإشعارات</h2>\n<p>يجوز لنا إرسال إشعارات ومواد تسويقية وإشعارات متعلقة بالخدمة ورسائل معلومات مهمة وعروض خاصة إلى عنوان البريد الإلكتروني الذي تزودنا به. ويمكنك إلغاء الاشتراك في ذلك بالنقر على الرابط الوارد في رسائل البريد الإلكتروني.</p>\n<h2>الإنهاء</h2>\n<p>يحق لنا إنهاء استخدامك لهذا الموقع إذا قررنا، وفق تقديرنا وحدنا، أنك خالفت الشروط والأحكام.</p>\n<p>يجوز لـ ElliottWaveMonitor تحديث هذه القواعد في أي وقت.</p>",
     "featured_image": "",
     "status": "published",
     "show_in_sitemap": true,
     "legacy_id": 492,
-    "updated_at": "2026-09-21T10:31:37.645Z"
-  }
-},
-{
-  "model": "content.menuitem",
-  "pk": 1,
-  "fields": {
-    "label": "Currencies",
-    "label_ar": "العملات",
-    "url": "/eurusd-forecast/",
-    "group": "primary",
-    "parent": null,
-    "order": 10,
-    "open_in_new_tab": false,
-    "is_active": true
-  }
-},
-{
-  "model": "content.menuitem",
-  "pk": 2,
-  "fields": {
-    "label": "AUD/USD Forecast",
-    "label_ar": "توقعات AUD/USD",
-    "url": "/audusd-forecast/",
-    "group": "primary",
-    "parent": 1,
-    "order": 1,
-    "open_in_new_tab": false,
-    "is_active": true
-  }
-},
-{
-  "model": "content.menuitem",
-  "pk": 3,
-  "fields": {
-    "label": "EUR/USD Forecast",
-    "label_ar": "توقعات EUR/USD",
-    "url": "/eurusd-forecast/",
-    "group": "primary",
-    "parent": 1,
-    "order": 2,
-    "open_in_new_tab": false,
-    "is_active": true
-  }
-},
-{
-  "model": "content.menuitem",
-  "pk": 4,
-  "fields": {
-    "label": "GBP/USD Forecast",
-    "label_ar": "توقعات GBP/USD",
-    "url": "/gbpusd-forecast/",
-    "group": "primary",
-    "parent": 1,
-    "order": 3,
-    "open_in_new_tab": false,
-    "is_active": true
-  }
-},
-{
-  "model": "content.menuitem",
-  "pk": 5,
-  "fields": {
-    "label": "USD/CAD Forecast",
-    "label_ar": "توقعات USD/CAD",
-    "url": "/usdcad-forecast/",
-    "group": "primary",
-    "parent": 1,
-    "order": 4,
-    "open_in_new_tab": false,
-    "is_active": true
-  }
-},
-{
-  "model": "content.menuitem",
-  "pk": 6,
-  "fields": {
-    "label": "USD/CHF Forecast",
-    "label_ar": "توقعات USD/CHF",
-    "url": "/usdchf-forecast/",
-    "group": "primary",
-    "parent": 1,
-    "order": 5,
-    "open_in_new_tab": false,
-    "is_active": true
-  }
-},
-{
-  "model": "content.menuitem",
-  "pk": 7,
-  "fields": {
-    "label": "USD/JPY Forecast",
-    "label_ar": "توقعات USD/JPY",
-    "url": "/usdjpy-forecast/",
-    "group": "primary",
-    "parent": 1,
-    "order": 6,
-    "open_in_new_tab": false,
-    "is_active": true
-  }
-},
-{
-  "model": "content.menuitem",
-  "pk": 8,
-  "fields": {
-    "label": "Commodities",
-    "label_ar": "السلع",
-    "url": "/gold-forecast/",
-    "group": "primary",
-    "parent": null,
-    "order": 20,
-    "open_in_new_tab": false,
-    "is_active": true
-  }
-},
-{
-  "model": "content.menuitem",
-  "pk": 9,
-  "fields": {
-    "label": "Crude Oil Forecast",
-    "label_ar": "توقعات النفط الخام",
-    "url": "/crude-oil-forecast/",
-    "group": "primary",
-    "parent": 8,
-    "order": 1,
-    "open_in_new_tab": false,
-    "is_active": true
-  }
-},
-{
-  "model": "content.menuitem",
-  "pk": 10,
-  "fields": {
-    "label": "Gold Forecast",
-    "label_ar": "توقعات الذهب",
-    "url": "/gold-forecast/",
-    "group": "primary",
-    "parent": 8,
-    "order": 2,
-    "open_in_new_tab": false,
-    "is_active": true
-  }
-},
-{
-  "model": "content.menuitem",
-  "pk": 11,
-  "fields": {
-    "label": "Silver Forecast",
-    "label_ar": "توقعات الفضة",
-    "url": "/silver-forecast/",
-    "group": "primary",
-    "parent": 8,
-    "order": 3,
-    "open_in_new_tab": false,
-    "is_active": true
-  }
-},
-{
-  "model": "content.menuitem",
-  "pk": 12,
-  "fields": {
-    "label": "Crypto",
-    "label_ar": "العملات الرقمية",
-    "url": "/cryptocurriencies-forecast/",
-    "group": "primary",
-    "parent": null,
-    "order": 30,
-    "open_in_new_tab": false,
-    "is_active": true
-  }
-},
-{
-  "model": "content.menuitem",
-  "pk": 13,
-  "fields": {
-    "label": "Stocks",
-    "label_ar": "الأسهم",
-    "url": "/stocks-forecast/",
-    "group": "primary",
-    "parent": null,
-    "order": 40,
-    "open_in_new_tab": false,
-    "is_active": true
-  }
-},
-{
-  "model": "content.menuitem",
-  "pk": 14,
-  "fields": {
-    "label": "Education",
-    "label_ar": "التعليم",
-    "url": "/education/",
-    "group": "primary",
-    "parent": null,
-    "order": 50,
-    "open_in_new_tab": false,
-    "is_active": true
+    "updated_at": "2026-09-23T11:46:07.600Z"
   }
 },
 {
@@ -4427,6 +4231,202 @@
     "credit": "",
     "legacy_id": 9,
     "uploaded_at": "2026-09-21T10:34:17.089Z"
+  }
+},
+{
+  "model": "content.menuitem",
+  "pk": 1,
+  "fields": {
+    "label": "Currencies",
+    "label_ar": "العملات",
+    "url": "/eurusd-forecast/",
+    "group": "primary",
+    "parent": null,
+    "order": 10,
+    "open_in_new_tab": false,
+    "is_active": true
+  }
+},
+{
+  "model": "content.menuitem",
+  "pk": 2,
+  "fields": {
+    "label": "AUD/USD Forecast",
+    "label_ar": "توقعات AUD/USD",
+    "url": "/audusd-forecast/",
+    "group": "primary",
+    "parent": 1,
+    "order": 1,
+    "open_in_new_tab": false,
+    "is_active": true
+  }
+},
+{
+  "model": "content.menuitem",
+  "pk": 3,
+  "fields": {
+    "label": "EUR/USD Forecast",
+    "label_ar": "توقعات EUR/USD",
+    "url": "/eurusd-forecast/",
+    "group": "primary",
+    "parent": 1,
+    "order": 2,
+    "open_in_new_tab": false,
+    "is_active": true
+  }
+},
+{
+  "model": "content.menuitem",
+  "pk": 4,
+  "fields": {
+    "label": "GBP/USD Forecast",
+    "label_ar": "توقعات GBP/USD",
+    "url": "/gbpusd-forecast/",
+    "group": "primary",
+    "parent": 1,
+    "order": 3,
+    "open_in_new_tab": false,
+    "is_active": true
+  }
+},
+{
+  "model": "content.menuitem",
+  "pk": 5,
+  "fields": {
+    "label": "USD/CAD Forecast",
+    "label_ar": "توقعات USD/CAD",
+    "url": "/usdcad-forecast/",
+    "group": "primary",
+    "parent": 1,
+    "order": 4,
+    "open_in_new_tab": false,
+    "is_active": true
+  }
+},
+{
+  "model": "content.menuitem",
+  "pk": 6,
+  "fields": {
+    "label": "USD/CHF Forecast",
+    "label_ar": "توقعات USD/CHF",
+    "url": "/usdchf-forecast/",
+    "group": "primary",
+    "parent": 1,
+    "order": 5,
+    "open_in_new_tab": false,
+    "is_active": true
+  }
+},
+{
+  "model": "content.menuitem",
+  "pk": 7,
+  "fields": {
+    "label": "USD/JPY Forecast",
+    "label_ar": "توقعات USD/JPY",
+    "url": "/usdjpy-forecast/",
+    "group": "primary",
+    "parent": 1,
+    "order": 6,
+    "open_in_new_tab": false,
+    "is_active": true
+  }
+},
+{
+  "model": "content.menuitem",
+  "pk": 8,
+  "fields": {
+    "label": "Commodities",
+    "label_ar": "السلع",
+    "url": "/gold-forecast/",
+    "group": "primary",
+    "parent": null,
+    "order": 20,
+    "open_in_new_tab": false,
+    "is_active": true
+  }
+},
+{
+  "model": "content.menuitem",
+  "pk": 9,
+  "fields": {
+    "label": "Crude Oil Forecast",
+    "label_ar": "توقعات النفط الخام",
+    "url": "/crude-oil-forecast/",
+    "group": "primary",
+    "parent": 8,
+    "order": 1,
+    "open_in_new_tab": false,
+    "is_active": true
+  }
+},
+{
+  "model": "content.menuitem",
+  "pk": 10,
+  "fields": {
+    "label": "Gold Forecast",
+    "label_ar": "توقعات الذهب",
+    "url": "/gold-forecast/",
+    "group": "primary",
+    "parent": 8,
+    "order": 2,
+    "open_in_new_tab": false,
+    "is_active": true
+  }
+},
+{
+  "model": "content.menuitem",
+  "pk": 11,
+  "fields": {
+    "label": "Silver Forecast",
+    "label_ar": "توقعات الفضة",
+    "url": "/silver-forecast/",
+    "group": "primary",
+    "parent": 8,
+    "order": 3,
+    "open_in_new_tab": false,
+    "is_active": true
+  }
+},
+{
+  "model": "content.menuitem",
+  "pk": 12,
+  "fields": {
+    "label": "Crypto",
+    "label_ar": "العملات الرقمية",
+    "url": "/cryptocurriencies-forecast/",
+    "group": "primary",
+    "parent": null,
+    "order": 30,
+    "open_in_new_tab": false,
+    "is_active": true
+  }
+},
+{
+  "model": "content.menuitem",
+  "pk": 13,
+  "fields": {
+    "label": "Stocks",
+    "label_ar": "الأسهم",
+    "url": "/stocks-forecast/",
+    "group": "primary",
+    "parent": null,
+    "order": 40,
+    "open_in_new_tab": false,
+    "is_active": true
+  }
+},
+{
+  "model": "content.menuitem",
+  "pk": 14,
+  "fields": {
+    "label": "Education",
+    "label_ar": "التعليم",
+    "url": "/education/",
+    "group": "primary",
+    "parent": null,
+    "order": 50,
+    "open_in_new_tab": false,
+    "is_active": true
   }
 }
 ]

@@ -42,6 +42,7 @@ cd website
 .\.venv\Scripts\python.exe manage.py import_currency_sections
 .\.venv\Scripts\python.exe manage.py populate_arabic_content
 .\.venv\Scripts\python.exe manage.py populate_arabic_articles
+.\.venv\Scripts\python.exe manage.py populate_support_pages --overwrite
 .\.venv\Scripts\python.exe manage.py optimize_images
 .\.venv\Scripts\python.exe manage.py createsuperuser
 ```
@@ -66,12 +67,12 @@ Global brand copy, social links, contact email, analytics ID, verification token
 ## Verification completed
 
 - Django system check: clean.
-- Automated tests: 19 passed, including language isolation, English admin, translation fields, subscriber deduplication, CSRF, spam rejection, and protected media access.
+- Automated tests: 21 passed, including language isolation, English admin, translation fields, subscriber deduplication, CSRF, spam rejection, protected media access, and complete bilingual legal content.
 - Public routes, admin login, sitemap, RSS, robots, AI discovery, and health endpoint: verified locally.
 - Browser console errors: none on desktop or mobile previews.
 - Earlier local Lighthouse audits achieved 99–100 Performance and 100 Accessibility / Best Practices / SEO. Re-run audits after deployment; scores vary with environment and content.
 
-The first release browser pass covered 138 page/viewport combinations and 155 images. Three legacy education links identified by that pass are now language-aware. Legal-page source recovery remains pending because the old site returns a Cloudflare challenge and its public WordPress export has empty page bodies.
+The release browser pass covered 138 page/viewport combinations and 155 images with no failures after legacy education links were made language-aware. The owner supplied the original legal text; both complete English pages and their Arabic translations are restored. See [legal source review](docs/LEGAL-SOURCE-REVIEW.md) for source inconsistencies that need owner review before domain launch.
 
 Local Lighthouse is a controlled lab result, not a permanent guarantee. Production scores still depend on Droplet load, network location, analytics/advertising tags, DNS/CDN configuration, and future editorial image choices. The included Nginx caching and image workflow are designed to preserve these results.
 
