@@ -32,8 +32,6 @@ ARABIC_UI = {
     "All rights reserved.": "جميع الحقوق محفوظة.",
     "Independent analysis. Clear market structure.": "تحليل مستقل. رؤية أوضح لهيكل السوق.",
     "Elliott Wave intelligence": "رؤية احترافية بموجات إليوت",
-    "Pause animation": "إيقاف الحركة",
-    "Resume animation": "تشغيل الحركة",
     "Explore analysis": "استكشف التحليلات",
     "Learn the method": "تعلّم المنهج",
     "in-depth analyses": "تحليلاً معمقاً",
