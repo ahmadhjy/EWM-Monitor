@@ -71,6 +71,16 @@ class PublicSiteTests(TestCase):
         self.assertContains(response, self.article.title)
         self.assertContains(response, self.english_only_article.title)
         self.assertContains(response, "🇸🇦")
+        self.assertContains(response, "img/flag-sa.webp")
+
+    def test_hero_has_localized_continuous_motion_controls(self):
+        arabic = self.client.get("/")
+        english = self.client.get("/en/")
+        for response in (arabic, english):
+            self.assertContains(response, 'class="chart-signal"')
+            self.assertContains(response, "data-hero-motion-toggle")
+        self.assertContains(arabic, 'data-pause-label="إيقاف الحركة"')
+        self.assertContains(english, 'data-play-label="Resume animation"')
 
     def test_article_detail(self):
         response = self.client.get(f"/{self.article.slug}/")

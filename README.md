@@ -5,6 +5,8 @@ A performance-first Django replacement for the WordPress/Oxygen site at `elliott
 ## What is included
 
 - Responsive public site with a navy/gold editorial design, lightweight interactions, accessible navigation, and no front-end framework dependency.
+- The hero wave highlight, points and ambient glow loop continuously while visible. A bilingual pause control remembers the choice for the current session; reduced-motion preferences disable animation and offscreen/hidden-tab animations pause automatically.
+- The Arabic language switch uses the owner's supplied Saudi flag artwork, preserving its calligraphy, sword and 3:2 proportions. The original PNG is retained unchanged; `python manage.py optimize_branding` builds a compact 4x-density WebP for the header without redrawing the flag.
 - Arabic is the main, unprefixed language with a fully responsive RTL interface; the English version remains available under `/en/`. Fifteen market news and analysis articles have complete Arabic editions. Education articles remain English-only and are excluded from Arabic listings, search, routes, and sitemap alternates until editors add an Arabic edition.
 - Django 5.2 LTS content system with the Unfold admin dashboard and a full TinyMCE editor.
 - Article workflow with drafts, scheduling, categories, featured/trending flags, featured images, inline rich media, author and publication controls.
@@ -67,7 +69,7 @@ Global brand copy, social links, contact email, analytics ID, verification token
 ## Verification completed
 
 - Django system check: clean.
-- Automated tests: 24 passed, including language isolation, English admin, translation fields, subscriber deduplication, CSRF, spam rejection, protected media access, complete bilingual legal content, localized feeds and staging indexing protection.
+- Automated tests: 25 passed, including language isolation, English admin, translation fields, subscriber deduplication, CSRF, spam rejection, protected media access, complete bilingual legal content, localized feeds, staging indexing protection and bilingual hero controls.
 - Public routes, admin login, sitemap, RSS, robots, AI discovery, and health endpoint: verified locally.
 - Browser console errors: none on desktop or mobile previews.
 - Final local Lighthouse audits achieved 99–100 Performance and 100 Accessibility / Best Practices / SEO across both language editions and mobile/desktop profiles.

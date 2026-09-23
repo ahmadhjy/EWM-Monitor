@@ -109,7 +109,7 @@
           <a href="{{ '/cryptocurriencies-forecast/'|localized_path }}">{% ui "Crypto" %}</a><a href="{{ '/stocks-forecast/'|localized_path }}">{% ui "Stocks" %}</a><a href="{{ '/education/'|localized_path }}">{% ui "Education" %}</a>
         {% endfor %}
       </nav>
-      <a class="language-switch" href="{% if is_rtl %}{{ alternate_en_url }}{% else %}{{ alternate_ar_url|default:site_url }}{% endif %}" hreflang="{% if is_rtl %}en{% else %}ar{% endif %}" aria-label="{% if is_rtl %}English{% else %}العربية{% endif %}" title="{% if is_rtl %}English{% else %}العربية{% endif %}"><img src="{% if is_rtl %}{% static 'img/flag-en.svg' %}{% else %}{% static 'img/flag-ar.svg' %}{% endif %}" width="26" height="18" alt="{% if is_rtl %}🇬🇧{% else %}🇸🇦{% endif %}"></a>
+      <a class="language-switch" href="{% if is_rtl %}{{ alternate_en_url }}{% else %}{{ alternate_ar_url|default:site_url }}{% endif %}" hreflang="{% if is_rtl %}en{% else %}ar{% endif %}" aria-label="{% if is_rtl %}English{% else %}العربية{% endif %}" title="{% if is_rtl %}English{% else %}العربية{% endif %}"><img src="{% if is_rtl %}{% static 'img/flag-en.svg' %}{% else %}{% static 'img/flag-sa.webp' %}{% endif %}" width="27" height="18" alt="{% if is_rtl %}🇬🇧{% else %}🇸🇦{% endif %}"></a>
       <button class="search-toggle" type="button" aria-label="Open search" data-search-toggle>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
       </button>

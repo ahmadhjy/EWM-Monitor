@@ -4,7 +4,7 @@
   {% if featured.image_url %}<link rel="preload" as="image" href="{{ featured.card_image_url }}" media="(min-width: 900px)" fetchpriority="high">{% endif %}
 {% endblock %}
 {% block content %}
-<section class="hero">
+<section class="hero" data-hero-motion>
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="container hero__inner">
     <div class="hero__copy" data-reveal>
@@ -21,12 +21,17 @@
         <path class="chart-gridline" d="M20 70H620M20 145H620M20 220H620M20 295H620M20 370H620M120 40V390M240 40V390M360 40V390M480 40V390M600 40V390"/>
         <path class="chart-area" d="M25 344 118 255 175 292 282 160 350 218 485 68 592 164 620 136V390H25Z"/>
         <path class="chart-wave" d="M25 344 118 255 175 292 282 160 350 218 485 68 592 164 620 136"/>
+        <path class="chart-signal" pathLength="100" d="M25 344 118 255 175 292 282 160 350 218 485 68 592 164 620 136" aria-hidden="true"/>
         <g class="wave-points"><circle cx="25" cy="344" r="6"/><circle cx="118" cy="255" r="6"/><circle cx="175" cy="292" r="6"/><circle cx="282" cy="160" r="6"/><circle cx="350" cy="218" r="6"/><circle cx="485" cy="68" r="6"/></g>
         <g class="wave-labels"><text x="107" y="235">1</text><text x="165" y="320">2</text><text x="272" y="140">3</text><text x="340" y="248">4</text><text x="476" y="48">5</text><text x="585" y="190">A</text></g>
       </svg>
       <div class="wave-visual__footer"><span><i class="trend-up">↗</i> {% ui "Impulse sequence" %}</span><span>{% ui "Structure over prediction" %}</span></div>
     </div>
   </div>
+  <button class="hero-motion-toggle" type="button" data-hero-motion-toggle data-pause-label="{% ui 'Pause animation' %}" data-play-label="{% ui 'Resume animation' %}" aria-pressed="false" hidden>
+    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path class="motion-pause-icon" d="M4 3h2v10H4zm6 0h2v10h-2z"/><path class="motion-play-icon" d="m5 3 8 5-8 5z"/></svg>
+    <span data-hero-motion-label>{% ui "Pause animation" %}</span>
+  </button>
 </section>
 
 <section class="market-ribbon" aria-label="{% ui 'Market coverage' %}"><div class="container market-ribbon__inner"><span class="market-ribbon__label">{% ui "Coverage" %}</span>{% for category in categories|slice:":8" %}<a href="{{ category.get_absolute_url }}"><span>{{ category.display_name }}</span><i>{% ui "VIEW" %}</i></a>{% endfor %}</div></section>

@@ -345,21 +345,34 @@ h3 { font-size: 1.3rem; }
 .social-link svg { width: 19px; height: 19px; flex: 0 0 auto; }
 .contact-socials { display: flex; flex-wrap: wrap; gap: 16px 22px; margin-top: 25px; color: var(--slate); font-size: .9rem; }
 .contact-email { overflow-wrap: anywhere; text-align: start; font-size: .75rem !important; }
-.language-switch img { object-fit: cover; border-radius: 2px; box-shadow: 0 0 0 1px rgba(7,20,39,.08); }
+.language-switch img { object-fit: contain; border-radius: 0; box-shadow: 0 0 0 1px rgba(7,20,39,.08); }
+.chart-signal { fill: none; stroke: #fff2cc; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; opacity: 0; pointer-events: none; }
+.hero-motion-toggle { position: absolute; z-index: 2; inset-inline-end: max(20px, calc((100% - 1320px) / 2)); bottom: 12px; min-height: 44px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; background: rgba(7,20,39,.8); color: #c0ccda; font: 600 .7rem var(--font); cursor: pointer; }
+.hero-motion-toggle[hidden] { display: none; }
+.hero-motion-toggle:hover { color: #fff; border-color: var(--gold); }
+.hero-motion-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.hero-motion-toggle svg { flex: 0 0 14px; fill: currentColor; }
+.motion-play-icon, .hero-motion-toggle[aria-pressed="true"] .motion-pause-icon { display: none; }
+.hero-motion-toggle[aria-pressed="true"] .motion-play-icon { display: block; }
 .article-reading-progress { position: absolute; inset-inline-start: 0; bottom: -1px; height: 2px; width: 100%; background: var(--gold); transform: scaleX(0); transform-origin: left; pointer-events: none; }
 [dir="rtl"] .article-reading-progress { transform-origin: right; }
 @media (prefers-reduced-motion: no-preference) {
-  .chart-wave { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: wave-trace 1.8s cubic-bezier(.2,.65,.2,1) .15s forwards; }
-  .wave-points circle { animation: wave-point .65s ease both; transform-box: fill-box; transform-origin: center; }
-  .wave-points circle:nth-child(2) { animation-delay: .25s; }
-  .wave-points circle:nth-child(3) { animation-delay: .45s; }
-  .wave-points circle:nth-child(4) { animation-delay: .7s; }
-  .wave-points circle:nth-child(5) { animation-delay: 1s; }
-  .wave-points circle:nth-child(6) { animation-delay: 1.3s; }
-  @keyframes wave-trace { to { stroke-dashoffset: 0; } }
-  @keyframes wave-point { from { transform: scale(.35); opacity: .2; } to { transform: scale(1); opacity: 1; } }
+  .hero::before { animation: hero-glow 12s ease-in-out infinite alternate; }
+  .chart-signal { stroke-dasharray: 12 100; animation: wave-flow 9s linear infinite; }
+  .wave-points circle { animation: wave-breathe 6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .wave-points circle:nth-child(2) { animation-delay: -.9s; }
+  .wave-points circle:nth-child(3) { animation-delay: -1.8s; }
+  .wave-points circle:nth-child(4) { animation-delay: -2.7s; }
+  .wave-points circle:nth-child(5) { animation-delay: -3.6s; }
+  .wave-points circle:nth-child(6) { animation-delay: -4.5s; }
+  .hero.is-motion-paused::before, .hero.is-motion-idle::before,
+  .hero.is-motion-paused .chart-signal, .hero.is-motion-idle .chart-signal,
+  .hero.is-motion-paused .wave-points circle, .hero.is-motion-idle .wave-points circle { animation-play-state: paused; }
+  @keyframes hero-glow { from { transform: translate3d(0,0,0) scale(1); opacity: .6; } to { transform: translate3d(-24px,18px,0) scale(1.08); opacity: 1; } }
+  @keyframes wave-flow { 0% { stroke-dashoffset: 12; opacity: 0; } 8%, 86% { opacity: .9; } 100% { stroke-dashoffset: -100; opacity: 0; } }
+  @keyframes wave-breathe { 0%, 100% { transform: scale(1); opacity: .8; } 50% { transform: scale(1.28); opacity: 1; } }
 }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 
 @media (max-width: 899px) {
   .article-card { content-visibility: auto; contain-intrinsic-size: auto 510px; }

@@ -1,5 +1,35 @@
 (() => {
   const rtl = document.documentElement.dir === "rtl";
+  const hero = document.querySelector("[data-hero-motion]");
+  const motionToggle = document.querySelector("[data-hero-motion-toggle]");
+  if (hero && motionToggle) {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let manuallyPaused = false;
+    let inView = true;
+    try { manuallyPaused = sessionStorage.getItem("ewm-hero-paused") === "true"; } catch {}
+    const syncMotion = () => {
+      hero.classList.toggle("is-motion-paused", manuallyPaused || reducedMotion.matches);
+      hero.classList.toggle("is-motion-idle", !inView || document.hidden);
+      motionToggle.hidden = reducedMotion.matches;
+      motionToggle.setAttribute("aria-pressed", String(manuallyPaused));
+      motionToggle.querySelector("[data-hero-motion-label]").textContent =
+        manuallyPaused ? motionToggle.dataset.playLabel : motionToggle.dataset.pauseLabel;
+    };
+    motionToggle.addEventListener("click", () => {
+      manuallyPaused = !manuallyPaused;
+      try { sessionStorage.setItem("ewm-hero-paused", String(manuallyPaused)); } catch {}
+      syncMotion();
+    });
+    reducedMotion.addEventListener("change", syncMotion);
+    document.addEventListener("visibilitychange", syncMotion);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(([entry]) => {
+        inView = entry.isIntersecting;
+        syncMotion();
+      }).observe(hero);
+    }
+    syncMotion();
+  }
   const navToggle = document.querySelector("[data-nav-toggle]");
   const navigation = document.querySelector("[data-navigation]");
   const navLabel = navToggle?.querySelector(".sr-only");
