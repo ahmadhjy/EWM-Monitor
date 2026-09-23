@@ -1,0 +1,11 @@
+{% load content_extras %}
+<article class="article-card">
+  <a class="article-card__media" href="{{ article.get_absolute_url }}" aria-label="{% ui 'Read' %} {{ article.display_title }}">
+    {% if article.image_url %}<img src="{{ article.card_image_url }}" srcset="{{ article.mobile_image_url }} 480w, {{ article.card_image_url }} 960w" sizes="(max-width: 680px) calc(100vw - 28px), (max-width: 900px) 46vw, 390px" alt="{{ article.display_featured_image_alt|default:article.display_title }}" width="960" height="570" loading="lazy" decoding="async">{% else %}<span class="market-placeholder" aria-hidden="true"><i></i><i></i><i></i><i></i></span>{% endif %}
+  </a>
+  <div class="article-card__body">
+    <div class="article-meta"><a href="{{ article.category.get_absolute_url }}">{{ article.category.display_name }}</a><span>{{ article.published_at|date:"M j, Y" }}</span><span>{{ article.display_body|reading_time }} {% ui "min read" %}</span></div>
+    <div class="article-card__copy" lang="{{ language_code }}" dir="{{ text_direction }}"><h3><a href="{{ article.get_absolute_url }}">{{ article.display_title }}</a></h3><p>{{ article.display_excerpt|striptags|truncatewords:24 }}</p></div>
+    <a class="text-link" href="{{ article.get_absolute_url }}">{% ui "Read analysis" %} <span aria-hidden="true">→</span></a>
+  </div>
+</article>

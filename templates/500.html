@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% load content_extras %}
+{% block content %}<section class="error-page"><div class="container"><span class="error-code">500</span><span class="eyebrow">{% ui "Temporary interruption" %}</span><h1>{% ui "The market is open, but this page isn’t." %}</h1><p>{% ui "Please try again in a moment." %}</p><a class="button button--gold" href="{% url 'home' %}">{% ui "Back to homepage" %}</a></div></section>{% endblock %}

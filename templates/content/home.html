@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load content_extras %}
+{% block extra_head %}
+  {% if featured.image_url %}<link rel="preload" as="image" href="{{ featured.card_image_url }}" media="(min-width: 900px)" fetchpriority="high">{% endif %}
+{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__copy" data-reveal>
+      <span class="eyebrow eyebrow--light"><i class="pulse-icon"></i> {% ui "Elliott Wave intelligence" %}</span>
+      <h1>{{ site_settings.display_hero_title }}</h1>
+      <p>{{ site_settings.display_hero_text }}</p>
+      <div class="hero__actions"><a class="button button--gold" href="#latest-analysis">{% ui "Explore analysis" %}</a><a class="button button--ghost" href="{{ '/education/'|localized_path }}">{% ui "Learn the method" %}</a></div>
+      <div class="hero__trust"><span><strong>{{ article_total }}</strong> {% ui "in-depth analyses" %}</span><span><strong>4</strong> {% ui "asset classes" %}</span><span><strong>100%</strong> {% ui "independent" %}</span></div>
+    </div>
+    <div class="wave-visual" data-reveal>
+      <div class="wave-visual__header"><span>{% ui "MARKET STRUCTURE" %}</span><span class="live-pill">{% ui "LIVE PERSPECTIVE" %}</span></div>
+      <svg viewBox="0 0 640 420" role="img" aria-label="Stylized Elliott Wave market structure diagram">
+        <defs><linearGradient id="waveStroke" x1="0" x2="1"><stop stop-color="#f4c66b"/><stop offset="1" stop-color="#ffdf9d"/></linearGradient><linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e9b34c" stop-opacity=".28"/><stop offset="1" stop-color="#e9b34c" stop-opacity="0"/></linearGradient></defs>
+        <path class="chart-gridline" d="M20 70H620M20 145H620M20 220H620M20 295H620M20 370H620M120 40V390M240 40V390M360 40V390M480 40V390M600 40V390"/>
+        <path class="chart-area" d="M25 344 118 255 175 292 282 160 350 218 485 68 592 164 620 136V390H25Z"/>
+        <path class="chart-wave" d="M25 344 118 255 175 292 282 160 350 218 485 68 592 164 620 136"/>
+        <g class="wave-points"><circle cx="25" cy="344" r="6"/><circle cx="118" cy="255" r="6"/><circle cx="175" cy="292" r="6"/><circle cx="282" cy="160" r="6"/><circle cx="350" cy="218" r="6"/><circle cx="485" cy="68" r="6"/></g>
+        <g class="wave-labels"><text x="107" y="235">1</text><text x="165" y="320">2</text><text x="272" y="140">3</text><text x="340" y="248">4</text><text x="476" y="48">5</text><text x="585" y="190">A</text></g>
+      </svg>
+      <div class="wave-visual__footer"><span><i class="trend-up">↗</i> {% ui "Impulse sequence" %}</span><span>{% ui "Structure over prediction" %}</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="market-ribbon" aria-label="{% ui 'Market coverage' %}"><div class="container market-ribbon__inner"><span class="market-ribbon__label">{% ui "Coverage" %}</span>{% for category in categories|slice:":8" %}<a href="{{ category.get_absolute_url }}"><span>{{ category.display_name }}</span><i>{% ui "VIEW" %}</i></a>{% endfor %}</div></section>
+
+{% if featured %}
+<section class="section section--feature">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">{% ui "Featured outlook" %}</span><h2>{% ui "Today’s market focus" %}</h2></div><a class="text-link" href="{{ featured.category.get_absolute_url }}">{% ui "More" %} {{ featured.category.display_name }} <span>→</span></a></div>
+    <article class="feature-story" data-reveal>
+      <a class="feature-story__media" href="{{ featured.get_absolute_url }}" aria-label="{{ featured.display_title }}">{% if featured.image_url %}<span class="feature-story__desktop-image" style="background-image:url('{{ featured.card_image_url }}')" role="img" aria-label="{{ featured.display_featured_image_alt|default:featured.display_title }}"></span><img class="feature-story__mobile-image" src="{{ featured.mobile_image_url }}" alt="{{ featured.display_featured_image_alt|default:featured.display_title }}" width="480" height="285" loading="lazy" fetchpriority="low" decoding="async">{% else %}<span class="market-placeholder market-placeholder--large"><i></i><i></i><i></i><i></i></span>{% endif %}<span class="feature-story__badge">{% ui "Featured analysis" %}</span></a>
+      <div class="feature-story__content"><div class="article-meta"><a href="{{ featured.category.get_absolute_url }}">{{ featured.category.display_name }}</a><span>{{ featured.published_at|date:"F j, Y" }}</span><span>{{ featured.display_body|reading_time }} {% ui "min read" %}</span></div><div class="article-card__copy" lang="{{ language_code }}" dir="{{ text_direction }}"><h2><a href="{{ featured.get_absolute_url }}">{{ featured.display_title }}</a></h2><p>{{ featured.display_excerpt|striptags|truncatewords:42 }}</p></div><a class="button button--dark" href="{{ featured.get_absolute_url }}">{% ui "Read full analysis" %} <span>→</span></a></div>
+    </article>
+  </div>
+</section>
+{% endif %}
+
+<section class="section" id="latest-analysis">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">{% ui "Fresh perspective" %}</span><h2>{% ui "Latest analysis" %}</h2></div><p>{% ui "Clear wave counts, key invalidation levels and the scenarios that matter." %}</p></div>
+    <div class="article-grid">{% for article in latest %}{% include "content/_article_card.html" %}{% empty %}<p>{% ui "No analysis has been published yet." %}</p>{% endfor %}</div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="container split-section">
+    <div class="split-section__intro" data-reveal><span class="eyebrow eyebrow--light">{% ui "Built for better decisions" %}</span><h2>{% ui "More signal. Less market noise." %}</h2><p>{% ui "Elliott Wave gives traders a framework for understanding market psychology, identifying structure and preparing for multiple outcomes." %}</p><a class="button button--gold" href="{{ '/education/'|localized_path }}">{% ui "Explore the education hub" %}</a></div>
+    <div class="principles-grid">
+      <article><span>01</span><h3>{% ui "Multi-timeframe context" %}</h3><p>{% ui "Begin with the largest available degree, then refine the count to the trading timeframe." %}</p></article>
+      <article><span>02</span><h3>{% ui "Scenario planning" %}</h3><p>{% ui "Define primary and alternate counts with visible levels that confirm or invalidate each path." %}</p></article>
+      <article><span>03</span><h3>{% ui "Risk-first thinking" %}</h3><p>{% ui "Use structure to clarify risk—not to pretend any forecast is certain." %}</p></article>
+      <article><span>04</span><h3>{% ui "Independent analysis" %}</h3><p>{% ui "Objective charts and education designed to support your own decision-making process." %}</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">{% ui "Explore by market" %}</span><h2>{% ui "One framework. Multiple asset classes." %}</h2></div></div>
+    <div class="category-grid">{% for category in categories %}<a class="category-card" href="{{ category.get_absolute_url }}"><span class="category-card__index">0{{ forloop.counter }}</span><div><h3>{{ category.display_name }}</h3><p>{{ category.display_short_description|striptags|default:"Elliott Wave forecasts, market structure and educational context."|truncatewords:18 }}</p></div><span class="category-card__arrow">↗</span></a>{% endfor %}</div>
+  </div>
+</section>
+{% endblock %}

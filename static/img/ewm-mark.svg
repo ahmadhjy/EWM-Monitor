@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Elliott Wave Monitor</title>
+  <defs>
+    <linearGradient id="g" x1="10" y1="54" x2="54" y2="10" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e3a93f"/><stop offset="1" stop-color="#ffe0a3"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#071427"/>
+  <path d="M10 43.5 20.2 32l7.2 6.6L39.3 19l5.4 9.1L54 16.5" fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="20.2" cy="32" r="2.8" fill="#fff0c8"/><circle cx="39.3" cy="19" r="2.8" fill="#fff0c8"/><circle cx="54" cy="16.5" r="2.8" fill="#fff0c8"/>
+</svg>

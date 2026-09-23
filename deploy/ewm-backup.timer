@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily Elliott Wave Monitor backup
+
+[Timer]
+OnCalendar=*-*-* 02:20:00 UTC
+RandomizedDelaySec=15m
+Persistent=true
+
+[Install]
+WantedBy=timers.target

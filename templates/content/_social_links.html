@@ -1,0 +1,3 @@
+{% for network in social_links %}
+<a class="social-link" href="{{ network.url }}" rel="noopener noreferrer" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7">{{ network.icon|safe }}</svg><span>{{ network.name }}</span></a>
+{% endfor %}

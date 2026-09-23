@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% load content_extras %}
+{% block content %}
+<section class="page-hero page-hero--compact"><div class="container"><span class="eyebrow eyebrow--light">{% ui "Research library" %}</span><h1>{% ui "Search Elliott Wave Monitor" %}</h1><form class="hero-search" action="{% url 'search' %}" method="get"><label class="sr-only" for="search-page-query">{% ui "Search" %}</label><input id="search-page-query" type="search" name="q" value="{{ query }}" placeholder="{% ui 'Try “gold”, “EURUSD” or “diagonal”' %}" autofocus><button class="button button--gold" type="submit">{% ui "Search" %}</button></form></div></section>
+<section class="section"><div class="container">{% if query %}<div class="section-heading section-heading--compact"><div><span class="eyebrow">{% ui "Results" %}</span><h2>{% ui "Matches for" %} “{{ query }}”</h2></div></div><div class="article-grid article-grid--archive">{% for article in results %}{% include "content/_article_card.html" %}{% empty %}<div class="empty-state"><h2>{% ui "No matching analysis" %}</h2><p>{% ui "Try a market symbol, asset name or Elliott Wave pattern." %}</p></div>{% endfor %}</div>{% else %}<div class="empty-state"><h2>{% ui "What are you looking for?" %}</h2><p>{% ui "Search across forecasts, technical analysis and education." %}</p></div>{% endif %}</div></section>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% load content_extras %}
+{% block content %}
+<section class="page-hero"><div class="page-hero__mesh"></div><div class="container"><nav class="breadcrumbs" aria-label="{% ui 'Breadcrumb' %}"><a href="{% url 'home' %}">{% ui "Home" %}</a><span>/</span><span aria-current="page">{{ page.display_title }}</span></nav>{% if page.display_eyebrow %}<span class="eyebrow eyebrow--light">{{ page.display_eyebrow }}</span>{% endif %}<h1>{{ page.display_title }}</h1>{% if page.display_excerpt %}<p>{{ page.display_excerpt }}</p>{% endif %}</div></section>
+<section class="section"><div class="container prose-layout"><article class="prose">{{ page.display_body|localized_content }}</article></div></section>
+{% endblock %}
