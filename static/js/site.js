@@ -43,15 +43,40 @@
   }
 
   document.querySelectorAll("[data-submenu-toggle]").forEach((toggle) => {
-    toggle.addEventListener("click", () => {
-      const item = toggle.closest(".nav-item");
-      const expanded = toggle.getAttribute("aria-expanded") !== "true";
+    const item = toggle.closest(".nav-item");
+    const desktopHover = window.matchMedia("(min-width: 1280px) and (hover: hover) and (pointer: fine)");
+    let openedByHover = false;
+    const open = () => {
       document.querySelectorAll("[data-submenu-toggle]").forEach((other) => {
         other.setAttribute("aria-expanded", "false");
         other.closest(".nav-item").classList.remove("is-expanded");
       });
-      toggle.setAttribute("aria-expanded", String(expanded));
-      item.classList.toggle("is-expanded", expanded);
+      toggle.setAttribute("aria-expanded", "true");
+      item.classList.add("is-expanded");
+    };
+    const close = () => {
+      toggle.setAttribute("aria-expanded", "false");
+      item.classList.remove("is-expanded");
+      openedByHover = false;
+    };
+    item.addEventListener("pointerenter", (event) => {
+      if (!desktopHover.matches || event.pointerType !== "mouse") return;
+      if (toggle.getAttribute("aria-expanded") !== "true") {
+        open();
+        openedByHover = true;
+      }
+    });
+    item.addEventListener("pointerleave", (event) => {
+      if (desktopHover.matches && event.pointerType === "mouse") close();
+    });
+    toggle.addEventListener("click", (event) => {
+      // The first mouse click must not undo the menu just opened by hovering.
+      if (toggle.getAttribute("aria-expanded") !== "true" || (openedByHover && event.detail > 0)) open();
+      else close();
+      openedByHover = false;
+    });
+    item.addEventListener("focusout", (event) => {
+      if (!item.contains(event.relatedTarget) && !item.matches(":hover")) close();
     });
   });
 
