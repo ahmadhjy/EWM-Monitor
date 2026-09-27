@@ -13,7 +13,9 @@
 .brand__logo--header { width: 92px; }
 .primary-nav { margin-inline-start: 0; }
 .header-inner > .language-switch { margin-inline-start: auto; }
-.primary-nav .nav-parent, .primary-nav .nav-placeholder, .primary-nav .nav-item > a { padding-block: 23px; }
+.primary-nav .nav-parent, .primary-nav .nav-placeholder, .primary-nav .nav-item > a { padding-block: 23px; font-size: clamp(.9375rem, 1.1vw, 1rem); }
+.primary-nav .nav-menu a { font-size: .9375rem; }
+.primary-nav .nav-placeholder small { font-size: .65rem; }
 .nav-parent:focus-visible, .nav-menu a:focus-visible, .market-watch a:focus-visible { outline: 2px solid #187daa; outline-offset: 3px; border-radius: 4px; }
 
 /* News-first homepage: one lead, three supporting stories, a text-only forecast rail. */
@@ -80,7 +82,9 @@
 }
 @media (max-width: 1279px) {
   .header-inner > .language-switch { margin-inline-start: 0; }
-  .primary-nav .nav-parent, .primary-nav .nav-placeholder, .primary-nav .nav-item > a { padding-block: 14px; }
+  .primary-nav .nav-parent, .primary-nav .nav-placeholder, .primary-nav .nav-item > a { padding-block: 14px; font-size: 1.125rem; }
+  .primary-nav .nav-menu a { font-size: 1rem; }
+  .primary-nav .nav-placeholder small { font-size: .75rem; }
 }
 @media (max-width: 900px) {
   .signal-bar__inner { flex-wrap: wrap; padding-block: 4px; gap: 3px 12px; }
