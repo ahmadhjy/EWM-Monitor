@@ -159,9 +159,18 @@ class CategoryAdmin(BilingualAdminMixin, ModelAdmin):
     search_fields = ("name", "short_description", "body")
     prepopulated_fields = {"slug": ("name",)}
     readonly_fields = ("legacy_id",)
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        labels = {"name": "English archive title", "name_ar": "Arabic archive title", "body": "English market guide (optional)", "body_ar": "Arabic market guide (optional)"}
+        for name, label in labels.items():
+            if name in form.base_fields:
+                form.base_fields[name].label = label
+        return form
+
     fieldsets = (
-        ("Arabic category — main language", {"fields": ("name_ar", "short_description_ar", "body_ar")}),
-        ("English category", {"classes": ["collapse"], "fields": ("name", "slug", "short_description", "body", "featured_image")}),
+        ("Archive heading — Arabic", {"description": "The name is the main heading shown above this archive.", "fields": ("name_ar", "short_description_ar")}),
+        ("Archive heading — English", {"fields": ("name", "slug", "short_description", "featured_image")}),
+        ("Market guides — optional", {"description": "Shown below the article archive. Each language is independent: leave a guide blank to hide it in that edition.", "fields": ("body_ar", "body")}),
         ("Navigation & visibility", {"fields": ("nav_group", "order", "is_visible")}),
         ARABIC_SEO_FIELDSET,
         SEO_FIELDSET,
@@ -176,8 +185,9 @@ class CategoryAdmin(BilingualAdminMixin, ModelAdmin):
 @admin.register(SiteSettings)
 class SiteSettingsAdmin(BilingualAdminMixin, ModelAdmin):
     fieldsets = (
-        ("Arabic brand — main language", {"fields": ("site_name_ar", "tagline_ar", "hero_title_ar", "hero_text_ar")}),
-        ("English brand", {"classes": ["collapse"], "fields": ("site_name", "tagline", "hero_title", "hero_text")}),
+        ("Arabic brand — main language", {"fields": ("site_name_ar", "tagline_ar")}),
+        ("English brand", {"classes": ["collapse"], "fields": ("site_name", "tagline")}),
+        ("Legacy hero — no longer displayed", {"classes": ["collapse"], "description": "Retained for reference only. The homepage now shows news, forecasts and education.", "fields": ("hero_title_ar", "hero_text_ar", "hero_title", "hero_text")}),
         ("Brand images", {"fields": ("logo", "default_social_image")}),
         ("Contact & social", {"fields": ("contact_email", "telegram_url", "instagram_url", "facebook_url", "youtube_url", "x_url", "linkedin_url")}),
         ("Arabic footer", {"fields": ("footer_disclaimer_ar",)}),

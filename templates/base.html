@@ -6,13 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#071427">
   <meta name="color-scheme" content="light">
-  <title>{% if seo_object %}{{ seo_object.localized_seo_title }} | {{ site_settings.display_site_name }}{% elif page_title %}{{ page_title }} | {{ site_settings.display_site_name }}{% else %}{{ site_settings.display_site_name }}{% endif %}</title>
-  <meta name="description" content="{% if seo_object %}{{ seo_object.localized_seo_description }}{% elif page_description %}{{ page_description }}{% else %}{{ site_settings.display_tagline }}{% endif %}">
+  <title>{% if seo_object %}{{ seo_object.localized_seo_title }}{% if archive_page_number > 1 %} — {% if is_rtl %}صفحة{% else %}Page{% endif %} {{ archive_page_number }}{% endif %} | {{ site_settings.display_site_name }}{% elif page_title %}{{ page_title }} | {{ site_settings.display_site_name }}{% else %}{{ site_settings.display_site_name }}{% endif %}</title>
+  <meta name="description" content="{% if seo_object %}{{ seo_object.localized_seo_description|default:site_settings.display_tagline }}{% elif page_description %}{{ page_description }}{% else %}{{ site_settings.display_tagline }}{% endif %}">
   <meta name="robots" content="{% if not site_indexing_enabled %}noindex,nofollow{% elif seo_object.robots %}{{ seo_object.robots }}{% else %}index,follow{% endif %},max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="{{ canonical_url }}">
+  {% if not archive_page_number or archive_page_number == 1 %}
   {% if alternate_ar_url %}<link rel="alternate" hreflang="ar" href="{{ alternate_ar_url }}">{% endif %}
   <link rel="alternate" hreflang="en" href="{{ alternate_en_url }}">
   {% if alternate_ar_url %}<link rel="alternate" hreflang="x-default" href="{{ alternate_ar_url }}">{% endif %}
+  {% endif %}
   <link rel="alternate" type="application/rss+xml" title="{{ site_settings.display_site_name }} feed" href="{{ site_url }}{% url 'feed' %}">
   <meta property="og:locale" content="{% if is_rtl %}ar_AR{% else %}en_US{% endif %}">
   <meta property="og:site_name" content="{{ site_settings.display_site_name }}">
@@ -28,6 +30,7 @@
   <link rel="preload" href="{% static 'css/site.min.css' %}" as="style">
   <link rel="stylesheet" href="{% static 'css/site.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+  <link rel="stylesheet" href="{% static 'css/editorial.css' %}">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -76,18 +79,14 @@
   <a class="skip-link" href="#main-content">{% ui "Skip to content" %}</a>
   <div class="signal-bar">
     <div class="container signal-bar__inner">
-      <span><i class="status-dot" aria-hidden="true"></i> {% ui "Independent market intelligence" %}</span>
-      <div class="signal-bar__links">
-        <a href="{% url 'contact' %}">{% ui "Contact us" %}</a>
-        <a href="{{ '/privacy-policy/'|localized_path }}">{% ui "Privacy policy" %}</a>
-        <a href="{{ '/terms-conditions/'|localized_path }}">{% ui "Terms & conditions" %}</a>
-      </div>
+      <nav class="market-watch" aria-label="{% if is_rtl %}أسواق تحت المتابعة{% else %}Market watch{% endif %}"><strong>{% if is_rtl %}تحت المتابعة:{% else %}In focus:{% endif %}</strong><a href="{{ '/gold-forecast/'|localized_path }}">{% if is_rtl %}الذهب{% else %}Gold{% endif %}</a><a href="{{ '/crude-oil-forecast/'|localized_path }}">{% if is_rtl %}النفط{% else %}Crude oil{% endif %}</a><a href="{{ '/btcusd-forecast/'|localized_path }}">{% if is_rtl %}البيتكوين{% else %}Bitcoin{% endif %}</a><a href="{{ '/eurusd-forecast/'|localized_path }}"><bdi>EUR/USD</bdi></a><a href="{{ '/gbpusd-forecast/'|localized_path }}"><bdi>GBP/USD</bdi></a></nav>
+      <div class="signal-socials">{% include "content/_social_links.html" %}</div>
     </div>
   </div>
   <header class="site-header" data-header>
     <div class="container header-inner">
       <a class="brand" href="{% url 'home' %}" aria-label="{{ site_settings.display_site_name }} {% ui 'Home' %}">
-        <img class="brand__logo brand__logo--header" src="{% static 'img/ewm-original-mark.svg' %}" alt="{{ site_settings.display_site_name }}" width="144" height="60">
+        <img class="brand__logo brand__logo--header" src="{% static 'img/ewm-original-mark.svg' %}" alt="{{ site_settings.display_site_name }}" width="92" height="38">
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-nav-toggle>
         <span></span><span></span><span></span><span class="sr-only">{% if is_rtl %}القائمة{% else %}Menu{% endif %}</span>
@@ -148,6 +147,7 @@
     <div class="container footer-bottom"><span>© {% now 'Y' %} {{ site_settings.display_site_name }}. {% ui "All rights reserved." %}</span><span>{% ui "Independent analysis. Clear market structure." %}</span></div>
   </footer>
   <script src="{% static 'js/site.js' %}" defer></script>
+  {% block extra_scripts %}{% endblock %}
   {% if site_settings.google_analytics_id %}<script async src="https://www.googletagmanager.com/gtag/js?id={{ site_settings.google_analytics_id }}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','{{ site_settings.google_analytics_id|escapejs }}');</script>{% endif %}
 </body>
 </html>

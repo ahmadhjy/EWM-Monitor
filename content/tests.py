@@ -73,12 +73,14 @@ class PublicSiteTests(TestCase):
         self.assertContains(response, "🇸🇦")
         self.assertContains(response, "img/flag-sa.webp")
 
-    def test_hero_keeps_animation_without_manual_controls(self):
+    def test_home_is_minimal_editorial_layout_without_hero(self):
         arabic = self.client.get("/")
         english = self.client.get("/en/")
         for response in (arabic, english):
-            self.assertContains(response, 'class="chart-signal"')
-            self.assertContains(response, "data-hero-motion")
+            self.assertContains(response, 'class="news-gallery"')
+            self.assertContains(response, 'class="latest-forecasts"')
+            self.assertContains(response, 'class="home-education"')
+            self.assertNotContains(response, "data-hero-motion")
             self.assertNotContains(response, "data-hero-motion-toggle")
             self.assertNotContains(response, "Pause animation")
             self.assertNotContains(response, "Resume animation")

@@ -1,0 +1,6 @@
+{% load content_extras %}
+<article class="archive-entry" data-archive-entry="{{ article.pk }}" aria-labelledby="entry-title-{{ article.pk }}">
+  <header><a class="eyebrow" href="{{ article.category.get_absolute_url }}">{{ article.category.display_name }}</a><h2 id="entry-title-{{ article.pk }}"><a href="{{ article.get_absolute_url }}">{{ article.display_title }}</a></h2><div class="archive-byline"><strong>{{ article.author_name }}</strong><time datetime="{{ article.published_at|date:'c' }}">{{ article.published_at|date:"F j, Y" }}</time><span>{{ article.display_body|reading_time }} {% ui "min read" %}</span></div></header>
+  <div class="prose archive-entry__body" lang="{{ language_code }}" dir="{{ text_direction }}">{{ article.display_body|archive_content:article.pk }}</div>
+  <a class="text-link archive-permalink" href="{{ article.get_absolute_url }}">{% if is_rtl %}افتح المقال في صفحة مستقلة{% else %}Open article page{% endif %} <span aria-hidden="true">↗</span></a>
+</article>

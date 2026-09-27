@@ -1,0 +1,7 @@
+{% if articles.has_other_pages %}
+<nav class="archive-pagination" aria-label="{% if is_rtl %}صفحات الأرشيف{% else %}Archive pages{% endif %}">
+  {% if articles.has_previous %}<a href="{% if articles.previous_page_number == 1 %}{{ request.path }}{% else %}?page={{ articles.previous_page_number }}{% endif %}" rel="prev">{% if is_rtl %}الصفحة السابقة{% else %}Previous page{% endif %}</a>{% endif %}
+  <span>{{ articles.number }} / {{ articles.paginator.num_pages }}</span>
+  {% if articles.has_next %}<a href="?page={{ articles.next_page_number }}" rel="next" data-archive-next>{% if is_rtl %}الصفحة التالية{% else %}Next page{% endif %}</a><button class="button button--dark" type="button" data-load-more hidden>{% if is_rtl %}تحميل المزيد{% else %}Load more{% endif %}</button>{% endif %}
+</nav>
+{% endif %}

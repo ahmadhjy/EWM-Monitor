@@ -219,7 +219,9 @@ class Category(SEOFields, ArabicSEOFields):
 
     @property
     def display_body(self):
-        return localized_value(self, "body")
+        # A missing Arabic market guide must not expose its English counterpart.
+        guide = self.body_ar if (get_language() or "ar").split("-")[0] == "ar" else self.body
+        return guide if content_text(guide) or re.search(r"<(?:img|iframe)\b", guide or "", re.I) else ""
 
     @property
     def seo_title(self):

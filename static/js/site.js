@@ -46,7 +46,9 @@
     const item = toggle.closest(".nav-item");
     const desktopHover = window.matchMedia("(min-width: 1280px) and (hover: hover) and (pointer: fine)");
     let openedByHover = false;
+    let closeTimer;
     const open = () => {
+      clearTimeout(closeTimer);
       document.querySelectorAll("[data-submenu-toggle]").forEach((other) => {
         other.setAttribute("aria-expanded", "false");
         other.closest(".nav-item").classList.remove("is-expanded");
@@ -55,19 +57,21 @@
       item.classList.add("is-expanded");
     };
     const close = () => {
+      clearTimeout(closeTimer);
       toggle.setAttribute("aria-expanded", "false");
       item.classList.remove("is-expanded");
       openedByHover = false;
     };
     item.addEventListener("pointerenter", (event) => {
       if (!desktopHover.matches || event.pointerType !== "mouse") return;
+      clearTimeout(closeTimer);
       if (toggle.getAttribute("aria-expanded") !== "true") {
         open();
         openedByHover = true;
       }
     });
     item.addEventListener("pointerleave", (event) => {
-      if (desktopHover.matches && event.pointerType === "mouse") close();
+      if (desktopHover.matches && event.pointerType === "mouse") closeTimer = setTimeout(close, 180);
     });
     toggle.addEventListener("click", (event) => {
       // The first mouse click must not undo the menu just opened by hovering.
@@ -96,10 +100,10 @@
     if (expanded) {
       expanded.setAttribute("aria-expanded", "false");
       expanded.closest(".nav-item").classList.remove("is-expanded");
-      expanded.focus();
+      expanded.focus({ preventScroll: true });
       return;
     }
-    if (document.body.classList.contains("nav-open")) navToggle?.focus();
+    if (document.body.classList.contains("nav-open")) navToggle?.focus({ preventScroll: true });
     setNavigation(false);
     if (searchPanel) searchPanel.hidden = true;
   });

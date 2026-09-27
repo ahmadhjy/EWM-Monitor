@@ -71,3 +71,19 @@ def localized_content(value):
         image["loading"] = "lazy"
         image["decoding"] = "async"
     return mark_safe(str(soup))
+
+
+@register.filter
+def archive_content(value, article_id):
+    """Keep full editor content readable inside a multi-article archive."""
+    soup = BeautifulSoup(localized_content(value), "html.parser")
+    prefix = f"archive-{article_id}-"
+    for heading in soup.find_all(re.compile(r"^h[1-6]$")):
+        heading.name = f"h{min(6, int(heading.name[1]) + 2)}"
+    identifiers = {tag["id"] for tag in soup.select("[id]")}
+    for tag in soup.select("[id]"):
+        tag["id"] = prefix + tag["id"]
+    for anchor in soup.select('a[href^="#"]'):
+        if anchor["href"][1:] in identifiers:
+            anchor["href"] = "#" + prefix + anchor["href"][1:]
+    return mark_safe(str(soup))

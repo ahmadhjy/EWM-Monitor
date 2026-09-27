@@ -53,6 +53,22 @@ The import is idempotent: articles, pages, categories, and media records are mat
 
 ## Editorial workflow
 
+### News-first homepage and open archives (September 27 update)
+
+- The homepage shows the newest four published **News & Analysis** articles: one lead image plus up to three smaller stories. It never borrows stories from other categories to fill gaps. Add this category as primary or additional to include a story.
+- The separate text-only rail shows the newest seven forecast articles; the education section shows up to six lessons. All sections respect language availability and publication dates. Arabic education stays empty until editors translate lessons.
+- Every category archive renders complete article bodies and charts, two articles per page. Scrolling loads the next batch; **Load more** and ordinary next/previous links remain available. Each page has its own canonical URL. Article title links still open the original standalone URL.
+- Under **Categories**, edit **English/Arabic archive title** to control the H1. **Market guides — optional** contains independent rich-text fields for both languages. A blank guide is hidden, never replaced with the other language's text.
+- Market-watch links and social icons replace the legal/contact links at the top. Policies, Terms and Contact remain in the footer. Social destinations remain editable in **Site settings**.
+- The former hero is no longer displayed. Its old settings are retained in a collapsed legacy section, without deleting content.
+- No content import or database reseeding is required for this release. Deploy code only; existing articles, translations and guides remain unchanged.
+
+Release checks: 35 Django tests; 60 responsive page/language/viewport combinations;
+automatic archive loading, no-JavaScript pagination and network retry verified.
+Local homepage Lighthouse: 99 mobile / 100 desktop performance in both languages,
+100 accessibility / best practices / SEO, and zero measured layout shift.
+These are lab measurements, not guaranteed scores on every connection.
+
 1. Open **Articles** in the admin.
 2. Create or edit an article with the rich text toolbar. Add both the Arabic and English editions when it should appear in both languages. A blank excerpt is generated from the first 15 words in each language, and the editable author default is **EWM Team**.
 3. Use the image tool's browse button to search and reuse the website media library, upload a new image, and set or update its alt text before inserting it.

@@ -1,0 +1,110 @@
+/* Compact market masthead, shared by both reading directions. */
+.signal-bar { background: #f2f4f7; color: #405269; text-transform: none; letter-spacing: 0; border-bottom: 1px solid #e7ebef; }
+.signal-bar__inner { min-height: 38px; justify-content: space-between; gap: 14px; }
+.market-watch { display: flex; align-items: center; flex-wrap: wrap; gap: 0; }
+.market-watch strong { color: var(--ink); margin-inline-end: 12px; }
+.market-watch a { padding: 4px 12px; border-inline-start: 1px solid #cbd4dd; white-space: nowrap; }
+.signal-bar a:hover { color: #076c85; }
+.signal-socials { display: flex; align-items: center; gap: 4px; }
+.signal-socials .social-link { min-width: 32px; min-height: 32px; justify-content: center; color: var(--ink); }
+.signal-socials .social-link span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.signal-socials svg { width: 17px; height: 17px; }
+.header-inner { min-height: 72px; gap: 20px; }
+.brand__logo--header { width: 92px; }
+.primary-nav { margin-inline-start: 0; }
+.header-inner > .language-switch { margin-inline-start: auto; }
+.primary-nav .nav-parent, .primary-nav .nav-placeholder, .primary-nav .nav-item > a { padding-block: 23px; }
+.nav-parent:focus-visible, .nav-menu a:focus-visible, .market-watch a:focus-visible { outline: 2px solid #187daa; outline-offset: 3px; border-radius: 4px; }
+
+/* News-first homepage: one lead, three supporting stories, a text-only forecast rail. */
+.editorial-home { display: grid; grid-template-columns: minmax(0, 2fr) minmax(270px, 1fr); gap: 42px; padding-block: 36px 54px; }
+.news-gallery, .latest-forecasts { min-width: 0; }
+.editorial-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.editorial-heading h2 { margin: 0; font-size: clamp(1.25rem, 2.2vw, 1.75rem); letter-spacing: -.025em; }
+.editorial-heading > a { color: #496078; font-size: .76rem; font-weight: 650; }
+.news-lead { margin-bottom: 22px; }
+.news-lead__link { position: relative; display: block; aspect-ratio: 1.65; overflow: hidden; border-radius: 16px; background: #0b2035; color: #fff; }
+.news-lead__link > img, .news-lead__link > .market-placeholder { width: 100%; height: 100%; object-fit: cover; }
+.news-lead__caption { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 3vw, 32px); background: linear-gradient(180deg, transparent 5%, rgba(2,13,24,.28) 30%, rgba(2,13,24,.96) 100%); }
+.news-kicker { align-self: flex-start; padding: 4px 8px; margin-bottom: 10px; border-radius: 4px; background: #fff; color: #0c4455; font-size: .64rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.news-lead h3 { color: #fff; font-size: clamp(1.3rem, 2.3vw, 2.15rem); line-height: 1.23; margin: 0 0 15px; letter-spacing: -.02em; overflow-wrap: anywhere; }
+.news-byline { display: flex; gap: 14px; flex-wrap: wrap; font-size: .7rem; color: #e4edf4; }
+.news-gallery__small { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.news-small img, .news-small .market-placeholder { width: 100%; aspect-ratio: 1.65; object-fit: cover; border-radius: 10px; }
+.news-small h3 { font-size: .98rem; line-height: 1.45; margin: 12px 0 6px; letter-spacing: -.015em; }
+.news-small time { color: var(--muted); font-size: .7rem; }
+.latest-forecasts { border-inline-start: 1px solid var(--line); padding-inline-start: 30px; }
+.latest-forecasts ol { list-style: none; padding: 0; margin: 0; }
+.latest-forecasts li { padding: 19px 0; border-bottom: 1px solid var(--line); }
+.latest-forecasts li:first-child { padding-top: 0; }
+.forecast-author { color: var(--slate); font-size: .72rem; }
+.latest-forecasts h3 { font-size: 1.05rem; line-height: 1.5; margin: 7px 0 0; letter-spacing: -.01em; font-weight: 650; }
+.latest-forecasts a:hover, .news-small a:hover { color: #086c87; }
+.home-education { padding: 45px 0 70px; background: var(--soft); }
+.home-education .article-card { box-shadow: none; }
+.home-education .article-card h3 { font-size: 1.16rem; }
+.editorial-empty { padding: 30px; background: var(--soft); border: 1px dashed #becbd7; border-radius: 12px; color: var(--slate); }
+.editorial-empty h2 { font-size: 1.5rem; }
+
+/* Open archives: unabridged articles, then the editor's optional market guide. */
+.archive-heading { padding-block: 34px 30px; border-bottom: 1px solid var(--line); background: linear-gradient(110deg, #f4f7fa, #fff); }
+.archive-heading .container { max-width: 980px; }
+.archive-heading .breadcrumbs { color: var(--slate); margin-bottom: 20px; }
+.archive-heading h1 { font-size: clamp(1.85rem, 4vw, 3rem); margin-bottom: 14px; overflow-wrap: anywhere; }
+.archive-heading p { color: var(--slate); max-width: 780px; font-size: .94rem; }
+.open-archive { max-width: 980px; padding-block: 36px 30px; }
+.archive-entry { padding-block: 10px 48px; margin-bottom: 40px; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+.archive-entry > header h2 { font-size: clamp(1.55rem, 3vw, 2.25rem); line-height: 1.25; margin: 0 0 16px; }
+.archive-entry > header h2 a:hover { color: #086c87; }
+.archive-entry .eyebrow { font-size: .65rem; }
+.archive-byline { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--slate); font-size: .76rem; padding-bottom: 24px; }
+.archive-entry__body { max-width: 900px; font-family: var(--font); font-size: 1.04rem; }
+.archive-entry__body img { height: auto; }
+.archive-entry__body table { display: block; overflow-x: auto; max-width: 100%; }
+.archive-entry__body pre { overflow-x: auto; max-width: 100%; }
+.archive-entry__body iframe { width: 100%; }
+.archive-permalink { margin-top: 16px; }
+.archive-pagination { flex-wrap: wrap; font-size: .82rem; padding-bottom: 0; }
+.archive-pagination a { text-decoration: underline; text-underline-offset: 4px; }
+.archive-pagination [hidden] { display: none; }
+.archive-status { text-align: center; color: var(--slate); font-size: .85rem; }
+.market-guide { padding-block: 50px 70px; scroll-margin-top: 100px; }
+.market-guide .container { max-width: 980px; }
+.market-guide h2 { margin-top: 0; }
+.market-guide:focus { outline: none; }
+[dir="rtl"] .archive-entry__body { font-family: Tahoma, Arial, sans-serif; }
+[dir="rtl"] .news-kicker { letter-spacing: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .news-lead__link > img { transition: transform .5s ease; }
+  .news-lead__link:hover > img { transform: scale(1.025); }
+}
+@media (max-width: 1279px) {
+  .header-inner > .language-switch { margin-inline-start: 0; }
+  .primary-nav .nav-parent, .primary-nav .nav-placeholder, .primary-nav .nav-item > a { padding-block: 14px; }
+}
+@media (max-width: 900px) {
+  .signal-bar__inner { flex-wrap: wrap; padding-block: 4px; gap: 3px 12px; }
+  .editorial-home { grid-template-columns: 1fr; gap: 32px; }
+  .latest-forecasts { border-inline-start: 0; padding-inline-start: 0; }
+  .latest-forecasts ol { display: grid; grid-template-columns: 1fr 1fr; column-gap: 26px; }
+  .latest-forecasts li:first-child { padding-top: 19px; }
+}
+@media (max-width: 600px) {
+  .signal-bar__inner { justify-content: center; }
+  .market-watch { justify-content: center; font-size: .63rem; }
+  .market-watch a { padding-inline: 7px; }
+  .market-watch strong { margin-inline-end: 7px; }
+  .header-inner { gap: 10px; }
+  .editorial-home { padding-top: 24px; }
+  .editorial-heading { margin-bottom: 18px; }
+  .editorial-heading > a { font-size: .7rem; }
+  .news-lead__link { aspect-ratio: 1.05; }
+  .news-lead h3 { font-size: 1.4rem; }
+  .news-gallery__small { grid-template-columns: 1fr; gap: 20px; }
+  .news-small > a { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 15px; align-items: start; }
+  .news-small h3 { margin-top: 0; font-size: .91rem; }
+  .news-small time { display: block; margin-inline-start: 125px; }
+  .latest-forecasts ol { grid-template-columns: 1fr; }
+  .archive-entry { padding-bottom: 32px; margin-bottom: 26px; }
+  .archive-entry__body { font-size: .98rem; }
+}

@@ -2,10 +2,11 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.core.cache import cache
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, InvalidPage
 from django.utils.http import url_has_allowed_host_and_scheme
 import hashlib
 import logging
+from urllib.parse import urlsplit
 from django.db.models import Q
 from django.http import Http404, HttpResponse, HttpResponsePermanentRedirect, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -38,6 +39,7 @@ def published_articles():
         Article.objects.filter(status="published", published_at__lte=timezone.now())
         .select_related("category")
         .prefetch_related("additional_categories")
+        .order_by("-published_at", "-pk")
     )
     if is_arabic():
         queryset = queryset.exclude(title_ar="").exclude(body_ar="")
@@ -47,7 +49,10 @@ def published_articles():
 def page_context(request, obj=None, **extra):
     canonical = settings.SITE_URL + request.path
     if obj and getattr(obj, "canonical_url", "") and not is_arabic():
-        canonical = obj.canonical_url
+        old_url = urlsplit(obj.canonical_url)
+        imported_archive = isinstance(obj, Category) and obj.legacy_id and old_url.hostname in {"elliottwavemonitor.com", "www.elliottwavemonitor.com"} and old_url.path.startswith("/category/")
+        if not imported_archive:
+            canonical = obj.canonical_url
     alternates = {}
     match = request.resolver_match
     if match and match.view_name:
@@ -68,20 +73,18 @@ def page_context(request, obj=None, **extra):
 
 def home(request):
     articles = published_articles()
-    featured = articles.filter(is_featured=True).first() or articles.first()
-    latest = articles.exclude(pk=featured.pk if featured else None)[:8]
-    trending = articles.filter(is_trending=True)[:6]
-    categories = Category.objects.filter(is_visible=True).order_by("order", "name")
+    news = list(articles.filter(Q(category__slug="latest-news-and-analysis") | Q(additional_categories__slug="latest-news-and-analysis")).distinct()[:4])
+    forecasts = articles.filter(Q(category__slug__endswith="-forecast") | Q(additional_categories__slug__endswith="-forecast")).distinct()[:7]
+    education = articles.filter(Q(category__nav_group="education") | Q(category__slug="education") | Q(additional_categories__slug="education")).distinct()[:6]
     return render(
         request,
         "content/home.html",
         page_context(
             request,
-            featured=featured,
-            latest=latest,
-            trending=trending,
-            categories=categories,
-            article_total=articles.count(),
+            featured=news[0] if news else None,
+            news_cards=news[1:],
+            forecasts=forecasts,
+            education_articles=education,
             page_title=("توقعات موجات إليوت وتحليل الأسواق" if is_arabic() else "Elliott Wave Forecasts & Market Analysis"),
             page_description=SiteSettings.load().display_tagline,
         ),
@@ -103,18 +106,17 @@ def article_detail(request, article):
 
 def category_detail(request, category):
     articles = published_articles().filter(Q(category=category) | Q(additional_categories=category)).distinct()
-    if category.slug == "latest-news-and-analysis":
-        page = Paginator(articles, 12).get_page(request.GET.get("page"))
-        context = page_context(request, category, category=category, articles=page, news_archive=True)
-        if page.number > 1:
-            for key in ("canonical_url", "alternate_ar_url", "alternate_en_url"):
-                context[key] += f"?page={page.number}"
-        return render(request, "content/category_detail.html", context)
-    return render(
-        request,
-        "content/category_detail.html",
-        page_context(request, category, category=category, articles=articles),
-    )
+    try:
+        page = Paginator(articles, 2).page(request.GET.get("page", 1))
+    except InvalidPage:
+        raise Http404("Archive page not found")
+    context = page_context(request, category, category=category, articles=page, archive_page_number=page.number)
+    if page.number > 1:
+        # Each paginated archive is independently reachable without JavaScript.
+        context["canonical_url"] = settings.SITE_URL + request.path + f"?page={page.number}"
+        # Different language editions can have different page counts/content.
+        # Link language alternatives to their archive entry pages, not nonexistent pages.
+    return render(request, "content/category_detail.html", context)
 
 
 def page_detail(request, page):
