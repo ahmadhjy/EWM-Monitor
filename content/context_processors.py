@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.db.models import Prefetch
 from django.utils.translation import get_language
 
 from .models import MenuItem, SiteSettings
@@ -19,7 +20,7 @@ def site_context(request):
         for field, label in [("telegram", "Telegram"), ("instagram", "Instagram"), ("facebook", "Facebook"), ("youtube", "YouTube"), ("x", "X / Twitter"), ("linkedin", "LinkedIn")]
         if getattr(site_settings, f"{field}_url")
     ]
-    primary = MenuItem.objects.filter(group="primary", is_active=True, parent__isnull=True).prefetch_related("children")
+    primary = MenuItem.objects.filter(group="primary", is_active=True, parent__isnull=True).prefetch_related(Prefetch("children", queryset=MenuItem.objects.filter(is_active=True), to_attr="active_children"))
     footer = MenuItem.objects.filter(group="footer", is_active=True, parent__isnull=True)
     language_code = (get_language() or settings.LANGUAGE_CODE).split("-")[0]
     return {

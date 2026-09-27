@@ -38,7 +38,7 @@
       if (event.target.closest("a")) setNavigation(false);
     });
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 900) setNavigation(false);
+      if (window.innerWidth > 1279) setNavigation(false);
     }, { passive: true });
   }
 
@@ -67,12 +67,26 @@
 
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
+    const expanded = navigation?.querySelector('[data-submenu-toggle][aria-expanded="true"]');
+    if (expanded) {
+      expanded.setAttribute("aria-expanded", "false");
+      expanded.closest(".nav-item").classList.remove("is-expanded");
+      expanded.focus();
+      return;
+    }
     if (document.body.classList.contains("nav-open")) navToggle?.focus();
     setNavigation(false);
     if (searchPanel) searchPanel.hidden = true;
   });
 
   const header = document.querySelector("[data-header]");
+  document.addEventListener("click", (event) => {
+    if (navigation?.contains(event.target)) return;
+    navigation?.querySelectorAll("[data-submenu-toggle]").forEach((toggle) => {
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.closest(".nav-item").classList.remove("is-expanded");
+    });
+  });
   const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 12);
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive: true });

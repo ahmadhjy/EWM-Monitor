@@ -71,7 +71,7 @@ h3 { font-size: 1.3rem; }
 .submenu-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
 .nav-item.is-expanded .nav-menu { opacity: 1; visibility: visible; transform: none; }
 .nav-menu { position: absolute; top: calc(100% - 4px); inset-inline-start: 0; width: 230px; padding: 10px; border: 1px solid var(--line); border-radius: 14px; background: #fff; box-shadow: var(--shadow-lg); opacity: 0; visibility: hidden; transform: translateY(8px); transition: .2s ease; }
-.nav-item:hover .nav-menu, .nav-item:focus-within .nav-menu { opacity: 1; visibility: visible; transform: none; }
+.nav-item.is-expanded .nav-menu { opacity: 1; visibility: visible; transform: none; }
 .nav-menu a { display: block; padding: 10px 12px; border-radius: 8px; color: #30465c; font-size: .84rem; font-weight: 650; }
 .nav-menu a:hover { background: var(--soft); color: #9a6516; }
 .search-toggle { width: 42px; height: 42px; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--ink); color: #fff; }

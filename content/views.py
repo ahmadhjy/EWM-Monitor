@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.core.cache import cache
+from django.core.paginator import Paginator
 from django.utils.http import url_has_allowed_host_and_scheme
 import hashlib
 import logging
@@ -102,6 +103,13 @@ def article_detail(request, article):
 
 def category_detail(request, category):
     articles = published_articles().filter(Q(category=category) | Q(additional_categories=category)).distinct()
+    if category.slug == "latest-news-and-analysis":
+        page = Paginator(articles, 12).get_page(request.GET.get("page"))
+        context = page_context(request, category, category=category, articles=page, news_archive=True)
+        if page.number > 1:
+            for key in ("canonical_url", "alternate_ar_url", "alternate_en_url"):
+                context[key] += f"?page={page.number}"
+        return render(request, "content/category_detail.html", context)
     return render(
         request,
         "content/category_detail.html",

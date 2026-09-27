@@ -424,7 +424,7 @@ class MediaAsset(models.Model):
 class MenuItem(models.Model):
     label = models.CharField(max_length=80)
     label_ar = models.CharField("Arabic label", max_length=80, blank=True)
-    url = models.CharField(max_length=300, help_text="Use a local path such as /education/ or a full URL.")
+    url = models.CharField(max_length=300, blank=True, help_text="Local path or full URL. Leave blank for a dropdown heading or coming-soon item.")
     group = models.CharField(
         max_length=24,
         choices=[("primary", "Primary navigation"), ("footer", "Footer navigation")],

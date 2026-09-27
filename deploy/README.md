@@ -89,6 +89,17 @@ sudo /opt/certbot/bin/certbot certonly --webroot -w /var/www/acme -d elliottwave
 
 ## 6. Operations
 
+### September navigation release
+
+After deploying the menu code and migration, run `python manage.py configure_navigation`
+with the production environment loaded and as the application user. This repeatable
+command applies the requested bilingual menu, reuses the existing News & Analysis
+category, and creates six crypto/index archives. It does not overwrite article text,
+translations, existing category guides, contacts or subscribers. USD/CHF and the old
+generic crypto/stocks archives remain reachable but are no longer main-menu items.
+Editors can select News & Analysis or a market under an article's primary/additional
+categories. New market archives start empty; existing articles are not reassigned.
+
 After reviewed changes are pushed to `main`, update production with:
 
 ```bash
