@@ -1,0 +1,17 @@
+{% load content_extras %}
+<section class="editorial-home container" aria-labelledby="home-news-title">
+  <div class="news-gallery">
+    <div class="editorial-heading">{% if news_archive %}<h1 id="home-news-title">{{ category.display_name }}</h1>{% else %}<h2 id="home-news-title">{% if is_rtl %}الأخبار والتحليلات{% else %}News & Analysis{% endif %}</h2><a href="{{ '/latest-news-and-analysis/'|localized_path }}">{% if is_rtl %}جميع الأخبار{% else %}All news{% endif %} <span aria-hidden="true">↗</span></a>{% endif %}</div>
+    {% if featured %}
+    <article class="news-lead">
+      <a class="news-lead__link" href="{{ featured.get_absolute_url }}">
+        {% if featured.image_url %}<img src="{{ featured.card_image_url }}" srcset="{{ featured.mobile_image_url }} 480w, {{ featured.card_image_url }} 960w" sizes="(max-width: 900px) calc(100vw - 40px), 800px" alt="{{ featured.display_featured_image_alt|default:featured.display_title }}" width="960" height="570" fetchpriority="high" decoding="async">{% else %}<span class="market-placeholder" aria-hidden="true"><i></i><i></i><i></i></span>{% endif %}
+        <div class="news-lead__caption"><span class="news-kicker">{% if is_rtl %}من غرفة الأخبار{% else %}From the news desk{% endif %}</span><{% if news_archive %}h2{% else %}h3{% endif %}>{{ featured.display_title }}</{% if news_archive %}h2{% else %}h3{% endif %}><div class="news-byline"><span>{{ featured.author_name }}</span><time datetime="{{ featured.published_at|date:'c' }}">{{ featured.published_at|date:"M j, Y" }}</time></div></div>
+      </a>
+    </article>
+    <div class="news-gallery__small">{% for article in news_cards %}<article class="news-small"><a href="{{ article.get_absolute_url }}">{% if article.image_url %}<img src="{{ article.mobile_image_url }}" alt="{{ article.display_featured_image_alt|default:article.display_title }}" width="480" height="285" loading="lazy" decoding="async">{% else %}<span class="market-placeholder" aria-hidden="true"><i></i><i></i><i></i></span>{% endif %}<{% if news_archive %}h2{% else %}h3{% endif %}>{{ article.display_title }}</{% if news_archive %}h2{% else %}h3{% endif %}></a><time datetime="{{ article.published_at|date:'c' }}">{{ article.published_at|date:"M j, Y" }}</time></article>{% endfor %}</div>
+    {% else %}<div class="editorial-empty">{% if is_rtl %}ستظهر الأخبار والتحليلات المنشورة هنا.{% else %}Published news and analysis will appear here.{% endif %}</div>{% endif %}
+    {% if news_archive %}{% include "content/_news_pagination.html" %}{% endif %}
+  </div>
+  <aside class="latest-forecasts" aria-labelledby="home-forecasts-title"><div class="editorial-heading"><h2 id="home-forecasts-title">{% if is_rtl %}أحدث التوقعات{% else %}Latest forecasts{% endif %}</h2></div><ol>{% for article in forecasts %}<li><span class="forecast-author">{{ article.author_name }}</span><h3><a href="{{ article.get_absolute_url }}">{{ article.display_title }}</a></h3></li>{% empty %}<li class="editorial-empty">{% ui "No published analysis yet" %}</li>{% endfor %}</ol></aside>
+</section>

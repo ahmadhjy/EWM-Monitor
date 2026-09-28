@@ -32,6 +32,31 @@ class EditorialTests(TestCase):
         self.assertNotContains(self.client.get("/"), "Education lesson")
         self.assertNotContains(response, 'class="hero"')
 
+    def test_news_gallery_has_twenty_stories_and_standard_pagination(self):
+        for index in range(22):
+            Article.objects.create(title=f"News {index}", title_ar=f"خبر {index}", slug=f"news-{index}", body="<p>News article body</p>", body_ar="<p>نص الخبر</p>", category=self.news, status="published", published_at=self.stamp)
+        for prefix in ("/", "/en/"):
+            response = self.client.get(prefix + "latest-news-and-analysis/")
+            soup = BeautifulSoup(response.content, "html.parser")
+            self.assertEqual(len(soup.select(".news-lead")), 1)
+            self.assertEqual(len(soup.select(".news-small")), 19)
+            self.assertEqual(len(soup.select(".latest-forecasts")), 1)
+            self.assertEqual(len(soup.select("h1")), 1)
+            self.assertEqual(soup.select_one('.news-pagination [rel="next"]')["href"], "?page=2")
+            self.assertNotContains(response, "data-archive-feed")
+            self.assertNotContains(response, "js/archive.js")
+            self.assertNotContains(response, "News article body")
+            second = self.client.get(prefix + "latest-news-and-analysis/?page=2")
+            second_soup = BeautifulSoup(second.content, "html.parser")
+            self.assertEqual(len(second_soup.select(".news-lead, .news-small")), 3)
+            self.assertTrue(second_soup.select_one('link[rel="canonical"]')["href"].endswith("?page=2"))
+            first_ids = {article.pk for article in response.context["articles"]}
+            second_ids = {article.pk for article in second.context["articles"]}
+            self.assertFalse(first_ids & second_ids)
+            self.assertEqual(self.client.get(prefix + "latest-news-and-analysis/?page=3").status_code, 404)
+        self.assertEqual(len(self.client.get("/en/gold-forecast/").context["articles"]), 2)
+        self.assertContains(self.client.get("/en/gold-forecast/"), "data-archive-feed")
+
     def test_archive_full_content_and_stable_pagination(self):
         seen = []
         for number in range(1, 5):

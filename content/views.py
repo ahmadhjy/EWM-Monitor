@@ -106,8 +106,9 @@ def article_detail(request, article):
 
 def category_detail(request, category):
     articles = published_articles().filter(Q(category=category) | Q(additional_categories=category)).distinct()
+    is_news = category.slug == "latest-news-and-analysis"
     try:
-        page = Paginator(articles, 2).page(request.GET.get("page", 1))
+        page = Paginator(articles, 20 if is_news else 2).page(request.GET.get("page", 1))
     except InvalidPage:
         raise Http404("Archive page not found")
     context = page_context(request, category, category=category, articles=page, archive_page_number=page.number)
@@ -116,6 +117,16 @@ def category_detail(request, category):
         context["canonical_url"] = settings.SITE_URL + request.path + f"?page={page.number}"
         # Different language editions can have different page counts/content.
         # Link language alternatives to their archive entry pages, not nonexistent pages.
+    if is_news:
+        stories = list(page.object_list)
+        context.update(
+            news_archive=True,
+            featured=stories[0] if stories else None,
+            news_cards=stories[1:],
+            forecasts=published_articles().filter(Q(category__slug__endswith="-forecast") | Q(additional_categories__slug__endswith="-forecast")).distinct()[:7],
+            page_numbers=page.paginator.get_elided_page_range(page.number, on_each_side=2, on_ends=1),
+        )
+        return render(request, "content/news_archive.html", context)
     return render(request, "content/category_detail.html", context)
 
 
