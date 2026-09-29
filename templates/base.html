@@ -86,7 +86,7 @@
   <header class="site-header" data-header>
     <div class="container header-inner">
       <a class="brand" href="{% url 'home' %}" aria-label="{{ site_settings.display_site_name }} {% ui 'Home' %}">
-        <img class="brand__logo brand__logo--header" src="{% if site_settings.logo %}{{ site_settings.logo.url }}{% else %}{% static 'img/ewm-original-mark.svg' %}{% endif %}" alt="{{ site_settings.display_site_name }}" width="92" height="38">
+        <span class="brand-logo-frame brand-logo-frame--header"><img class="brand__logo brand__logo--header" src="{% if site_settings.logo %}{{ site_settings.logo.url }}{% else %}{% static 'img/ewm-original-mark.svg' %}{% endif %}" alt="{{ site_settings.display_site_name }}" width="92" height="38"></span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-nav-toggle>
         <span></span><span></span><span></span><span class="sr-only">{% if is_rtl %}القائمة{% else %}Menu{% endif %}</span>
@@ -134,7 +134,7 @@
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <div class="footer-brand"><a class="brand brand--footer" href="{% url 'home' %}" aria-label="{{ site_settings.display_site_name }} {% ui 'Home' %}"><img class="brand__logo brand__logo--footer{% if site_settings.logo %} is-uploaded{% endif %}" src="{% if site_settings.logo %}{{ site_settings.logo.url }}{% else %}{% static 'img/ewm-original.svg' %}{% endif %}" alt="{{ site_settings.display_site_name }}" width="165" height="68"></a><p>{{ site_settings.display_tagline }}</p></div>
+      <div class="footer-brand"><a class="brand brand--footer" href="{% url 'home' %}" aria-label="{{ site_settings.display_site_name }} {% ui 'Home' %}"><span class="brand-logo-frame brand-logo-frame--footer{% if site_settings.logo %} is-uploaded{% endif %}"><img class="brand__logo brand__logo--footer" src="{% if site_settings.logo %}{{ site_settings.logo.url }}{% else %}{% static 'img/ewm-original.svg' %}{% endif %}" alt="{{ site_settings.display_site_name }}" width="165" height="68"></span></a><p>{{ site_settings.display_tagline }}</p></div>
       <div><h2>{% ui "Markets" %}</h2><a href="{{ '/eurusd-forecast/'|localized_path }}">{% ui "Currencies" %}</a><a href="{{ '/gold-forecast/'|localized_path }}">{% ui "Commodities" %}</a><a href="{{ '/cryptocurriencies-forecast/'|localized_path }}">{% ui "Cryptocurrencies" %}</a><a href="{{ '/stocks-forecast/'|localized_path }}">{% ui "Stocks" %}</a></div>
       <div><h2>{% ui "Resources" %}</h2><a href="{{ '/education/'|localized_path }}">{% ui "Education" %}</a><a href="{% url 'contact' %}">{% ui "Contact us" %}</a><a href="{{ '/privacy-policy/'|localized_path }}">{% ui "Privacy policy" %}</a><a href="{{ '/terms-conditions/'|localized_path }}">{% ui "Terms & conditions" %}</a></div>
       <div><h2>{% ui "Follow" %}</h2>{% include "content/_social_links.html" %}<a href="{% url 'feed' %}">{% ui "RSS feed" %}</a>{% if site_settings.contact_email %}<a class="contact-email" href="mailto:{{ site_settings.contact_email }}" dir="ltr">{{ site_settings.contact_email }}</a>{% endif %}</div>

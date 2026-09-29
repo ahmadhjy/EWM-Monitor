@@ -136,12 +136,13 @@ class EditorialTests(TestCase):
 
     def test_uploaded_logo_is_used_and_updates_without_code_changes(self):
         settings = SiteSettings.load()
-        for filename in ('branding/client-logo.png', 'branding/revised-logo.png'):
+        for filename in ('branding/client-logo.png', 'branding/revised-logo.png', 'branding/lOGO-SVG.gif'):
             settings.logo.name = filename
             settings.save()
             soup = BeautifulSoup(self.client.get('/en/').content, 'html.parser')
             for selector in ('.brand__logo--header', '.brand__logo--footer'):
                 self.assertTrue(soup.select_one(selector)['src'].endswith(filename))
+                self.assertIn('brand-logo-frame', soup.select_one(selector).parent.get('class'))
 
     def test_word_language_menu_and_mobile_menu_contents(self):
         soup = BeautifulSoup(self.client.get('/en/').content, 'html.parser')
