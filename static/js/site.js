@@ -21,8 +21,13 @@
   const navToggle = document.querySelector("[data-nav-toggle]");
   const navigation = document.querySelector("[data-navigation]");
   const navLabel = navToggle?.querySelector(".sr-only");
+  const languageMenu = document.querySelector("[data-language-menu]");
+  document.addEventListener("click", (event) => {
+    if (languageMenu && !languageMenu.contains(event.target)) languageMenu.open = false;
+  });
   const setNavigation = (open) => {
     if (!navToggle || !navigation) return;
+    if (open && languageMenu) languageMenu.open = false;
     navToggle.setAttribute("aria-expanded", String(open));
     navigation.classList.toggle("is-open", open);
     document.body.classList.toggle("nav-open", open);
@@ -39,6 +44,7 @@
     });
     window.addEventListener("resize", () => {
       if (window.innerWidth > 1279) setNavigation(false);
+      else if (navigation.classList.contains("is-open")) setNavigation(true);
     }, { passive: true });
   }
 
@@ -96,6 +102,11 @@
 
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
+    if (languageMenu?.open) {
+      languageMenu.open = false;
+      languageMenu.querySelector("summary").focus({ preventScroll: true });
+      return;
+    }
     const expanded = navigation?.querySelector('[data-submenu-toggle][aria-expanded="true"]');
     if (expanded) {
       expanded.setAttribute("aria-expanded", "false");

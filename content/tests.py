@@ -61,7 +61,8 @@ class PublicSiteTests(TestCase):
         self.assertContains(response, 'lang="ar" dir="rtl"')
         self.assertContains(response, 'hreflang="ar"')
         self.assertContains(response, 'hreflang="en"')
-        self.assertContains(response, "🇬🇧")
+        self.assertContains(response, "data-language-menu")
+        self.assertContains(response, 'aria-label="English"')
         self.assertNotContains(response, self.english_only_article.title)
 
     def test_english_version_uses_prefixed_urls_and_ltr_layout(self):
@@ -70,8 +71,9 @@ class PublicSiteTests(TestCase):
         self.assertContains(response, 'lang="en" dir="ltr"')
         self.assertContains(response, self.article.title)
         self.assertContains(response, self.english_only_article.title)
-        self.assertContains(response, "🇸🇦")
-        self.assertContains(response, "img/flag-sa.webp")
+        self.assertContains(response, "data-language-menu")
+        self.assertContains(response, 'aria-label="العربية"')
+        self.assertNotContains(response, "img/flag-sa.webp")
 
     def test_home_is_minimal_editorial_layout_without_hero(self):
         arabic = self.client.get("/")

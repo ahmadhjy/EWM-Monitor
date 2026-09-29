@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load content_extras %}
-{% block content %}
+{% block page_layout %}
 {% include "content/_news_gallery.html" %}
 {% if category.display_body %}<section class="market-guide section--soft"><div class="container"><article class="prose">{{ category.display_body|localized_content }}</article></div></section>{% endif %}
 {% endblock %}

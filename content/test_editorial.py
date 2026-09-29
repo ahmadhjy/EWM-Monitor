@@ -123,3 +123,45 @@ class EditorialTests(TestCase):
             self.assertContains(response, label)
         self.assertContains(response, 'lang="en"')
         self.assertNotContains(response, '<html lang="ar"')
+
+    def test_shared_sidebar_subscription_removal_and_forecast_sections(self):
+        for route in ('/', '/en/', '/en/gold-forecast/', '/en/news-lead/', '/en/education/', '/en/latest-news-and-analysis/', '/en/search/?q=gold', '/en/contact-us/'):
+            response = self.client.get(route)
+            self.assertEqual(response.status_code, 200, route)
+            soup = BeautifulSoup(response.content, 'html.parser')
+            self.assertEqual(len(soup.select('aside.site-sidebar')), 1, route)
+            self.assertFalse(soup.select('.newsletter-form, .newsletter-section, [data-guide-jump], .news-kicker'))
+            self.assertTrue(soup.select('.forecast-meta time'))
+        self.assertContains(self.client.get('/en/gold-forecast/'), 'class="archive-entry"')
+
+    def test_uploaded_logo_is_used_and_updates_without_code_changes(self):
+        settings = SiteSettings.load()
+        for filename in ('branding/client-logo.png', 'branding/revised-logo.png'):
+            settings.logo.name = filename
+            settings.save()
+            soup = BeautifulSoup(self.client.get('/en/').content, 'html.parser')
+            for selector in ('.brand__logo--header', '.brand__logo--footer'):
+                self.assertTrue(soup.select_one(selector)['src'].endswith(filename))
+
+    def test_word_language_menu_and_mobile_menu_contents(self):
+        soup = BeautifulSoup(self.client.get('/en/').content, 'html.parser')
+        self.assertEqual([link.get('hreflang') for link in soup.select('.language-menu nav a')], ['ar', 'en'])
+        self.assertFalse(soup.select('.language-menu img'))
+        nav = soup.select_one('[data-navigation]')
+        self.assertIn('mobile-menu-search', nav.find(recursive=False).get('class'))
+        self.assertTrue(nav.select('.mobile-menu-socials'))
+        self.assertIn('Trending:', soup.select_one('.market-watch').get_text())
+
+    def test_home_education_limit_and_standard_education_archive(self):
+        for index in range(23):
+            Article.objects.create(title=f'Lesson {index}', slug=f'lesson-{index}', category=self.education, status='published', body='<p>Complete lesson content</p>')
+        home = self.client.get('/en/')
+        self.assertEqual(len(home.context['education_articles']), 3)
+        soup = BeautifulSoup(home.content, 'html.parser')
+        self.assertEqual(len(soup.select('.home-education .article-card')), 3)
+        response = self.client.get('/en/education/')
+        self.assertEqual(len(response.context['articles']), 20)
+        self.assertNotContains(response, 'data-archive-feed')
+        self.assertNotContains(response, 'js/archive.js')
+        self.assertNotContains(response, 'archive-entry__body')
+        self.assertEqual(len(self.client.get('/en/education/?page=2').context['articles']), 4)

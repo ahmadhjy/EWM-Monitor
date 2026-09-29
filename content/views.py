@@ -75,7 +75,7 @@ def home(request):
     articles = published_articles()
     news = list(articles.filter(Q(category__slug="latest-news-and-analysis") | Q(additional_categories__slug="latest-news-and-analysis")).distinct()[:4])
     forecasts = articles.filter(Q(category__slug__endswith="-forecast") | Q(additional_categories__slug__endswith="-forecast")).distinct()[:7]
-    education = articles.filter(Q(category__nav_group="education") | Q(category__slug="education") | Q(additional_categories__slug="education")).distinct()[:6]
+    education = articles.filter(Q(category__nav_group="education") | Q(category__slug="education") | Q(additional_categories__slug="education")).distinct()[:3]
     return render(
         request,
         "content/home.html",
@@ -85,6 +85,7 @@ def home(request):
             news_cards=news[1:],
             forecasts=forecasts,
             education_articles=education,
+            is_home=True,
             page_title=("توقعات موجات إليوت وتحليل الأسواق" if is_arabic() else "Elliott Wave Forecasts & Market Analysis"),
             page_description=SiteSettings.load().display_tagline,
         ),
@@ -107,8 +108,9 @@ def article_detail(request, article):
 def category_detail(request, category):
     articles = published_articles().filter(Q(category=category) | Q(additional_categories=category)).distinct()
     is_news = category.slug == "latest-news-and-analysis"
+    is_education = category.slug == "education" or category.nav_group == "education"
     try:
-        page = Paginator(articles, 20 if is_news else 2).page(request.GET.get("page", 1))
+        page = Paginator(articles, 20 if is_news or is_education else 2).page(request.GET.get("page", 1))
     except InvalidPage:
         raise Http404("Archive page not found")
     context = page_context(request, category, category=category, articles=page, archive_page_number=page.number)
@@ -127,6 +129,9 @@ def category_detail(request, category):
             page_numbers=page.paginator.get_elided_page_range(page.number, on_each_side=2, on_ends=1),
         )
         return render(request, "content/news_archive.html", context)
+    if is_education:
+        context["page_numbers"] = page.paginator.get_elided_page_range(page.number, on_each_side=2, on_ends=1)
+        return render(request, "content/education_archive.html", context)
     return render(request, "content/category_detail.html", context)
 
 

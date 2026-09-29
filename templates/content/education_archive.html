@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% load content_extras %}
+{% block content %}
+<header class="archive-heading"><div class="container"><nav class="breadcrumbs" aria-label="{% ui 'Breadcrumb' %}"><a href="{% url 'home' %}">{% ui "Home" %}</a><span>/</span><span>{{ category.display_name }}</span></nav><h1>{{ category.display_name }}</h1>{% if category.display_short_description %}<p>{{ category.display_short_description }}</p>{% endif %}</div></header>
+<section class="education-archive"><h2 class="sr-only">{% if is_rtl %}المقالات التعليمية{% else %}Education articles{% endif %}</h2><div class="article-grid article-grid--archive">{% for article in articles %}{% include "content/_article_card.html" %}{% empty %}<p class="editorial-empty">{% if is_rtl %}ستظهر المقالات التعليمية هنا بعد نشر ترجمتها العربية.{% else %}Published education articles will appear here.{% endif %}</p>{% endfor %}</div>{% include "content/_news_pagination.html" %}</section>
+{% if category.display_body %}<section class="market-guide section--soft"><article class="prose">{{ category.display_body|localized_content }}</article></section>{% endif %}
+{% endblock %}

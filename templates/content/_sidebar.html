@@ -1,0 +1,9 @@
+{% load content_extras %}
+<aside class="site-sidebar{% if is_home %} site-sidebar--home{% endif %}" aria-label="{% if is_rtl %}آخر التوقعات والموارد{% else %}Latest forecasts and resources{% endif %}">
+  <section class="latest-forecasts"><div class="editorial-heading"><h2>{% if is_rtl %}أحدث التوقعات{% else %}Latest forecasts{% endif %}</h2></div><ol>{% for forecast in sidebar_forecasts %}<li><div class="forecast-meta"><span class="forecast-author">{{ forecast.author_name }}</span><time datetime="{{ forecast.published_at|date:'c' }}">{{ forecast.published_at|date:"M j, Y" }}</time></div><h3><a href="{{ forecast.get_absolute_url }}">{{ forecast.display_title }}</a></h3></li>{% empty %}<li class="editorial-empty">{% ui "No published analysis yet" %}</li>{% endfor %}</ol></section>
+  {% if not compact %}
+  {% if article %}<section class="sidebar-widget"><h2>{% ui "In this analysis" %}</h2><nav data-toc><a href="#main-content">{% ui "Overview" %}</a></nav></section>{% endif %}
+  <section class="sidebar-widget"><h2>{% ui "Markets" %}</h2><div class="sidebar-market-links"><a href="{{ '/eurusd-forecast/'|localized_path }}">EUR/USD</a><a href="{{ '/gold-forecast/'|localized_path }}">{% if is_rtl %}الذهب{% else %}Gold{% endif %}</a><a href="{{ '/crude-oil-forecast/'|localized_path }}">{% if is_rtl %}النفط{% else %}Crude oil{% endif %}</a><a href="{{ '/btcusd-forecast/'|localized_path }}">BTC/USD</a></div></section>
+  <section class="sidebar-widget"><h2>{% if is_rtl %}تعليم التداول{% else %}Trading education{% endif %}</h2><p>{% ui "Structure before direction" %}</p><a class="text-link" href="{{ '/education/'|localized_path }}">{% ui "Learn Elliott Wave" %} ↗</a></section>
+  {% endif %}
+</aside>

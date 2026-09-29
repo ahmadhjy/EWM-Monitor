@@ -1,0 +1,4 @@
+<details class="language-menu" data-language-menu>
+  <summary aria-label="{% if is_rtl %}اختيار اللغة{% else %}Choose language{% endif %}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c5 5 5 13 0 18-5-5-5-13 0-18Z"/></svg><span>{{ language_code|upper }}</span><span aria-hidden="true">⌄</span></summary>
+  <nav aria-label="{% if is_rtl %}اللغة{% else %}Language{% endif %}"><a href="{{ alternate_ar_url|default:'/' }}" lang="ar" hreflang="ar"{% if is_rtl %} aria-current="true"{% endif %} aria-label="العربية">AR <span>العربية</span></a><a href="{{ alternate_en_url|default:'/en/' }}" lang="en" hreflang="en"{% if not is_rtl %} aria-current="true"{% endif %} aria-label="English">EN <span>English</span></a></nav>
+</details>

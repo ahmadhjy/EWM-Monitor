@@ -1,8 +1,9 @@
 from django.conf import settings
-from django.db.models import Prefetch
+from django.db.models import Prefetch, Q
+from django.utils import timezone
 from django.utils.translation import get_language
 
-from .models import MenuItem, SiteSettings
+from .models import Article, MenuItem, SiteSettings
 
 
 def site_context(request):
@@ -23,9 +24,13 @@ def site_context(request):
     primary = MenuItem.objects.filter(group="primary", is_active=True, parent__isnull=True).prefetch_related(Prefetch("children", queryset=MenuItem.objects.filter(is_active=True), to_attr="active_children"))
     footer = MenuItem.objects.filter(group="footer", is_active=True, parent__isnull=True)
     language_code = (get_language() or settings.LANGUAGE_CODE).split("-")[0]
+    forecasts = Article.objects.filter(status="published", published_at__lte=timezone.now()).filter(Q(category__slug__endswith="-forecast") | Q(additional_categories__slug__endswith="-forecast")).distinct().order_by("-published_at", "-pk")
+    if language_code == "ar":
+        forecasts = forecasts.exclude(title_ar="").exclude(body_ar="")
     return {
         "site_settings": site_settings,
         "social_links": social_links,
+        "sidebar_forecasts": forecasts[:7],
         "site_url": settings.SITE_URL,
         "site_indexing_enabled": settings.SITE_INDEXING_ENABLED,
         "primary_menu": primary,

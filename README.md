@@ -56,8 +56,8 @@ The import is idempotent: articles, pages, categories, and media records are mat
 ### News-first homepage and open archives (September 27 update)
 
 - The homepage shows the newest four published **News & Analysis** articles: one lead image plus up to three smaller stories. It never borrows stories from other categories to fill gaps. Add this category as primary or additional to include a story.
-- The separate text-only rail shows the newest seven forecast articles; the education section shows up to six lessons. All sections respect language availability and publication dates. Arabic education stays empty until editors translate lessons.
-- News & Analysis uses the homepage gallery and latest-forecast sidebar, with 20 news stories per page (one lead and up to 19 smaller cards). It uses numbered pagination, not infinite scroll. Forecast and other category archives retain complete article bodies and charts, two articles per page, with progressive loading and fallback pagination. Each page has its own canonical URL.
+- The separate text-only rail shows the newest seven forecast articles (four on the mobile homepage), with author and publication date. The homepage education section shows up to three lessons. All sections respect language availability and publication dates. Arabic education stays empty until editors translate lessons.
+- News & Analysis uses the homepage gallery and latest-forecast sidebar, with 20 news stories per page (one lead and up to 19 smaller cards). Education uses a card archive with 20 lessons per page. Both use numbered pagination, not infinite scroll. Forecast archives retain complete article bodies and charts, two articles per page, with progressive loading and fallback pagination. Each page has its own canonical URL.
 - Under **Categories**, edit **English/Arabic archive title** to control the H1. **Market guides — optional** contains independent rich-text fields for both languages. A blank guide is hidden, never replaced with the other language's text.
 - Market-watch links and social icons replace the legal/contact links at the top. Policies, Terms and Contact remain in the footer. Social destinations remain editable in **Site settings**.
 - The former hero is no longer displayed. Its old settings are retained in a collapsed legacy section, without deleting content.
@@ -78,7 +78,15 @@ These are lab measurements, not guaranteed scores on every connection.
 
 To manually translate an existing English article, open **Articles**, select the article, and scroll to **Arabic translation**. Enter **Arabic title** and **Arabic body**, optionally add an Arabic excerpt, image alt text, and Arabic SEO fields, then save. Both title and body must be present before the article appears on Arabic pages. The **Arabic edition** column shows which articles have a translation. Education remains English-only until editors complete these fields.
 
-Collected emails appear under **Newsletter subscribers** in the sidebar. Duplicate addresses are consolidated case-insensitively. Contact messages appear under **Messages**; email notifications are disabled until delivery credentials are configured.
+The public subscription forms have been removed. Previously collected emails remain under **Newsletter subscribers** in the admin; no subscriber records were deleted. Contact messages appear under **Messages**; email notifications are disabled until delivery credentials are configured.
+
+### Navigation and reading refinements (September 29 update)
+
+- A globe/AR/EN dropdown replaces the flags. The Trending bar and main header share the same width. On mobile, search is first inside the navigation drawer, with social links below the menu items.
+- Uploading **Logo** in **Site settings** now updates the public header, footer and Organization structured data. The original bundled logo is the fallback when no upload is set.
+- Public content pages share a latest-forecasts sidebar with market and education links. Home and News & Analysis retain their compact forecast rail without duplicating it.
+- Forecast posts have separate bordered sections, and market guides remain editable below the feed without a jump link. The mobile footer uses compact grouped links.
+- Release checks: 40 Django tests and 80 focused responsive page/language/viewport checks. No database migration or content import is required.
 
 Global brand copy, social links, contact email, analytics ID, verification token, and the risk disclaimer live under **Site settings**. Navigation is editable under **Navigation**. Old URL changes can be handled under **Redirects** without code changes.
 

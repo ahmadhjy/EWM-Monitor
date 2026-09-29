@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load content_extras %}
-{% block content %}
+{% block page_layout %}
 <h1 class="sr-only">{{ page_title }}</h1>
 {% include "content/_news_gallery.html" %}
 <section class="home-education" aria-labelledby="home-education-title"><div class="container"><div class="editorial-heading"><h2 id="home-education-title">{% if is_rtl %}تعليم التداول{% else %}Education{% endif %}</h2><a href="{{ '/education/'|localized_path }}">{% if is_rtl %}جميع المقالات التعليمية{% else %}All education{% endif %} <span aria-hidden="true">↗</span></a></div><div class="article-grid">{% for article in education_articles %}{% include "content/_article_card.html" %}{% empty %}<p class="editorial-empty">{% if is_rtl %}ستظهر المقالات التعليمية هنا بعد نشر ترجمتها العربية.{% else %}Published education articles will appear here.{% endif %}</p>{% endfor %}</div></div></section>
