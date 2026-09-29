@@ -83,7 +83,7 @@ The public subscription forms have been removed. Previously collected emails rem
 ### Navigation and reading refinements (September 29 update)
 
 - A globe/AR/EN dropdown replaces the flags. The Trending bar and main header share the same width. On mobile, search is first inside the navigation drawer, with social links below the menu items.
-- Uploading **Logo** in **Site settings** now updates the public header, footer and Organization structured data. The original bundled logo is the fallback when no upload is set.
+- **Site settings → Brand images → Logo** controls the header and Organization structured data. **Footer logo** independently accepts a white/light transparent logo, fitted within 165 × 76 px without stretching or a white background. Use tightly cropped PNG/WebP artwork. If Footer logo is blank, the footer keeps using Logo (or the bundled white logo when both fields are blank).
 - Public content pages share a latest-forecasts sidebar with market and education links. Home and News & Analysis retain their compact forecast rail without duplicating it.
 - Forecast posts have separate bordered sections, and market guides remain editable below the feed without a jump link. The mobile footer uses compact grouped links.
 - Release checks: 40 Django tests and 80 focused responsive page/language/viewport checks. No database migration or content import is required.

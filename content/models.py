@@ -128,6 +128,10 @@ class SiteSettings(models.Model):
     hero_title_ar = models.CharField("Arabic hero title", max_length=180, blank=True)
     hero_text_ar = models.TextField("Arabic hero text", blank=True)
     logo = models.ImageField(upload_to="branding/", blank=True)
+    footer_logo = models.ImageField(
+        "Footer logo", upload_to="branding/footer/", blank=True,
+        help_text="Optional logo for the dark footer. Use a tightly cropped, transparent PNG or WebP with white/light artwork. It fits within 165 × 76 px without stretching. Leave blank to keep the existing footer logo.",
+    )
     default_social_image = models.ImageField(upload_to="branding/", blank=True)
     contact_email = models.EmailField(blank=True)
     telegram_url = models.URLField(blank=True)

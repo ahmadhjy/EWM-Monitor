@@ -188,7 +188,7 @@ class SiteSettingsAdmin(BilingualAdminMixin, ModelAdmin):
         ("Arabic brand — main language", {"fields": ("site_name_ar", "tagline_ar")}),
         ("English brand", {"classes": ["collapse"], "fields": ("site_name", "tagline")}),
         ("Legacy hero — no longer displayed", {"classes": ["collapse"], "description": "Retained for reference only. The homepage now shows news, forecasts and education.", "fields": ("hero_title_ar", "hero_text_ar", "hero_title", "hero_text")}),
-        ("Brand images", {"fields": ("logo", "default_social_image")}),
+        ("Brand images", {"fields": ("logo", "footer_logo", "default_social_image")}),
         ("Contact & social", {"fields": ("contact_email", "telegram_url", "instagram_url", "facebook_url", "youtube_url", "x_url", "linkedin_url")}),
         ("Arabic footer", {"fields": ("footer_disclaimer_ar",)}),
         ("English footer", {"classes": ["collapse"], "fields": ("footer_disclaimer",)}),

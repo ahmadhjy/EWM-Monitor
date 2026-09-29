@@ -153,6 +153,38 @@ class EditorialTests(TestCase):
         self.assertTrue(nav.select('.mobile-menu-socials'))
         self.assertIn('Trending:', soup.select_one('.market-watch').get_text())
 
+    def test_footer_logo_is_independent_and_preserves_fallback(self):
+        settings = SiteSettings.load()
+        settings.logo.name = 'branding/client-logo.png'
+        for filename in ('branding/footer/white-logo.png', 'branding/footer/revised-logo.webp'):
+            settings.footer_logo.name = filename
+            settings.save()
+            for route in ('/', '/en/'):
+                soup = BeautifulSoup(self.client.get(route).content, 'html.parser')
+                self.assertTrue(soup.select_one('.brand__logo--header')['src'].endswith('branding/client-logo.png'))
+                self.assertTrue(soup.select_one('.brand__logo--footer')['src'].endswith(filename))
+                frame = soup.select_one('.brand-logo-frame--footer')
+                self.assertIn('has-custom-logo', frame['class'])
+                self.assertNotIn('is-uploaded', frame['class'])
+        settings.footer_logo = ''
+        settings.save()
+        soup = BeautifulSoup(self.client.get('/en/').content, 'html.parser')
+        self.assertTrue(soup.select_one('.brand__logo--footer')['src'].endswith('branding/client-logo.png'))
+        settings.logo = ''
+        settings.save()
+        soup = BeautifulSoup(self.client.get('/en/').content, 'html.parser')
+        self.assertTrue(soup.select_one('.brand__logo--footer')['src'].endswith('img/ewm-original.svg'))
+
+    def test_footer_logo_field_is_available_in_english_admin(self):
+        user = get_user_model().objects.create_superuser(username='footer-editor', password='test-password-only')
+        self.client.force_login(user)
+        settings = SiteSettings.load()
+        response = self.client.get(f'/admin/content/sitesettings/{settings.pk}/change/')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'name="footer_logo"')
+        self.assertContains(response, 'Footer logo')
+        self.assertContains(response, 'lang="en"')
+
     def test_home_education_limit_and_standard_education_archive(self):
         for index in range(23):
             Article.objects.create(title=f'Lesson {index}', slug=f'lesson-{index}', category=self.education, status='published', body='<p>Complete lesson content</p>')
