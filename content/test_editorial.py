@@ -32,6 +32,28 @@ class EditorialTests(TestCase):
         self.assertNotContains(self.client.get("/"), "Education lesson")
         self.assertNotContains(response, 'class="hero"')
 
+    def test_article_excerpts_stay_in_cards_and_metadata_not_reading_headers(self):
+        article = Article.objects.get(slug='forecast-6')
+        article.excerpt = 'Unique card summary'
+        article.excerpt_ar = 'ملخص البطاقة فقط'
+        article.meta_description = 'Dedicated SEO description'
+        article.meta_description_ar = 'وصف خاص لمحركات البحث'
+        article.save()
+        for prefix, description, excerpt in (
+            ('/en/', article.meta_description, article.excerpt),
+            ('/', article.meta_description_ar, article.excerpt_ar),
+        ):
+            soup = BeautifulSoup(self.client.get(prefix + article.slug + '/').content, 'html.parser')
+            self.assertFalse(soup.select('.article-standfirst'))
+            self.assertNotIn(excerpt, soup.select_one('.article-hero').get_text())
+            self.assertEqual(soup.select_one('meta[name="description"]')['content'], description)
+            self.assertTrue(soup.select_one('[data-article-body]').get_text(strip=True))
+            archive = BeautifulSoup(self.client.get(prefix + 'gold-forecast/').content, 'html.parser')
+            self.assertNotIn(excerpt, archive.select_one('[data-archive-batch]').get_text())
+            self.assertTrue(archive.select_one('.archive-entry__body').get_text(strip=True))
+            cards = BeautifulSoup(self.client.get(prefix + 'search/', {'q': excerpt}).content, 'html.parser')
+            self.assertEqual(cards.select_one('.article-card__copy p').get_text(), excerpt)
+
     def test_news_gallery_has_twenty_stories_and_standard_pagination(self):
         for index in range(22):
             Article.objects.create(title=f"News {index}", title_ar=f"خبر {index}", slug=f"news-{index}", body="<p>News article body</p>", body_ar="<p>نص الخبر</p>", category=self.news, status="published", published_at=self.stamp)
