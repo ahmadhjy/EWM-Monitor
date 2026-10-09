@@ -14,6 +14,7 @@ from tinymce.widgets import AdminTinyMCE
 from unfold.admin import ModelAdmin, TabularInline
 
 from .forms import MediaAssetUploadForm
+from . import statistics  # Register the permission-protected Statistics dashboard.
 from .models import (
     Article,
     Category,

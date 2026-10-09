@@ -10,3 +10,5 @@ preview/
 .coverage
 *.log
 deploy/.production-*
+*service-account*.json
+*credentials*.json

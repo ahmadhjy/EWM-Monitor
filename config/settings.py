@@ -13,6 +13,10 @@ ALLOWED_HOSTS = [item.strip() for item in os.getenv("ALLOWED_HOSTS", "127.0.0.1,
 SITE_URL = os.getenv("SITE_URL", "http://127.0.0.1:8000").rstrip("/")
 SITE_INDEXING_ENABLED = os.getenv("SITE_INDEXING_ENABLED", "True").lower() == "true"
 TRUST_PROXY_CLIENT_IP = os.getenv("TRUST_PROXY_CLIENT_IP", "False").lower() == "true"
+TRAFFIC_STATS_ENABLED = os.getenv("TRAFFIC_STATS_ENABLED", str(not DEBUG)).lower() == "true"
+TRAFFIC_STATS_RETENTION_DAYS = 180
+SEARCH_CONSOLE_PROPERTY = os.getenv("SEARCH_CONSOLE_PROPERTY", "sc-domain:elliottwavemonitor.com")
+SEARCH_CONSOLE_CREDENTIALS = os.getenv("SEARCH_CONSOLE_CREDENTIALS", "")
 
 INSTALLED_APPS = [
     "unfold",
@@ -39,6 +43,7 @@ MIDDLEWARE = [
     "django.middleware.gzip.GZipMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "content.traffic.TrafficMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -211,6 +216,7 @@ UNFOLD = {
                 "title": "Site management",
                 "separator": True,
                 "items": [
+                    {"title": "Statistics", "icon": "bar_chart", "link": "/admin/content/trafficdaily/", "permission": lambda request: request.user.has_perm("content.view_trafficdaily")},
                     {"title": "Site settings", "icon": "settings", "link": "/admin/content/sitesettings/"},
                     {"title": "Navigation", "icon": "menu", "link": "/admin/content/menuitem/"},
                     {"title": "Redirects", "icon": "move_up", "link": "/admin/content/redirect/"},

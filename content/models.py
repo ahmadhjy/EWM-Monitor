@@ -487,3 +487,18 @@ class NewsletterSubscriber(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class TrafficDaily(models.Model):
+    date = models.DateField(db_index=True)
+    path = models.CharField(max_length=300)
+    language = models.CharField(max_length=2)
+    device = models.CharField(max_length=12)
+    referrer = models.CharField(max_length=253, default="Direct / unknown")
+    views = models.PositiveBigIntegerField(default=1)
+
+    class Meta:
+        verbose_name = "Statistics"
+        verbose_name_plural = "Statistics"
+        default_permissions = ("view",)
+        constraints = [models.UniqueConstraint(fields=("date", "path", "language", "device", "referrer"), name="unique_traffic_daily_bucket")]
