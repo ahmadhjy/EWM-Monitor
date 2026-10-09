@@ -2,6 +2,8 @@ from datetime import timedelta
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 from zoneinfo import ZoneInfo
+from urllib.parse import parse_qs, urlsplit
+from bs4 import BeautifulSoup
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AnonymousUser, Permission
@@ -12,7 +14,7 @@ from django.test import RequestFactory, TestCase, override_settings
 from django.utils import timezone
 
 from .models import TrafficDaily
-from .search_console import search_report
+from .search_console import page_number, search_report
 from .traffic import TrafficMiddleware
 
 
@@ -73,6 +75,14 @@ class TrafficTests(TestCase):
         with patch('content.traffic.TrafficDaily.objects.filter', side_effect=DatabaseError('offline')):
             self.count()
 
+    @patch('content.traffic.request_country', side_effect=['LB', 'SA', 'LB'])
+    def test_country_buckets_preserve_counts_without_ip_storage(self, country):
+        for _ in range(3):
+            self.count(REMOTE_ADDR='8.8.8.8')
+        self.assertEqual(TrafficDaily.objects.get(country='LB').views, 2)
+        self.assertEqual(TrafficDaily.objects.get(country='SA').views, 1)
+        self.assertNotIn('8.8.8.8', str(list(TrafficDaily.objects.values())))
+
 
 @override_settings(SEARCH_CONSOLE_CREDENTIALS='')
 class StatisticsAdminTests(TestCase):
@@ -107,6 +117,45 @@ class StatisticsAdminTests(TestCase):
         self.assertEqual(response.context['days'], 28)
         self.assertEqual(response.context['views'], 10)
 
+    @patch('content.statistics.search_report')
+    def test_independent_pagination_preserves_other_tables_and_period(self, report):
+        self.user.is_superuser = True
+        self.user.save()
+        self.client.force_login(self.user)
+        report.return_value = {'status': 'connected', 'queries': [{'keys':['<script>unsafe</script>']}], 'pages': [], 'countries': [], 'queries_has_next': True, 'pages_has_next': False, 'countries_has_next': True}
+        response = self.client.get('/admin/content/trafficdaily/?days=90&queries_page=2&pages_page=3&countries_page=4')
+        report.assert_called_once_with(90, queries_page=2, pages_page=3, countries_page=4)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        for label, parameter, next_page in [('Search queries', 'queries_page', '3'), ('Google countries', 'countries_page', '5')]:
+            link = soup.find('a', attrs={'aria-label': label+': next page'})
+            params = parse_qs(urlsplit(link['href']).query)
+            self.assertEqual(params['days'], ['90'])
+            self.assertEqual(params[parameter], [next_page])
+            self.assertEqual(params['pages_page'], ['3'])
+        self.assertIsNone(soup.find('a', attrs={'aria-label': 'Google pages: next page'}))
+        self.assertIsNotNone(soup.find('a', attrs={'aria-label': 'Google pages: first page'}))
+        self.assertContains(response, '&lt;script&gt;unsafe&lt;/script&gt;')
+        self.assertContains(response, 'Google Search only')
+        self.assertContains(response, 'All website traffic')
+        self.assertEqual(soup.find('nav', attrs={'aria-label':'Reporting period'}).find('a')['href'], '?days=7')
+
+    def test_all_traffic_countries_pagination_totals_and_unknown_history(self):
+        self.user.is_superuser = True
+        self.user.save()
+        self.client.force_login(self.user)
+        for code in ('LB','SA','AE','US','GB','FR','DE','ES','IT','CA','AU',''):
+            TrafficDaily.objects.create(date=timezone.localdate(),path='/',language='ar',device='Desktop',country=code,views=2)
+        response = self.client.get('/admin/content/trafficdaily/')
+        self.assertEqual(response.context['country_count'], 11)
+        self.assertEqual(response.context['views'], 24)
+        self.assertEqual(len(response.context['traffic_countries']), 10)
+        self.assertContains(response, 'Unknown')
+        self.assertContains(response, 'IP Geolocation by DB-IP')
+        second = self.client.get('/admin/content/trafficdaily/?traffic_countries_page=2')
+        self.assertEqual(len(second.context['traffic_countries']), 2)
+        self.assertIsNone(second.context['traffic_countries_pagination']['next'])
+        self.assertTrue(second.context['traffic_countries_pagination']['previous'])
+
 
 class SearchConsoleTests(TestCase):
     def setUp(self):
@@ -133,11 +182,70 @@ class SearchConsoleTests(TestCase):
         self.assertEqual(report['status'], 'connected')
         self.assertEqual(report['totals']['clicks'], 2)
         self.assertEqual(report['end'], timezone.localdate(timezone=ZoneInfo('America/Los_Angeles'))-timedelta(days=3))
-        self.assertEqual(post.call_count, 3)
+        self.assertEqual(post.call_count, 4)
         self.assertEqual(factory.call_args.kwargs['scopes'], ['https://www.googleapis.com/auth/webmasters.readonly'])
         self.assertEqual(post.call_args_list[0].kwargs['json']['dimensions'], [])
         self.assertEqual(search_report(28)['status'], 'connected')
-        self.assertEqual(post.call_count, 3)
+        self.assertEqual(post.call_count, 4)
+
+    @override_settings(SEARCH_CONSOLE_CREDENTIALS='/private/service-account.json')
+    @patch('content.search_console.Path')
+    @patch('google.oauth2.service_account.Credentials.from_service_account_info')
+    @patch('content.search_console.requests.post')
+    def test_paginated_offsets_countries_and_cache_isolation(self, post, factory, path):
+        path.return_value.stat.return_value.st_mtime_ns = 1
+        path.return_value.read_text.return_value = '{"type":"service_account","token_uri":"https://oauth2.googleapis.com/token"}'
+        factory.return_value.token = 'test-token'
+        def respond(*args, **kwargs):
+            body = kwargs['json']
+            response = MagicMock()
+            if not body['dimensions']:
+                rows = [{'clicks': 50}]
+            elif body['dimensions'] == ['country']:
+                rows = [{'keys': ['sau'], 'clicks': 5, 'ctr': .25, 'position': 3}]
+            else:
+                rows = [{'keys': [str(i)]} for i in range(body['startRow'], body['startRow'] + 11)]
+            response.json.return_value = {'rows': rows}
+            return response
+        post.side_effect = respond
+        first = search_report(28)
+        second = search_report(28, queries_page=2, pages_page=3, countries_page=2)
+        self.assertEqual(first['queries'][0]['keys'], ['0'])
+        self.assertEqual(second['queries'][0]['keys'], ['10'])
+        self.assertEqual(second['pages'][0]['keys'], ['20'])
+        self.assertEqual(len(second['queries']), 10)
+        self.assertTrue(second['queries_has_next'])
+        self.assertTrue(second['pages_has_next'])
+        self.assertFalse(second['countries_has_next'])
+        self.assertEqual(second['countries'][0]['country_name'], 'Saudi Arabia')
+        self.assertEqual(second['countries'][0]['ctr_percent'], 25)
+        self.assertEqual(post.call_args_list[-1].kwargs['json']['startRow'], 10)
+        self.assertEqual(post.call_count, 8)
+        search_report(28, queries_page=2, pages_page=3, countries_page=2)
+        self.assertEqual(post.call_count, 8)
+
+    @override_settings(SEARCH_CONSOLE_CREDENTIALS='/private/service-account.json')
+    @patch('content.search_console.Path')
+    @patch('google.oauth2.service_account.Credentials.from_service_account_info')
+    @patch('content.search_console.requests.post')
+    def test_last_and_empty_pages_have_no_next_link(self, post, factory, path):
+        path.return_value.stat.return_value.st_mtime_ns = 1
+        path.return_value.read_text.return_value = '{"type":"service_account","token_uri":"https://oauth2.googleapis.com/token"}'
+        factory.return_value.token = 'test-token'
+        for count in (0, 10):
+            cache.clear()
+            post.return_value.json.return_value = {'rows': [{'keys':['zzz']}] * count}
+            report = search_report(28)
+            self.assertFalse(report['queries_has_next'])
+            self.assertFalse(report['pages_has_next'])
+            self.assertFalse(report['countries_has_next'])
+            if count:
+                self.assertEqual(report['countries'][0]['country_name'], 'ZZZ')
+
+    def test_invalid_page_numbers_reset(self):
+        for value in ('bad', '-1', '0', '1000001', None, '9' * 5000):
+            self.assertEqual(page_number(value), 1)
+        self.assertEqual(page_number('3'), 3)
 
     @override_settings(SEARCH_CONSOLE_CREDENTIALS='/private/secret-key.json')
     @patch('content.search_console.Path', side_effect=ValueError('private-secret'))

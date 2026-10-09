@@ -11,6 +11,7 @@ from django.db.models import F
 from django.utils import timezone
 
 from .models import TrafficDaily
+from .geography import request_country
 
 BOT = re.compile(r"bot|spider|crawl|slurp|headless|lighthouse|python|curl|wget|monitor|preview|facebookexternalhit", re.I)
 logger = logging.getLogger(__name__)
@@ -47,7 +48,7 @@ class TrafficMiddleware:
         except ValueError:
             pass
         device = "Tablet" if re.search(r"ipad|tablet", agent, re.I) else "Mobile" if re.search(r"mobile|android|iphone", agent, re.I) else "Desktop"
-        bucket = dict(date=today, path=request.path[:300], language="en" if request.path.startswith("/en/") else "ar", device=device, referrer=referrer)
+        bucket = dict(date=today, path=request.path[:300], language="en" if request.path.startswith("/en/") else "ar", device=device, referrer=referrer, country=request_country(request))
         try:
             if not TrafficDaily.objects.filter(**bucket).update(views=F("views") + 1):
                 try:

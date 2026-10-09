@@ -21,7 +21,7 @@ page-view counts are relied on. Standard static-asset caching is fine.
 
 No frontend analytics script, analytics cookie, IP address, user identifier,
 full user-agent, query string, or full referrer URL is stored by this feature.
-Daily buckets contain path, language, device category, referrer hostname and count.
+Daily buckets contain path, language, device category, country, referrer hostname and count.
 Counter increments are atomic. Old aggregates are pruned after 180 days on the
 next counted request. Existing server access logs have separate retention rules.
 Do not mistake basic bot filtering for a guarantee that every count is human.
@@ -56,8 +56,11 @@ Do not mistake basic bot filtering for a guarantee that every count is human.
 Reports use the Google read-only webmasters scope, never expose credentials to
 the browser, and cache results for 30 minutes (failures for five minutes).
 The Google reporting window uses Pacific dates and ends three days ago, requesting
-finalized Web Search data. Property totals are requested separately from top-ten
-query/page rows because Google omits some anonymized/low-volume data.
+finalized Web Search data. Queries, landing pages and countries each have independent
+10-row Previous/Next pagination, preserving the selected period and other tables.
+The API startRow offset and one lookahead row determine whether Next is available;
+no total is invented. Property totals are requested separately from paginated
+rows because Google omits some anonymized/low-volume data.
 The local traffic report uses the configured website timezone.
 
 Credential rotation: install the new private file securely, restart the service,
@@ -66,3 +69,26 @@ new reports; cached reports can remain up to 30 minutes. To disconnect immediate
 clear SEARCH_CONSOLE_CREDENTIALS and restart the application.
 
 Reference: https://developers.google.com/webmaster-tools/v1/searchanalytics/query
+
+## Country statistics for all website traffic
+
+This is separate from Google countries and measures page views by approximate
+country across all traffic sources, not unique people. Previously collected
+views remain Unknown; IP addresses were not stored and cannot be backfilled.
+Country lookup is local, with no visitor IP sent to third parties or persisted
+in statistics. VPNs, proxies, missing records and location database errors can
+produce inaccurate/Unknown countries. Existing bot and privacy exclusions apply.
+
+The provider is DB-IP Country Lite, licensed CC BY 4.0. Keep the linked DB-IP
+attribution in the dashboard. The dataset is not committed or publicly served.
+Set TRAFFIC_COUNTRY_DATABASE=/var/lib/ewm/geoip/country.mmdb in /etc/ewm.env,
+then run `python manage.py update_country_database` with the production environment
+loaded and permission to write that directory. Restart the service after initial
+configuration. The command downloads the current monthly file over HTTPS,
+validates it and atomically replaces the old file; failed updates preserve it.
+Refresh monthly with that command. The dashboard warns after 62 days of age.
+
+Keep TRUST_PROXY_CLIENT_IP=True only behind the installed nginx proxy, which
+overwrites X-Real-IP with the validated connection address. The configured
+Cloudflare real-IP list handles proxied traffic; untrusted visitor country and
+forwarded headers are never accepted as location evidence.

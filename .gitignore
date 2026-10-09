@@ -12,3 +12,5 @@ preview/
 deploy/.production-*
 *service-account*.json
 *credentials*.json
+*.mmdb
+*.mmdb.gz
