@@ -40,7 +40,12 @@ Do not mistake basic bot filtering for a guarantee that every count is human.
    Install it outside `/var/www/ewm`, for example at
    `/etc/ewm-secrets/search-console-service-account.json`, owned by `root:ewm`,
    mode 0640, in a root-owned directory with mode 0750 and group `ewm`.
-6. Set these entries in the private `/etc/ewm.env`, then restart `ewm.service`:
+6. Install `deploy/ewm-search-console.conf` as
+   `/etc/systemd/system/ewm.service.d/search-console.conf` (root-owned, mode 0644)
+   and run `systemctl daemon-reload`. The explicit supplementary `ewm` group is
+   needed because the service's primary group is `www-data`; the nginx user must
+   not be granted access to credentials. Set these entries in the private
+   `/etc/ewm.env`, then restart `ewm.service`:
 
    SEARCH_CONSOLE_PROPERTY=sc-domain:elliottwavemonitor.com
    SEARCH_CONSOLE_CREDENTIALS=/etc/ewm-secrets/search-console-service-account.json
