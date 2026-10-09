@@ -50,8 +50,18 @@ def page_context(request, obj=None, **extra):
     canonical = settings.SITE_URL + request.path
     if obj and getattr(obj, "canonical_url", "") and not is_arabic():
         old_url = urlsplit(obj.canonical_url)
-        imported_archive = isinstance(obj, Category) and obj.legacy_id and old_url.hostname in {"elliottwavemonitor.com", "www.elliottwavemonitor.com"} and old_url.path.startswith("/category/")
-        if not imported_archive:
+        legacy_paths = {f"/{obj.slug}"}
+        if isinstance(obj, Category):
+            legacy_paths.add(f"/category/{obj.slug}")
+        imported_self_url = (
+            getattr(obj, "legacy_id", None)
+            and old_url.hostname in {"elliottwavemonitor.com", "www.elliottwavemonitor.com"}
+            and old_url.path.rstrip("/") in legacy_paths
+            and not old_url.query
+        )
+        # WordPress self-canonicals predate the /en/ language prefix. Do not
+        # consolidate the English edition into today's Arabic root route.
+        if not imported_self_url:
             canonical = obj.canonical_url
     alternates = {}
     match = request.resolver_match

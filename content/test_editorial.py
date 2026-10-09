@@ -1,9 +1,9 @@
 from datetime import timedelta
 from bs4 import BeautifulSoup
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.contrib.auth import get_user_model
 from django.utils import timezone, translation
-from .models import Article, Category, SiteSettings
+from .models import Article, Category, Page, SiteSettings
 from .templatetags.content_extras import archive_content
 
 
@@ -31,6 +31,40 @@ class EditorialTests(TestCase):
         self.assertNotContains(response, "Future report")
         self.assertNotContains(self.client.get("/"), "Education lesson")
         self.assertNotContains(response, 'class="hero"')
+
+    @override_settings(SITE_URL='https://elliottwavemonitor.com', SITE_INDEXING_ENABLED=True)
+    def test_domain_launch_localizes_imported_self_canonicals(self):
+        self.report.legacy_id = 991
+        self.report.canonical_url = 'https://elliottwavemonitor.com/news-lead/'
+        self.report.save()
+        self.market.legacy_id = 992
+        self.market.canonical_url = 'https://elliottwavemonitor.com/gold-forecast/'
+        self.market.save()
+        for prefix in ('/', '/en/'):
+            for slug in ('news-lead', 'gold-forecast'):
+                response = self.client.get(prefix + slug + '/')
+                soup = BeautifulSoup(response.content, 'html.parser')
+                self.assertEqual(soup.select_one('link[rel="canonical"]')['href'], 'https://elliottwavemonitor.com' + prefix + slug + '/')
+                self.assertNotIn('noindex', response.get('X-Robots-Tag', ''))
+        self.report.canonical_url = 'https://publisher.example/original-report/'
+        self.report.save()
+        soup = BeautifulSoup(self.client.get('/en/news-lead/').content, 'html.parser')
+        self.assertEqual(soup.select_one('link[rel="canonical"]')['href'], self.report.canonical_url)
+
+    @override_settings(SITE_INDEXING_ENABLED=True)
+    def test_sitemap_respects_individual_noindex_settings(self):
+        self.report.robots = 'noindex,follow'
+        self.report.save()
+        self.market.robots = 'noindex,nofollow'
+        self.market.save()
+        Page.objects.create(title='Privacy', slug='privacy-policy', body='<p>Policy</p>', robots='noindex,follow')
+        Page.objects.create(title='Contact', slug='contact-us', body='<p>Contact</p>', robots='noindex,follow')
+        sitemap = self.client.get('/sitemap.xml')
+        self.assertEqual(sitemap.status_code, 200)
+        for slug in ('news-lead', 'gold-forecast', 'privacy-policy', 'contact-us'):
+            self.assertNotContains(sitemap, '/' + slug + '/')
+        self.assertContains(sitemap, '/forecast-0/')
+        self.assertContains(self.client.get('/en/privacy-policy/'), 'noindex,follow')
 
     def test_article_excerpts_stay_in_cards_and_metadata_not_reading_headers(self):
         article = Article.objects.get(slug='forecast-6')

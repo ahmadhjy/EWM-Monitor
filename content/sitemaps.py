@@ -13,7 +13,7 @@ class ArticleSitemap(Sitemap):
     x_default = True
 
     def items(self):
-        return Article.objects.filter(status="published", published_at__lte=timezone.now())
+        return Article.objects.filter(status="published", published_at__lte=timezone.now(), robots="index,follow")
 
     def lastmod(self, obj):
         return obj.updated_at
@@ -30,7 +30,7 @@ class CategorySitemap(Sitemap):
     x_default = True
 
     def items(self):
-        return Category.objects.filter(is_visible=True)
+        return Category.objects.filter(is_visible=True, robots="index,follow")
 
 
 class PageSitemap(Sitemap):
@@ -42,7 +42,7 @@ class PageSitemap(Sitemap):
 
     def items(self):
         # Contact is already emitted by StaticSitemap through its form route.
-        return Page.objects.filter(status="published", show_in_sitemap=True).exclude(slug="contact-us")
+        return Page.objects.filter(status="published", show_in_sitemap=True, robots="index,follow").exclude(slug="contact-us")
 
     def lastmod(self, obj):
         return obj.updated_at
@@ -56,7 +56,10 @@ class StaticSitemap(Sitemap):
     x_default = True
 
     def items(self):
-        return ["home", "contact"]
+        items = ["home"]
+        if not Page.objects.filter(slug="contact-us", status="published", robots__startswith="noindex").exists():
+            items.append("contact")
+        return items
 
     def location(self, item):
         return reverse(item)

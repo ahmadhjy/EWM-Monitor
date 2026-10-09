@@ -2,13 +2,25 @@
 
 This project is designed for a small Ubuntu Droplet with Nginx, Gunicorn, Python 3.12+, PostgreSQL, and Certbot. The repository also includes a tested update command, daily PostgreSQL/media backups, and GitHub checks for every change.
 
-## Current public-IP preview
+## Production domain (launched October 9, 2026)
 
-- Preview: https://165.227.156.218/ (Arabic), https://165.227.156.218/en/ (English).
+- Canonical site: https://elliottwavemonitor.com/ (Arabic), https://elliottwavemonitor.com/en/ (English).
+- Admin: https://elliottwavemonitor.com/admin/ — existing credentials, English/LTR.
+- Both apex and www point to 165.227.156.218. HTTP, www HTTPS and the former IP HTTPS address redirect permanently to the canonical domain, preserving paths and query strings.
+- The active configuration is `nginx-domain.conf`, with `cloudflare-realip.conf` installed as `/etc/nginx/snippets/ewm-cloudflare-realip.conf`. It trusts visitor-IP headers only from the documented Cloudflare networks; verify those ranges periodically.
+- A trusted certificate covers both domain names. The existing twice-daily Certbot timer renews it and reloads Nginx. A renewal dry run succeeded on launch day.
+- `SITE_URL=https://elliottwavemonitor.com`, `SITE_INDEXING_ENABLED=True`; domain CSRF origins are configured. The staging Nginx noindex header has been removed. Robots and sitemap use the canonical domain.
+- DNS is initially DNS-only. After HTTPS verification, the owner should select Cloudflare **Full (strict)**, then proxy the apex/www records. Do not use Flexible SSL or cache authenticated/admin HTML. Email/wildcard records were not changed.
+- `launch-domain.sh` records private environment/Nginx rollback copies under `/root/ewm-domain-launch.*` and restores previous settings on activation failure. Routine updates still use `ewm-deploy`, not the launch script.
+- Search Console verification/sitemap submission is an owner-account step; enabling crawling does not guarantee immediate indexing.
+
+## Historical public-IP preview
+
+- Former preview: https://165.227.156.218/ (now redirects to the domain).
 - Admin: https://165.227.156.218/admin/ (always English/LTR).
 - The IP has a trusted Let's Encrypt short-lived certificate. Certbot is installed at /opt/certbot/bin/certbot; certbot-renew.timer checks twice daily. Its renewal dry run passed.
-- Nginx uses nginx-ip.conf plus nginx-proxy.conf. HTTP redirects to HTTPS. The production environment has DEBUG=False, PostgreSQL, secure cookies and SITE_INDEXING_ENABLED=False.
-- IP staging is deliberately noindex with robots disallow. Do not enable indexing, change the domain, or replace canonical URLs until the owner approves the domain launch.
+- Before domain launch, Nginx used nginx-ip.conf plus nginx-proxy.conf, with SITE_INDEXING_ENABLED=False. The domain configuration now replaces this staging setup.
+- Staging was deliberately noindex until the owner approved domain launch on October 9, 2026.
 - The production admin password is generated separately, stored outside Git in /root/ewm-admin-access.txt, and supplied privately to the owner. Rotate it on handover.
 - Contact messages and subscriber addresses are stored in the admin. CONTACT_EMAIL_NOTIFICATIONS=False; SMTP and outbound campaigns are not configured.
 - Daily server-local backups retain 14 days. Arrange an off-server backup destination before relying on them for disaster recovery.
