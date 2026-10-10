@@ -164,7 +164,7 @@
 .education-archive .news-pagination { margin-bottom: 20px; }
 .brand-logo-frame { display: block; flex-shrink: 0; overflow: hidden; }
 .brand-logo-frame--header { width: 92px; height: 42px; }
-.brand-logo-frame--footer { width: 240px; height: 110px; max-width: 100%; }
+.brand-logo-frame--footer { width: 168px; height: 77px; max-width: 100%; }
 .footer-brand, .footer-brand > .brand { min-width: 0; max-width: 100%; }
 .footer-menu-label { color: #8fa2b5; font-size: .83rem; line-height: 1.65; }
 .footer-menu-group summary { cursor: pointer; padding-block: 3px; }

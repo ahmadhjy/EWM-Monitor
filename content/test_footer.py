@@ -29,7 +29,7 @@ class FooterReleaseTests(TestCase):
             self.assertNotIn(settings.tagline_ar, footer.get_text())
             self.assertNotIn(settings.contact_email, footer.get_text())
             self.assertFalse(footer.select('a[href^="mailto:"]'))
-            self.assertEqual(footer.select_one('.brand__logo--footer')['width'], '240')
+            self.assertEqual(footer.select_one('.brand__logo--footer')['width'], '168')
             self.assertTrue(footer.select('a[href$="privacy-policy/"]'))
             self.assertTrue(footer.select('a[href$="terms-conditions/"]'))
         self.assertContains(self.client.get('/en/contact-us/'), settings.contact_email)
