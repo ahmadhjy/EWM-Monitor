@@ -10,7 +10,7 @@ class NavigationTests(TestCase):
     def test_exact_order_and_children(self):
         roots = MenuItem.objects.filter(parent=None, is_active=True, group="primary")
         self.assertEqual(list(roots.values_list("label", flat=True)), ["News & Analysis", "Forex Forecast", "Commodities Forecast", "Crypto Forecast", "Indices Forecast", "Education", "Brokers"])
-        self.assertEqual([r.children.filter(is_active=True).count() for r in roots], [0, 5, 3, 3, 3, 0, 0])
+        self.assertEqual([r.children.filter(is_active=True).count() for r in roots], [0, 5, 3, 2, 3, 0, 0])
         self.assertEqual(roots.get(label="Brokers").url, "")
         self.assertNotContains(self.client.get("/en/"), '>Home</a>\n        ')
         self.assertContains(self.client.get("/en/"), 'class="submenu-toggle nav-parent"', count=4)
@@ -30,6 +30,6 @@ class NavigationTests(TestCase):
         Article.objects.create(title="English-only report", slug="english-report", body="<p>Report</p>", category=category, status="published")
         self.assertContains(self.client.get("/en/latest-news-and-analysis/"), "English-only report")
         self.assertNotContains(self.client.get("/latest-news-and-analysis/"), "English-only report")
-        for slug in ["btcusd", "ethusd", "ltcusd", "dow-jones", "nasdaq", "sp-500"]:
+        for slug in ["btcusd", "ethusd", "dow-jones", "nasdaq", "sp-500"]:
             for prefix in ["/", "/en/"]:
                 self.assertEqual(self.client.get(f"{prefix}{slug}-forecast/").status_code, 200)

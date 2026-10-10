@@ -22,6 +22,7 @@ ARABIC_UI = {
     "Email address": "البريد الإلكتروني",
     "Subscribe": "اشترك",
     "Markets": "الأسواق",
+    "Sitemap": "خريطة الموقع",
     "Resources": "المصادر",
     "Contact us": "اتصل بنا",
     "Privacy policy": "سياسة الخصوصية",

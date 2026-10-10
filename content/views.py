@@ -155,7 +155,7 @@ def content_detail(request, slug):
         return article_detail(request, article)
 
     # Hidden categories stay out of navigation but their historical URLs remain valid.
-    category = Category.objects.filter(slug=slug).first()
+    category = Category.objects.filter(slug=slug, is_published=True).first()
     if category:
         return category_detail(request, category)
 
@@ -294,7 +294,7 @@ def llms_txt(request):
         "",
         "## Core sections",
     ]
-    lines.extend(f"- [{category.display_name}]({settings.SITE_URL}{category.get_absolute_url()})" for category in Category.objects.filter(is_visible=True))
+    lines.extend(f"- [{category.display_name}]({settings.SITE_URL}{category.get_absolute_url()})" for category in Category.objects.filter(is_visible=True, is_published=True))
     lines.extend(["", "## Latest analysis"])
     lines.extend(f"- [{article.display_title}]({settings.SITE_URL}{article.get_absolute_url()}): {article.display_excerpt[:180]}" for article in published_articles()[:20])
     return HttpResponse("\n".join(lines) + "\n", content_type="text/plain; charset=utf-8")

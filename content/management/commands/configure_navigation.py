@@ -15,7 +15,7 @@ class Command(BaseCommand):
             ("News & Analysis", "الأخبار والتحليلات", "/latest-news-and-analysis/", [], []),
             ("Forex Forecast", "توقعات الفوركس", "", ["Currencies"], [("AUD/USD", "audusd"), ("EUR/USD", "eurusd"), ("GBP/USD", "gbpusd"), ("USD/CAD", "usdcad"), ("USD/JPY", "usdjpy")]),
             ("Commodities Forecast", "توقعات السلع", "", ["Commodities"], [("Crude Oil", "crude-oil", "النفط الخام"), ("Gold", "gold", "الذهب"), ("Silver", "silver", "الفضة")]),
-            ("Crypto Forecast", "توقعات العملات الرقمية", "", ["Crypto", "Cryptocurrencies"], [("BTC/USD", "btcusd"), ("ETH/USD", "ethusd"), ("LTC/USD", "ltcusd")]),
+            ("Crypto Forecast", "توقعات العملات الرقمية", "", ["Crypto", "Cryptocurrencies"], [("BTC/USD", "btcusd"), ("ETH/USD", "ethusd")]),
             ("Indices Forecast", "توقعات المؤشرات", "", ["Stocks"], [("Dow Jones", "dow-jones", "داو جونز"), ("Nasdaq", "nasdaq", "ناسداك"), ("S&P 500", "sp-500", "S&P 500")]),
             ("Education", "تعليم التداول", "/education/", [], []),
             ("Brokers", "شركات التداول", "", [], []),

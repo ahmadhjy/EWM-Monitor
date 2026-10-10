@@ -30,7 +30,7 @@ class CategorySitemap(Sitemap):
     x_default = True
 
     def items(self):
-        return Category.objects.filter(is_visible=True, robots="index,follow")
+        return Category.objects.filter(is_visible=True, is_published=True, robots="index,follow")
 
 
 class PageSitemap(Sitemap):

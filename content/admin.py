@@ -154,9 +154,9 @@ class PageAdmin(BilingualAdminMixin, ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(BilingualAdminMixin, ModelAdmin):
     formfield_overrides = RICH_TEXT_OVERRIDES
-    list_display = ("name", "nav_group", "order", "is_visible", "article_count")
-    list_editable = ("order", "is_visible")
-    list_filter = ("nav_group", "is_visible")
+    list_display = ("name", "nav_group", "order", "is_visible", "is_published", "article_count")
+    list_editable = ("order", "is_visible", "is_published")
+    list_filter = ("nav_group", "is_visible", "is_published")
     search_fields = ("name", "short_description", "body")
     prepopulated_fields = {"slug": ("name",)}
     readonly_fields = ("legacy_id",)
@@ -172,7 +172,7 @@ class CategoryAdmin(BilingualAdminMixin, ModelAdmin):
         ("Archive heading — Arabic", {"description": "The name is the main heading shown above this archive.", "fields": ("name_ar", "short_description_ar")}),
         ("Archive heading — English", {"fields": ("name", "slug", "short_description", "featured_image")}),
         ("Market guides — optional", {"description": "Shown below the article archive. Each language is independent: leave a guide blank to hide it in that edition.", "fields": ("body_ar", "body")}),
-        ("Navigation & visibility", {"fields": ("nav_group", "order", "is_visible")}),
+        ("Navigation & visibility", {"fields": ("nav_group", "order", "is_visible", "is_published")}),
         ARABIC_SEO_FIELDSET,
         SEO_FIELDSET,
         ("Migration record", {"classes": ["collapse"], "fields": ("legacy_id",)}),

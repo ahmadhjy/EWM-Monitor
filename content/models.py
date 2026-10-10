@@ -130,7 +130,7 @@ class SiteSettings(models.Model):
     logo = models.ImageField(upload_to="branding/", blank=True)
     footer_logo = models.ImageField(
         "Footer logo", upload_to="branding/footer/", blank=True,
-        help_text="Optional logo for the dark footer. Use a tightly cropped, transparent PNG or WebP with white/light artwork. It fits within 165 × 76 px without stretching. Leave blank to keep the existing footer logo.",
+        help_text="Optional logo for the dark footer. Use a tightly cropped, transparent PNG or WebP with white/light artwork. It fits within 240 × 110 px without stretching. Leave blank to keep the existing footer logo.",
     )
     default_social_image = models.ImageField(upload_to="branding/", blank=True)
     contact_email = models.EmailField(blank=True)
@@ -202,6 +202,7 @@ class Category(SEOFields, ArabicSEOFields):
     featured_image = models.ImageField(upload_to="categories/%Y/%m/", blank=True)
     legacy_id = models.PositiveIntegerField(null=True, blank=True, unique=True)
     is_visible = models.BooleanField(default=True)
+    is_published = models.BooleanField(default=True, help_text="Uncheck to unpublish the archive page in both languages. Its articles remain available independently.")
 
     class Meta:
         ordering = ["order", "name"]

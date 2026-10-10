@@ -3,7 +3,7 @@ from django.db.models import Prefetch, Q
 from django.utils import timezone
 from django.utils.translation import get_language
 
-from .models import Article, MenuItem, SiteSettings
+from .models import Article, Category, MenuItem, SiteSettings
 
 
 def site_context(request):
@@ -21,7 +21,8 @@ def site_context(request):
         for field, label in [("telegram", "Telegram"), ("instagram", "Instagram"), ("facebook", "Facebook"), ("youtube", "YouTube"), ("x", "X / Twitter"), ("linkedin", "LinkedIn")]
         if getattr(site_settings, f"{field}_url")
     ]
-    primary = MenuItem.objects.filter(group="primary", is_active=True, parent__isnull=True).prefetch_related(Prefetch("children", queryset=MenuItem.objects.filter(is_active=True), to_attr="active_children"))
+    unpublished_paths = [path for slug in Category.objects.filter(is_published=False).values_list("slug", flat=True) for path in (f"/{slug}/", f"/en/{slug}/")]
+    primary = MenuItem.objects.filter(group="primary", is_active=True, parent__isnull=True).exclude(url__in=unpublished_paths).prefetch_related(Prefetch("children", queryset=MenuItem.objects.filter(is_active=True).exclude(url__in=unpublished_paths), to_attr="active_children"))
     footer = MenuItem.objects.filter(group="footer", is_active=True, parent__isnull=True)
     language_code = (get_language() or settings.LANGUAGE_CODE).split("-")[0]
     forecasts = Article.objects.filter(status="published", published_at__lte=timezone.now()).filter(Q(category__slug__endswith="-forecast") | Q(additional_categories__slug__endswith="-forecast")).distinct().order_by("-published_at", "-pk")

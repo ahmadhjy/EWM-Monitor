@@ -164,7 +164,14 @@
 .education-archive .news-pagination { margin-bottom: 20px; }
 .brand-logo-frame { display: block; flex-shrink: 0; overflow: hidden; }
 .brand-logo-frame--header { width: 92px; height: 42px; }
-.brand-logo-frame--footer { width: 165px; height: 76px; }
+.brand-logo-frame--footer { width: 240px; height: 110px; max-width: 100%; }
+.footer-brand, .footer-brand > .brand { min-width: 0; max-width: 100%; }
+.footer-menu-label { color: #8fa2b5; font-size: .83rem; line-height: 1.65; }
+.footer-menu-group summary { cursor: pointer; padding-block: 3px; }
+.footer-menu-group summary:hover { color: var(--gold-light); }
+.footer-menu-group summary:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+.footer-menu-group > div { display: grid; gap: 8px; padding: 10px 0; padding-inline-start: 12px; border-inline-start: 1px solid #253245; }
+.footer-menu-placeholder { opacity: .7; }
 .brand-logo-frame--footer.is-uploaded { background: #fff; padding: 4px; border-radius: 8px; }
 .brand-logo-frame--footer.has-custom-logo { background: transparent; padding: 0; }
 .brand-logo-frame > .brand__logo { width: 100%; height: 100%; max-height: none; object-fit: contain; }
@@ -206,6 +213,8 @@
   .footer-grid h2 { font-size: .8rem; margin-bottom: 8px; }
   .footer-grid > div:not(.footer-brand) { gap: 0; }
   .footer-grid > div:not(.footer-brand) a { min-height: 40px; display: flex; align-items: center; font-size: .8rem; }
+  .footer-menu-label { font-size: .8rem; }
+  .footer-menu-group summary, .footer-menu-placeholder { min-height: 40px; padding-block: 8px; }
   .footer-grid > div:last-child { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 10px; border-top: 1px solid #253245; padding-top: 22px; }
   .footer-grid > div:last-child h2, .footer-grid .contact-email { grid-column: 1 / -1; }
   .risk-disclaimer { padding-block: 20px; }
