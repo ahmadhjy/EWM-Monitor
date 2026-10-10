@@ -178,6 +178,10 @@
 /* This uploaded 1080px square has artwork at x185–895, y393–687.
    Crop its empty canvas only; other uploads keep their natural proportions. */
 .brand-logo-frame:not(.has-custom-logo) > img[src*="/branding/lOGO-SVG"] { object-fit: cover; object-position: center; transform: scale(1.46); }
+/* The current white footer upload is a 4500px square with centered artwork
+   at x773–3727, y1639–2861. Fill the frame without altering the source file;
+   replacement uploads retain their natural proportions. */
+.brand-logo-frame--footer.has-custom-logo > img[src$="/branding/footer/lOGO-SVG_Recovered.pngghyj-01.png"] { object-fit: cover; object-position: center; transform: scale(1.46); }
 .site-footer .contact-email { overflow-wrap: anywhere; }
 @media (min-width: 1280px) and (max-width: 1399px) {
   .header-inner { gap: 10px; }
