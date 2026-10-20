@@ -296,19 +296,24 @@ class Article(SEOFields, ArabicSEOFields):
             populated_fields.append("excerpt_ar")
         if kwargs.get("update_fields") is not None and populated_fields:
             kwargs["update_fields"] = set(kwargs["update_fields"]) | set(populated_fields)
-        return super().save(*args, **kwargs)
+        result = super().save(*args, **kwargs)
+        from .image_variants import featured_source_name, generate_featured_variants
+        generate_featured_variants(featured_source_name(self))
+        return result
 
     @property
     def image_url(self):
         return self.featured_image.url if self.featured_image else self.featured_image_url
 
     def _variant_url(self, variant):
-        if not self.featured_image:
+        from .image_variants import featured_source_name
+        source = featured_source_name(self)
+        if not source:
             return self.featured_image_url
-        path = PurePosixPath(self.featured_image.name)
+        path = PurePosixPath(source)
         name = f"{path.with_suffix('')}.{variant}.webp"
         if not default_storage.exists(name):
-            return self.featured_image.url
+            return self.image_url
         return f"{settings.MEDIA_URL.rstrip('/')}/{str(name).lstrip('/')}"
 
     @property
