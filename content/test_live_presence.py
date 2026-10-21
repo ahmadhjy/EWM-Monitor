@@ -3,6 +3,7 @@ from datetime import timedelta
 from unittest.mock import patch
 
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Permission
 from django.core.cache import cache
 from django.test import TestCase, override_settings
 from django.urls import reverse
@@ -61,3 +62,7 @@ class LivePresenceTests(TestCase):
         user = get_user_model().objects.create_user(username="staff", password="test-password", is_staff=True)
         self.client.force_login(user)
         self.assertEqual(self.client.get(url).status_code, 403)
+        user.user_permissions.add(Permission.objects.get(codename="view_trafficdaily", content_type__app_label="content"))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["active"], 0)
