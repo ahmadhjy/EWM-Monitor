@@ -6,18 +6,31 @@ from django.contrib import admin
 from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
 from django.db.models import Sum
+from django.http import JsonResponse
 from django.template.response import TemplateResponse
+from django.urls import path
 from django.utils import timezone
 from unfold.admin import ModelAdmin
 
 from .models import TrafficDaily
 from .search_console import PAGE_SIZE, page_number, search_report
 from .geography import country_database_status
+from .live_presence import current_presence
 import pycountry
 
 
 @admin.register(TrafficDaily)
 class StatisticsAdmin(ModelAdmin):
+    def get_urls(self):
+        return [path("live/", self.admin_site.admin_view(self.live_view), name="content_trafficdaily_live")] + super().get_urls()
+
+    def live_view(self, request):
+        if not self.has_view_permission(request):
+            raise PermissionDenied
+        response = JsonResponse(current_presence())
+        response["Cache-Control"] = "private, no-store"
+        return response
+
     def has_add_permission(self, request):
         return False
 

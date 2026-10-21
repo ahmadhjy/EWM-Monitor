@@ -6,6 +6,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.urls import include, path
 
 from content import views
+from content.live_presence import presence_ping
 from content.feeds import LatestArticlesFeed
 from content.sitemaps import ArticleSitemap, CategorySitemap, PageSitemap, StaticSitemap
 
@@ -24,6 +25,7 @@ urlpatterns = [
     path("robots.txt", views.robots_txt, name="robots_txt"),
     path("llms.txt", views.llms_txt, name="llms_txt"),
     path("health/", views.health, name="health"),
+    path("_pulse/", presence_ping, name="presence_ping"),
 ]
 
 urlpatterns += i18n_patterns(

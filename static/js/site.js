@@ -1,4 +1,25 @@
 (() => {
+  // One small write per visible browser tab per minute. The live admin panel
+  // performs reads only while an editor has opened it.
+  try {
+    if (navigator.sendBeacon && crypto.getRandomValues && sessionStorage &&
+        navigator.doNotTrack !== "1" && navigator.globalPrivacyControl !== true) {
+      let session = sessionStorage.getItem("ewm_live_tab");
+      if (!/^[0-9a-f]{32}$/.test(session || "")) {
+        const bytes = crypto.getRandomValues(new Uint8Array(16));
+        session = Array.from(bytes, byte => byte.toString(16).padStart(2, "0")).join("");
+        sessionStorage.setItem("ewm_live_tab", session);
+      }
+      const pulse = () => {
+        if (document.hidden) return;
+        const body = new Blob([JSON.stringify({session, path: location.pathname, referrer: document.referrer})], {type: "application/json"});
+        navigator.sendBeacon("/_pulse/", body);
+      };
+      window.addEventListener("load", () => setTimeout(pulse, 3000), {once: true});
+      setInterval(pulse, 60000);
+      document.addEventListener("visibilitychange", () => { if (!document.hidden) pulse(); });
+    }
+  } catch { /* Storage or beacon denied by browser privacy settings. */ }
   const rtl = document.documentElement.dir === "rtl";
   const hero = document.querySelector("[data-hero-motion]");
   if (hero) {

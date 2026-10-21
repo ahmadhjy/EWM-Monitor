@@ -15,6 +15,8 @@ VARIANTS = {
     "card-hq": ((960, 570), True, 90),
     "compact-hq": ((720, 720), False, 92),
     "hero-hq": ((1920, 1200), False, 94),
+    "article-mobile": ((768, 768), False, 87),
+    "article-desktop": ((1260, 1260), False, 89),
 }
 
 

@@ -34,6 +34,12 @@ class FeaturedVariantTests(TestCase):
         with article.featured_image.open("rb") as source:
             self.assertEqual(source.read(), original)
         self.assertTrue(article.card_image_url.endswith(".card-hq.webp"))
+        self.assertTrue(article.article_mobile_image_url.endswith(".article-mobile.webp"))
+        self.assertTrue(article.article_desktop_image_url.endswith(".article-desktop.webp"))
+        for variant in ("article-mobile", "article-desktop"):
+            name = article.featured_image.name.rsplit(".", 1)[0] + f".{variant}.webp"
+            with default_storage.open(name, "rb") as source, Image.open(source) as image:
+                self.assertFalse(image.info.get("lossless", False))
         for variant, size in [("mobile-hq", (480, 285)), ("card-hq", (960, 570))]:
             name = article.featured_image.name.rsplit(".", 1)[0] + f".{variant}.webp"
             with default_storage.open(name) as source, Image.open(source) as image:

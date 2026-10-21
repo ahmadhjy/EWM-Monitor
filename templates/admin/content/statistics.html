@@ -1,12 +1,26 @@
 {% extends "admin/base_site.html" %}
 {% load static %}
-{% block extrastyle %}{{ block.super }}<link rel="stylesheet" href="{% static 'admin/css/statistics.css' %}">{% endblock %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" href="{% static 'admin/css/statistics.css' %}"><script src="{% static 'admin/js/live-statistics.js' %}" defer></script>{% endblock %}
 {% block content %}
 <div class="ewm-stats" lang="en" dir="ltr">
   <header class="stats-heading stats-masthead">
     <div><span class="stats-eyebrow">EWM / Audience intelligence</span><h1>Website statistics</h1><p>Your readership and search performance, in one place.</p></div>
     <nav aria-label="Reporting period">{% for period in ranges %}<a href="?days={{ period }}"{% if days == period %} aria-current="page"{% endif %}>{{ period }} days</a>{% endfor %}</nav>
   </header>
+
+  <details class="stats-panel stats-live" data-live-panel data-live-url="{% url 'admin:content_trafficdaily_live' %}">
+    <summary><span class="stats-live-dot" aria-hidden="true"></span> Live readers <small>Open for activity in the last 2 minutes</small></summary>
+    <div data-live-content aria-live="polite">
+      <p class="stats-note">Open this panel to load current activity.</p>
+      <div class="stats-live-grid" hidden>
+        <div class="stats-live-total"><strong data-live-total>0</strong><span>active browser tabs</span></div>
+        <section><h3>Pages now</h3><ol data-live-pages></ol></section>
+        <section><h3>Sources</h3><ol data-live-sources></ol></section>
+        <section><h3>Countries</h3><ol data-live-countries></ol></section>
+      </div>
+      <p class="stats-note" data-live-status role="status">Updates every 15 seconds while this panel is open and visible.</p>
+    </div>
+  </details>
 
   <section aria-labelledby="traffic-heading">
     <div class="stats-section-heading"><div><span class="stats-eyebrow">On your website</span><h2 id="traffic-heading">Traffic overview</h2><p>{{ start|date:"M j, Y" }} – {{ end|date:"M j, Y" }} · {{ TIME_ZONE }}</p></div><span class="stats-badge">{% if tracking_enabled %}Counting active{% else %}Counting disabled{% endif %}</span></div>
@@ -71,6 +85,6 @@
       </div>
     {% endif %}
   </section>
-  <footer class="stats-privacy"><strong>Designed for privacy</strong><p>Built-in analytics adds no tracking JavaScript or cookies. It stores daily aggregate counts, paths, referrer domains, edition, device category and approximate country—not visitor IPs, identifiers, full user agents or query strings. Staff visits, known bots, background archive loads and Do Not Track / Global Privacy Control requests are excluded. Bot filtering is approximate. Aggregates are retained for 180 days; normal server access logs are separate.</p></footer>
+  <footer class="stats-privacy"><strong>Designed for privacy</strong><p>Daily statistics store aggregate views without tracking cookies. The live estimate uses a small browser signal once per minute while a public tab is visible. A random tab identifier stays in session storage; only its server-side hash is held briefly, with the latest page, referring domain and approximate country. No IP, query string or full browsing history is retained in this feature. Active means seen within 2 minutes; old signals are removed after 10 minutes. Staff, known bots and Do Not Track / Global Privacy Control requests are excluded. Bot filtering is approximate. Daily aggregates are retained for 180 days; normal server access logs are separate.</p></footer>
 </div>
 {% endblock %}

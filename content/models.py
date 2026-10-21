@@ -325,6 +325,14 @@ class Article(SEOFields, ArabicSEOFields):
         return self._variant_url("hero-hq")
 
     @property
+    def article_mobile_image_url(self):
+        return self._variant_url("article-mobile")
+
+    @property
+    def article_desktop_image_url(self):
+        return self._variant_url("article-desktop")
+
+    @property
     def mobile_image_url(self):
         return self._variant_url("mobile-hq")
 
@@ -509,3 +517,16 @@ class TrafficDaily(models.Model):
         verbose_name_plural = "Statistics"
         default_permissions = ("view",)
         constraints = [models.UniqueConstraint(fields=("date", "path", "language", "device", "referrer", "country"), name="unique_traffic_daily_bucket")]
+
+
+class LivePresence(models.Model):
+    """Short lived, anonymous browser tab presence for the editor dashboard."""
+
+    session_hash = models.CharField(max_length=64, unique=True)
+    last_seen = models.DateTimeField(db_index=True)
+    path = models.CharField(max_length=300)
+    country = models.CharField(max_length=2, blank=True)
+    referrer = models.CharField(max_length=253, default="Direct / unknown")
+
+    class Meta:
+        default_permissions = ()
