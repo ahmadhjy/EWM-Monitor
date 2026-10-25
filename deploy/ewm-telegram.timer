@@ -1,0 +1,10 @@
+[Unit]
+Description=Check for newly published EWM articles every minute
+
+[Timer]
+OnCalendar=*-*-* *:*:00
+Persistent=true
+Unit=ewm-telegram.service
+
+[Install]
+WantedBy=timers.target

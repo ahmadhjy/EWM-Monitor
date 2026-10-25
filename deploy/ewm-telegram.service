@@ -1,0 +1,16 @@
+[Unit]
+Description=Post newly published EWM articles to Telegram
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=ewm
+Group=ewm
+WorkingDirectory=/var/www/ewm
+EnvironmentFile=/etc/ewm.env
+ExecStart=/var/www/ewm/.venv/bin/python manage.py dispatch_telegram
+TimeoutStartSec=90
+NoNewPrivileges=true
+PrivateTmp=true
+

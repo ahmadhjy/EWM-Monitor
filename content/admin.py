@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib import admin
+from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
 from django.db import models
@@ -25,6 +26,7 @@ from .models import (
     Page,
     Redirect,
     SiteSettings,
+    TelegramAnnouncement,
 )
 
 
@@ -130,6 +132,29 @@ class ArticleAdmin(BilingualAdminMixin, ModelAdmin):
         if obj.status == "published" and not obj.published_at:
             obj.published_at = timezone.now()
         super().save_model(request, obj, form, change)
+
+
+@admin.register(TelegramAnnouncement)
+class TelegramAnnouncementAdmin(ModelAdmin):
+    list_display = ("article", "status", "attempts", "sent_at", "last_error")
+    list_filter = ("status",)
+    search_fields = ("article__title", "article__title_ar", "article__slug")
+    readonly_fields = ("article", "status", "attempts", "next_attempt_at", "sent_at", "message_id", "last_error", "created_at")
+    actions = ("retry_after_review",)
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    @admin.action(description="Retry uncertain posts only after checking the channel")
+    def retry_after_review(self, request, queryset):
+        if not request.user.is_superuser:
+            self.message_user(request, "Only a superuser can retry an uncertain Telegram post.", level=messages.ERROR)
+            return
+        count = queryset.filter(status="uncertain").update(status="pending", next_attempt_at=timezone.now(), last_error="")
+        self.message_user(request, f"Queued {count} post(s) for retry. Confirm they were not already posted first.")
 
 
 @admin.register(Page)

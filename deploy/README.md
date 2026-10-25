@@ -1,5 +1,8 @@
 # DigitalOcean deployment runbook
 
+For one-time Telegram channel announcement setup and monitoring, see
+[`TELEGRAM.md`](TELEGRAM.md). The bot token stays in `/etc/ewm.env`, not Git.
+
 This project is designed for a small Ubuntu Droplet with Nginx, Gunicorn, Python 3.12+, PostgreSQL, and Certbot. The repository also includes a tested update command, daily PostgreSQL/media backups, and GitHub checks for every change.
 
 ## Production domain (launched October 9, 2026)

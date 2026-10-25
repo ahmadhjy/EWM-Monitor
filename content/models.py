@@ -530,3 +530,31 @@ class LivePresence(models.Model):
 
     class Meta:
         default_permissions = ()
+
+
+class TelegramAnnouncement(models.Model):
+    """One delivery record per article; edits must never create another post."""
+
+    STATUS_CHOICES = [
+        ("pending", "Pending"),
+        ("sending", "Sending — review if stuck"),
+        ("sent", "Sent"),
+        ("failed", "Failed — will retry"),
+        ("uncertain", "Outcome uncertain — check channel"),
+        ("historical", "Historical — not sent"),
+    ]
+    article = models.OneToOneField(Article, on_delete=models.CASCADE, related_name="telegram_announcement")
+    status = models.CharField(max_length=16, choices=STATUS_CHOICES, default="pending", db_index=True)
+    attempts = models.PositiveSmallIntegerField(default=0)
+    next_attempt_at = models.DateTimeField(default=timezone.now, db_index=True)
+    sent_at = models.DateTimeField(null=True, blank=True)
+    message_id = models.BigIntegerField(null=True, blank=True)
+    last_error = models.CharField(max_length=300, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Telegram announcement"
+
+    def __str__(self):
+        return f"{self.article.title} — {self.get_status_display()}"
