@@ -4,6 +4,7 @@ from unittest.mock import Mock, patch
 
 import requests
 from django.core.management import call_command
+from django.core.management.base import CommandError
 from django.test import TestCase, override_settings
 from django.utils import timezone
 
@@ -99,3 +100,23 @@ class TelegramDispatchTests(TestCase):
         call_command("dispatch_telegram", stdout=StringIO())
         self.assertFalse(TelegramAnnouncement.objects.filter(article=article).exists())
         post.assert_not_called()
+
+    @patch("content.management.commands.check_telegram.requests.post")
+    def test_read_only_connection_check(self, post):
+        identity = Mock()
+        identity.json.return_value = {"ok": True, "result": {"id": 123, "username": "ewm_bot"}}
+        rights = Mock()
+        rights.json.return_value = {"ok": True, "result": {"status": "administrator", "can_post_messages": True}}
+        post.side_effect = [identity, rights]
+        output = StringIO()
+        call_command("check_telegram", stdout=output)
+        self.assertIn("can post to @examplechannel", output.getvalue())
+        self.assertEqual(post.call_count, 2)
+        self.assertTrue(post.call_args.args[0].endswith("/getChatMember"))
+
+    @patch("content.management.commands.check_telegram.requests.post")
+    def test_connection_check_does_not_expose_token_on_error(self, post):
+        post.side_effect = requests.Timeout("test-token")
+        with self.assertRaisesMessage(CommandError, "Could not verify Telegram settings") as error:
+            call_command("check_telegram", stdout=StringIO())
+        self.assertNotIn("test-token", str(error.exception))
