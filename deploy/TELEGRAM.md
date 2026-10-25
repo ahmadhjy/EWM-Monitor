@@ -8,8 +8,8 @@ published when migration `0015` ran are marked historical and never sent.
 Drafts, articles with a future publication time, and scheduled-status articles
 are not sent until their status is Published and the time has arrived.
 
-If an Arabic title and body exist, the message uses the Arabic title and Arabic
-article URL. Otherwise it uses English. Telegram generates the link preview
+The message always uses the English title and English `/en/` article URL,
+even when the article also has an Arabic translation. Telegram generates the link preview
 from the public article URL. No article content is copied to Telegram.
 
 ## One-time owner and server setup

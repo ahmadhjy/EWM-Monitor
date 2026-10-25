@@ -27,11 +27,9 @@ def queue_new_publications(now=None):
 
 
 def message_for(article):
-    language = "ar" if article.has_arabic_translation else "en"
-    with translation.override(language):
+    with translation.override("en"):
         url = settings.SITE_URL + article.get_absolute_url()
-    title = article.title_ar.strip() if language == "ar" else article.title.strip()
-    return f"{title}\n\n{url}"
+    return f"{article.title.strip()}\n\n{url}"
 
 
 def send_announcement(announcement_id):

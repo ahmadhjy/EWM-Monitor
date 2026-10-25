@@ -45,14 +45,14 @@ class TelegramDispatchTests(TestCase):
         self.assertEqual(post.call_count, 1)
 
     @patch("content.telegram.requests.post")
-    def test_arabic_translation_uses_arabic_link(self, post):
+    def test_arabic_translation_still_uses_english_title_and_link(self, post):
         post.return_value = self.api_success()
         self.article(slug="arabic-report", status="published", title_ar="تحليل جديد", body_ar="<p>تحليل</p>")
         call_command("dispatch_telegram", stdout=StringIO())
         text = post.call_args.kwargs["json"]["text"]
-        self.assertIn("تحليل جديد", text)
-        self.assertIn("https://elliottwavemonitor.com/arabic-report/", text)
-        self.assertNotIn("/en/", text)
+        self.assertIn("New market report", text)
+        self.assertNotIn("تحليل جديد", text)
+        self.assertIn("https://elliottwavemonitor.com/en/arabic-report/", text)
 
     @patch("content.telegram.requests.post")
     def test_future_and_historical_articles_are_not_sent(self, post):
