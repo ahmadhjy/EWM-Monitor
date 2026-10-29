@@ -65,6 +65,13 @@ class PublicSiteTests(TestCase):
         self.assertContains(response, 'aria-label="English"')
         self.assertNotContains(response, self.english_only_article.title)
 
+    def test_adsense_account_tag_in_both_languages(self):
+        tag = '<meta name="google-adsense-account" content="ca-pub-3070762753543983">'
+        for path in ("/", "/en/"):
+            response = self.client.get(path)
+            self.assertEqual(response.status_code, 200)
+            self.assertContains(response, tag, count=1)
+
     def test_english_version_uses_prefixed_urls_and_ltr_layout(self):
         response = self.client.get("/en/")
         self.assertEqual(response.status_code, 200)

@@ -25,6 +25,7 @@
   {% if article.image_url %}<meta property="og:image" content="{{ article.image_url|absolute_media:site_url }}">{% elif seo_object.social_image %}<meta property="og:image" content="{{ seo_object.social_image.url|absolute_media:site_url }}">{% elif site_settings.default_social_image %}<meta property="og:image" content="{{ site_settings.default_social_image.url|absolute_media:site_url }}">{% endif %}
   <meta name="twitter:card" content="summary_large_image">
   {% if site_settings.google_site_verification %}<meta name="google-site-verification" content="{{ site_settings.google_site_verification }}">{% endif %}
+  <meta name="google-adsense-account" content="ca-pub-3070762753543983">
   {% if article %}<meta property="article:published_time" content="{{ article.published_at|date:'c' }}"><meta property="article:modified_time" content="{{ article.updated_at|date:'c' }}">{% endif %}
   <link rel="icon" href="{% static 'img/ewm-original-mark.svg' %}" type="image/svg+xml">
   <link rel="preload" href="{% static 'css/site.min.css' %}" as="style">
